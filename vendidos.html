@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vehículos vendidos — Te Compro Tu Auto</title>
+<meta name="description" content="Estos vehículos ya encontraron nuevo dueño. Conoce el movimiento de nuestro inventario en Te Compro Tu Auto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="mark"><svg width="22" height="22" viewBox="0 0 64 40" fill="none"><path d="M6 26L10 14C11 11 13 9 16 9H42C45 9 47.5 11 48.5 14L52 26" stroke="#F2C230" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="34.5" r="5" fill="#1C1710" stroke="#F2C230" stroke-width="3"/><circle cx="44" cy="34.5" r="5" fill="#1C1710" stroke="#F2C230" stroke-width="3"/></svg></span>
+      <span class="word">Te Compro<em>Tu Auto</em></span>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    <nav class="main-nav">
+      <a href="inventario.html">Inventario</a>
+      <a href="vende-tu-carro.html">Vender mi carro</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="vendidos.html" class="active">Vendidos</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="header-actions">
+      <div class="header-phone"><span>Escríbenos ahora</span><strong data-contact-phone></strong></div>
+      <a class="btn btn-primary" data-wa-text="Hola, quiero más información" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+<div class="nav-scrim"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Vehículos vendidos</p>
+    <h1>Estos ya encontraron nuevo dueño</h1>
+    <p>No todos los carros vendidos simplemente desaparecen de la página. Esto demuestra que otras personas están comprando vehículos en Te Compro Tu Auto.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="vehicle-grid" id="vendidos-grid"></div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>¿Quieres ver vehículos disponibles?</h2>
+    <p>Tenemos otras opciones que pueden interesarte.</p>
+    <div class="cta-actions">
+      <a class="btn btn-on-dark" href="inventario.html">Ver vehículos similares</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="mark"><svg width="20" height="20" viewBox="0 0 64 40" fill="none"><path d="M6 26L10 14C11 11 13 9 16 9H42C45 9 47.5 11 48.5 14L52 26" stroke="#F2C230" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="34.5" r="5" fill="#1C1710" stroke="#F2C230" stroke-width="3"/><circle cx="44" cy="34.5" r="5" fill="#1C1710" stroke="#F2C230" stroke-width="3"/></svg></span>
+          <span class="word" style="color:var(--cream);">Te Compro<em>Tu Auto</em></span>
+        </a>
+        <p>En efectivo y al instante. Compra y venta de vehículos usados en Cali, Colombia.</p>
+      </div>
+      <div class="footer-col"><h4>Vehículos</h4><ul>
+        <li><a href="inventario.html">Inventario</a></li>
+        <li><a href="index.html#recien-llegados">Recién llegados</a></li>
+        <li><a href="index.html#oportunidades">Oportunidades</a></li>
+        <li><a href="vendidos.html">Vehículos vendidos</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Empresa</h4><ul>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="nosotros.html#historia">Nuestra historia</a></li>
+        <li><a href="nosotros.html#testimonios">Clientes felices</a></li>
+        <li><a href="nosotros.html#equipo">Nuestro equipo</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contacto</h4><ul>
+        <li><a href="vende-tu-carro.html">Vende tu carro</a></li>
+        <li><a href="vende-tu-carro.html">Cotiza tu vehículo</a></li>
+        <li><a href="contacto.html">Agenda una valoración</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Síguenos</h4><ul>
+        <li><a href="#" title="Reemplazar con el enlace real">Instagram</a></li>
+        <li><a href="#" title="Reemplazar con el enlace real">TikTok</a></li>
+        <li><a href="#" title="Reemplazar con el enlace real">Facebook</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span data-year></span> Te Compro Tu Auto · Cali, Colombia</p>
+      <div class="footer-legal">
+        <a href="#">Política de privacidad</a>
+        <a href="#">Tratamiento de datos personales</a>
+        <a href="#">Términos y condiciones</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" data-wa-text="Hola, quiero más información" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M17.6 6.32A8.87 8.87 0 0 0 12.05 4a8.94 8.94 0 0 0-7.75 13.4L3 21l3.7-1.28a8.9 8.9 0 0 0 5.35 1.75h.01a8.94 8.94 0 0 0 5.55-16.15Z" fill="#fff"/><path d="M9.1 8.6c-.16-.36-.33-.37-.48-.37h-.4a.78.78 0 0 0-.58.27c-.2.22-.77.75-.77 1.83s.79 2.12.9 2.27c.11.15 1.55 2.5 3.83 3.4 1.9.75 2.28.6 2.7.56.42-.03 1.35-.55 1.54-1.08.19-.53.19-.98.13-1.08-.06-.1-.2-.15-.42-.27-.22-.11-1.35-.67-1.55-.74-.21-.08-.36-.11-.51.11-.15.22-.58.74-.71.9-.13.15-.26.16-.48.05-.22-.11-.94-.35-1.79-1.1a6.7 6.7 0 0 1-1.24-1.55c-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.4.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.4-.06-.11-.5-1.28-.7-1.76Z" fill="#2F5233"/></svg>
+</a>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/catalog.js"></script>
+</body>
+</html>

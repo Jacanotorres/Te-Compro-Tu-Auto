@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vende tu carro — Te Compro Tu Auto</title>
+<meta name="description" content="¿Quieres vender tu carro? Nosotros te lo compramos. Cuéntanos sobre tu vehículo y recibe una valoración rápida en Cali.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="mark"><svg width="22" height="22" viewBox="0 0 64 40" fill="none"><path d="M6 26L10 14C11 11 13 9 16 9H42C45 9 47.5 11 48.5 14L52 26" stroke="#F2C230" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="34.5" r="5" fill="#1C1710" stroke="#F2C230" stroke-width="3"/><circle cx="44" cy="34.5" r="5" fill="#1C1710" stroke="#F2C230" stroke-width="3"/></svg></span>
+      <span class="word">Te Compro<em>Tu Auto</em></span>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    <nav class="main-nav">
+      <a href="inventario.html">Inventario</a>
+      <a href="vende-tu-carro.html" class="active">Vender mi carro</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="vendidos.html">Vendidos</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="header-actions">
+      <div class="header-phone"><span>Escríbenos ahora</span><strong data-contact-phone></strong></div>
+      <a class="btn btn-primary" data-wa-text="Hola, quiero vender mi carro" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+<div class="nav-scrim"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="kicker">¿Quieres vender tu carro?</p>
+    <h1>Nosotros te lo compramos</h1>
+    <p>Vender tu vehículo no debería convertirse en un proceso complicado. Recibe una valoración de tu vehículo y conoce una oferta de compra de manera rápida.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">¿Cómo funciona?</p>
+      <h2>Cinco pasos, sin complicaciones</h2>
+    </div>
+    <div class="steps steps-5">
+      <div class="step"><div class="num">1</div><h3>Cuéntanos sobre tu carro</h3><p>Envíanos la información básica de tu vehículo.</p></div>
+      <div class="step"><div class="num">2</div><h3>Realizamos la valoración</h3><p>Nuestro equipo analiza las características y condiciones del vehículo.</p></div>
+      <div class="step"><div class="num">3</div><h3>Revisamos el vehículo</h3><p>Programamos una inspección para verificar su estado.</p></div>
+      <div class="step"><div class="num">4</div><h3>Recibe nuestra oferta</h3><p>Te presentamos una propuesta de compra.</p></div>
+      <div class="step"><div class="num">5</div><h3>Cerramos el negocio</h3><p>Si aceptas la oferta, realizamos el proceso correspondiente para cerrar la negociación.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-card">
+  <div class="wrap">
+    <div class="sell-layout">
+      <div>
+        <div class="section-head">
+          <p class="kicker">Formulario</p>
+          <h2>Cuéntanos sobre tu vehículo</h2>
+          <p>Completa el formulario y uno de nuestros asesores se pondrá en contacto contigo. Al enviarlo se abrirá WhatsApp con tu información lista para enviar.</p>
+        </div>
+      </div>
+      <div class="form-card">
+        <form id="sell-form">
+          <div class="form-grid">
+            <div class="full"><label for="s-nombre">Nombre</label><input id="s-nombre" type="text" required></div>
+            <div class="full"><label for="s-celular">Número de celular</label><input id="s-celular" type="tel" required></div>
+            <div><label for="s-marca">Marca</label><input id="s-marca" type="text" required></div>
+            <div><label for="s-linea">Línea</label><input id="s-linea" type="text" required></div>
+            <div><label for="s-modelo">Modelo (año)</label><input id="s-modelo" type="number" required></div>
+            <div><label for="s-km">Kilometraje</label><input id="s-km" type="number" required></div>
+            <div><label for="s-placa">Placa</label><input id="s-placa" type="text"></div>
+            <div><label for="s-ciudad">Ciudad</label><input id="s-ciudad" type="text" required></div>
+            <div class="full"><label for="s-precio">Precio esperado</label><input id="s-precio" type="text" placeholder="Ej: $50.000.000"></div>
+            <div class="full">
+              <label>Fotografías del vehículo</label>
+              <div class="file-drop">Adjunta las fotos directamente en la conversación de WhatsApp que se abrirá al enviar este formulario.</div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top:22px;">Quiero vender mi carro</button>
+          <p class="form-note">Al enviar, se abrirá WhatsApp con un mensaje prellenado con los datos de tu vehículo para que puedas confirmarlo y adjuntar tus fotos.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="kicker">¿Por qué vender con nosotros?</p>
+      <h2>Vender con confianza</h2>
+    </div>
+    <div class="buy-list">
+      <div class="buy-row">
+        <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h4>Pago en efectivo al instante</h4><p>Recibes el pago de forma rápida una vez cerrado el negocio.</p></div>
+      </div>
+      <div class="buy-row">
+        <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h4>Puedes vender sin comprar otro</h4><p>Puedes comunicarte con nosotros únicamente para vender tu vehículo.</p></div>
+      </div>
+      <div class="buy-row">
+        <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h4>Atención personalizada</h4><p>Un asesor te acompaña durante todo el proceso, desde la valoración hasta el cierre.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="mark"><svg width="20" height="20" viewBox="0 0 64 40" fill="none"><path d="M6 26L10 14C11 11 13 9 16 9H42C45 9 47.5 11 48.5 14L52 26" stroke="#F2C230" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="34.5" r="5" fill="#1C1710" stroke="#F2C230" stroke-width="3"/><circle cx="44" cy="34.5" r="5" fill="#1C1710" stroke="#F2C230" stroke-width="3"/></svg></span>
+          <span class="word" style="color:var(--cream);">Te Compro<em>Tu Auto</em></span>
+        </a>
+        <p>En efectivo y al instante. Compra y venta de vehículos usados en Cali, Colombia.</p>
+      </div>
+      <div class="footer-col"><h4>Vehículos</h4><ul>
+        <li><a href="inventario.html">Inventario</a></li>
+        <li><a href="index.html#recien-llegados">Recién llegados</a></li>
+        <li><a href="index.html#oportunidades">Oportunidades</a></li>
+        <li><a href="vendidos.html">Vehículos vendidos</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Empresa</h4><ul>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="nosotros.html#historia">Nuestra historia</a></li>
+        <li><a href="nosotros.html#testimonios">Clientes felices</a></li>
+        <li><a href="nosotros.html#equipo">Nuestro equipo</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contacto</h4><ul>
+        <li><a href="vende-tu-carro.html">Vende tu carro</a></li>
+        <li><a href="vende-tu-carro.html">Cotiza tu vehículo</a></li>
+        <li><a href="contacto.html">Agenda una valoración</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Síguenos</h4><ul>
+        <li><a href="#" title="Reemplazar con el enlace real">Instagram</a></li>
+        <li><a href="#" title="Reemplazar con el enlace real">TikTok</a></li>
+        <li><a href="#" title="Reemplazar con el enlace real">Facebook</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span data-year></span> Te Compro Tu Auto · Cali, Colombia</p>
+      <div class="footer-legal">
+        <a href="#">Política de privacidad</a>
+        <a href="#">Tratamiento de datos personales</a>
+        <a href="#">Términos y condiciones</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" data-wa-text="Hola, quiero vender mi carro" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M17.6 6.32A8.87 8.87 0 0 0 12.05 4a8.94 8.94 0 0 0-7.75 13.4L3 21l3.7-1.28a8.9 8.9 0 0 0 5.35 1.75h.01a8.94 8.94 0 0 0 5.55-16.15Z" fill="#fff"/><path d="M9.1 8.6c-.16-.36-.33-.37-.48-.37h-.4a.78.78 0 0 0-.58.27c-.2.22-.77.75-.77 1.83s.79 2.12.9 2.27c.11.15 1.55 2.5 3.83 3.4 1.9.75 2.28.6 2.7.56.42-.03 1.35-.55 1.54-1.08.19-.53.19-.98.13-1.08-.06-.1-.2-.15-.42-.27-.22-.11-1.35-.67-1.55-.74-.21-.08-.36-.11-.51.11-.15.22-.58.74-.71.9-.13.15-.26.16-.48.05-.22-.11-.94-.35-1.79-1.1a6.7 6.7 0 0 1-1.24-1.55c-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.4.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.4-.06-.11-.5-1.28-.7-1.76Z" fill="#2F5233"/></svg>
+</a>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    var form = document.getElementById("sell-form");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var msg = "Hola, quiero vender mi carro:\n" +
+        "Nombre: " + document.getElementById("s-nombre").value + "\n" +
+        "Celular: " + document.getElementById("s-celular").value + "\n" +
+        "Marca: " + document.getElementById("s-marca").value + "\n" +
+        "Línea: " + document.getElementById("s-linea").value + "\n" +
+        "Modelo: " + document.getElementById("s-modelo").value + "\n" +
+        "Kilometraje: " + document.getElementById("s-km").value + "\n" +
+        "Placa: " + document.getElementById("s-placa").value + "\n" +
+        "Ciudad: " + document.getElementById("s-ciudad").value + "\n" +
+        "Precio esperado: " + document.getElementById("s-precio").value;
+      window.open(waLink(msg), "_blank", "noopener");
+    });
+  });
+</script>
+</body>
+</html>
