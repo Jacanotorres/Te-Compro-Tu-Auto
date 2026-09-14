@@ -1,149 +1,230 @@
 /* =========================================================
-   Te Compro Tu Auto — datos de ejemplo (placeholder)
-   Reemplaza este archivo con el inventario, fotos de clientes y
-   equipo reales cuando estén disponibles.
+   Te Compro Tu Auto — datos del sitio
+   VEHICLES: inventario real (cargado del PDF del 12/09/2026).
+   HAPPY_CLIENTS: fotos reales de clientes.
+   TEAM: todavía de ejemplo — reemplazar por asesores reales.
    ========================================================= */
 
 const WHATSAPP_NUMBER = "573053299873";
 const CONTACT_PHONE_DISPLAY = "+57 305 329 9873";
-const CONTACT_EMAIL = "contacto@tecomprotuauto.com.co";
+const CONTACT_EMAIL = "administracion@tecomprotuauto.com.co";
 
 function waLink(message){
   return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
 }
 
-/* Cada vehículo es un ejemplo (placeholder) listo para reemplazar
-   por datos e imágenes reales. */
+/* Inventario real de Te Compro Tu Auto (cargado desde el PDF del
+   12 de septiembre de 2026). "destacado" marca los vehículos que
+   se muestran en "Recién llegados" y "oportunidad" los que tienen
+   precio especial (con precioAnterior). Todos ingresaron hoy. */
 const VEHICLES = [
   {
-    id: "volvo-xc60-t5-2021",
-    marca: "Volvo", linea: "XC60 T5 AWD", modelo: 2021,
-    precio: 119800000, precioAnterior: 124800000,
-    km: 59163, transmision: "Automática", combustible: "Gasolina",
-    carroceria: "Camioneta", puertas: 5, capacidad: 5,
-    color: "Blanco", cilindraje: "2000 cc", ciudad: "Cali",
-    placa: "JRK473", soatVence: "2026-04-12", tecnoVence: "2026-01-30",
-    version: "T5 Inscription", traccion: "AWD", propietarios: 1,
-    accesorios: ["Cámara de reversa","Sensores de parqueo","Techo panorámico","Pantalla multimedia","Apple CarPlay / Android Auto","Sillas eléctricas","Aire acondicionado","Rines de lujo"],
-    destacado: true, oportunidad: true,
-    fechaIngreso: "2026-08-20"
+    id: "audi-q2-2023-nmn913",
+    marca: "Audi", linea: "Q2", version: "TFSI Ambition", modelo: 2023,
+    precio: 89800000, precioAnterior: null,
+    km: 35513, combustible: "Gasolina", color: "Plata Florete", cilindraje: "1.395 cc",
+    placa: "NMN913", soatVence: "2027-01-07", tecnoVence: "N/A",
+    destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
   },
   {
-    id: "ford-bronco-2024",
-    marca: "Ford", linea: "Bronco", modelo: 2024,
-    precio: 189900000, precioAnterior: null,
-    km: 30070, transmision: "Automática", combustible: "Gasolina",
-    carroceria: "Camioneta 4x4", puertas: 5, capacidad: 5,
-    color: "Verde militar", cilindraje: "2300 cc", ciudad: "Cali",
-    placa: "FRD024", soatVence: "2026-07-02", tecnoVence: "N/A",
-    version: "Outer Banks", traccion: "4x4", propietarios: 1,
-    accesorios: ["Cámara 360°","Techo removible","Luces LED","Asistencias de conducción","Pantalla multimedia","Apple CarPlay / Android Auto"],
-    destacado: true, oportunidad: false,
-    fechaIngreso: "2026-09-05"
+    id: "audi-q3-2022-kzq927",
+    marca: "Audi", linea: "Q3", modelo: 2022,
+    precio: 106800000, precioAnterior: null,
+    km: 32000, combustible: "Gasolina", color: "Blanco Glaciar", cilindraje: "1.395 cc",
+    placa: "KZQ927", soatVence: "2027-07-03", tecnoVence: "N/A",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
   {
-    id: "mazda-3-sedan-2022",
-    marca: "Mazda", linea: "3 Sedán Grand Touring", modelo: 2022,
-    precio: 84900000, precioAnterior: null,
-    km: 41250, transmision: "Automática", combustible: "Gasolina",
-    carroceria: "Sedán", puertas: 4, capacidad: 5,
-    color: "Rojo", cilindraje: "2000 cc", ciudad: "Cali",
-    placa: "MZD322", soatVence: "2026-03-18", tecnoVence: "2026-03-18",
-    version: "Grand Touring", traccion: "4x2", propietarios: 2,
-    accesorios: ["Sillas eléctricas","Aire acondicionado","Sensores de parqueo","Cámara de reversa","Rines de lujo"],
-    destacado: true, oportunidad: false,
-    fechaIngreso: "2026-08-28"
+    id: "audi-q3-2022-llv449",
+    marca: "Audi", linea: "Q3", modelo: 2022,
+    precio: 108800000, precioAnterior: null,
+    km: 27427, combustible: "Gasolina", color: "Blanco Glaciar", cilindraje: "1.395 cc",
+    placa: "LLV449", soatVence: "VENCIDO", tecnoVence: "N/A",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
   {
-    id: "renault-duster-2020",
-    marca: "Renault", linea: "Duster Intens", modelo: 2020,
-    precio: 62500000, precioAnterior: 67500000,
-    km: 78900, transmision: "Mecánica", combustible: "Gasolina",
-    carroceria: "Camioneta", puertas: 5, capacidad: 5,
-    color: "Gris", cilindraje: "2000 cc", ciudad: "Palmira",
-    placa: "DUS220", soatVence: "2026-02-10", tecnoVence: "2026-02-10",
-    version: "Intens 4x2", traccion: "4x2", propietarios: 1,
-    accesorios: ["Aire acondicionado","Rines de lujo","Sensores de parqueo"],
-    destacado: false, oportunidad: true,
-    fechaIngreso: "2026-07-14"
+    id: "bmw-x3-2021-kqq050",
+    marca: "BMW", linea: "X3", version: "xDrive30i", modelo: 2021,
+    precio: 116800000, precioAnterior: null,
+    km: 55720, combustible: "Gasolina", color: "Blanco Mineral", cilindraje: "1.998 cc",
+    placa: "KQQ050", soatVence: "2026-11-24", tecnoVence: "2026-11-26",
+    destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
   },
   {
-    id: "chevrolet-spark-gt-2019",
-    marca: "Chevrolet", linea: "Spark GT", modelo: 2019,
-    precio: 34900000, precioAnterior: null,
-    km: 62300, transmision: "Mecánica", combustible: "Gasolina",
-    carroceria: "Hatchback", puertas: 5, capacidad: 5,
-    color: "Blanco", cilindraje: "1200 cc", ciudad: "Cali",
-    placa: "SPK219", soatVence: "2026-05-22", tecnoVence: "2026-05-22",
-    version: "1.2 LT", traccion: "4x2", propietarios: 2,
-    accesorios: ["Aire acondicionado","Vidrios eléctricos"],
-    destacado: false, oportunidad: false,
-    fechaIngreso: "2026-06-30"
+    id: "byd-dolphin-2024-nmn318",
+    marca: "BYD", linea: "Dolphin", modelo: 2024,
+    precio: 69800000, precioAnterior: null,
+    km: 17803, combustible: "Eléctrico", color: "Amarillo", cilindraje: "N/A",
+    placa: "NMN318", soatVence: "2026-11-26", tecnoVence: "N/A",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
   {
-    id: "toyota-corolla-cross-2023",
-    marca: "Toyota", linea: "Corolla Cross XEI", modelo: 2023,
-    precio: 112000000, precioAnterior: null,
-    km: 21400, transmision: "Automática", combustible: "Híbrido",
-    carroceria: "Camioneta", puertas: 5, capacidad: 5,
-    color: "Gris plata", cilindraje: "1800 cc", ciudad: "Cali",
-    placa: "TCR323", soatVence: "2026-09-01", tecnoVence: "N/A",
-    version: "XEI Hybrid", traccion: "4x2", propietarios: 1,
-    accesorios: ["Cámara de reversa","Sensores de parqueo","Pantalla multimedia","Apple CarPlay / Android Auto","Asistencias de conducción"],
-    destacado: false, oportunidad: false,
-    fechaIngreso: "2026-08-02"
+    id: "chevrolet-equinox-2018-frm990",
+    marca: "Chevrolet", linea: "Equinox", modelo: 2018,
+    precio: 56800000, precioAnterior: null,
+    km: 60980, combustible: "Gasolina", color: "Ultra Azul", cilindraje: "1.490 cc",
+    placa: "FRM990", soatVence: "2026-10-22", tecnoVence: "2026-12-20",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
   {
-    id: "kia-sportage-2021",
-    marca: "Kia", linea: "Sportage EX", modelo: 2021,
-    precio: 96500000, precioAnterior: 101500000,
-    km: 45870, transmision: "Automática", combustible: "Gasolina",
-    carroceria: "Camioneta", puertas: 5, capacidad: 5,
-    color: "Azul", cilindraje: "2000 cc", ciudad: "Yumbo",
-    placa: "KSP121", soatVence: "2026-01-15", tecnoVence: "2026-01-15",
-    version: "EX Premium", traccion: "4x2", propietarios: 1,
-    accesorios: ["Techo panorámico","Sillas eléctricas","Cámara de reversa","Rines de lujo","Luces LED"],
-    destacado: false, oportunidad: true,
-    fechaIngreso: "2026-05-18"
+    id: "chevrolet-cruze-2011-khc235",
+    marca: "Chevrolet", linea: "Cruze", version: "Platinum", modelo: 2011,
+    precio: 27800000, precioAnterior: null,
+    km: 118697, combustible: "Gasolina", color: "Blanco Olímpico", cilindraje: "1.796 cc",
+    placa: "KHC235", soatVence: "2027-02-07", tecnoVence: "2027-01-16",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
   {
-    id: "nissan-versa-2020",
-    marca: "Nissan", linea: "Versa Advance", modelo: 2020,
-    precio: 52900000, precioAnterior: null,
-    km: 55600, transmision: "Automática", combustible: "Gasolina",
-    carroceria: "Sedán", puertas: 4, capacidad: 5,
-    color: "Negro", cilindraje: "1600 cc", ciudad: "Cali",
-    placa: "NVA220", soatVence: "2026-04-28", tecnoVence: "2026-04-28",
-    version: "Advance CVT", traccion: "4x2", propietarios: 1,
-    accesorios: ["Aire acondicionado","Vidrios eléctricos","Sensores de parqueo"],
-    destacado: false, oportunidad: false,
-    fechaIngreso: "2026-03-10"
+    id: "fiat-500-2012-mcy705",
+    marca: "Fiat", linea: "500", modelo: 2012,
+    precio: 31800000, precioAnterior: null,
+    km: 66295, combustible: "Gasolina", color: "Rojo Sfrontado", cilindraje: "1.368 cc",
+    placa: "MCY705", soatVence: "2027-06-19", tecnoVence: "2027-06-23",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
   {
-    id: "mitsubishi-montero-sport-2018",
-    marca: "Mitsubishi", linea: "Montero Sport GLS", modelo: 2018,
-    precio: 89900000, precioAnterior: null,
-    km: 92100, transmision: "Automática", combustible: "Diésel",
-    carroceria: "Camioneta 4x4", puertas: 5, capacidad: 7,
-    color: "Blanco perla", cilindraje: "2400 cc", ciudad: "Cali",
-    placa: "MSP118", soatVence: "2026-06-09", tecnoVence: "2026-06-09",
-    version: "GLS 4x4", traccion: "4x4", propietarios: 2,
-    accesorios: ["Tercera fila","Cámara de reversa","Rines de lujo","Aire acondicionado"],
-    destacado: false, oportunidad: false,
-    fechaIngreso: "2026-02-22"
+    id: "ford-escape-2024-nso125",
+    marca: "Ford", linea: "Escape", modelo: 2024,
+    precio: 107800000, precioAnterior: 109800000,
+    km: 19314, combustible: "Gasolina", color: "Gris Carbón", cilindraje: "2.500 cc",
+    placa: "NSO125", soatVence: "2027-08-27", tecnoVence: "N/A",
+    destacado: true, oportunidad: true, fechaIngreso: "2026-09-14"
   },
   {
-    id: "volkswagen-tiguan-2022",
-    marca: "Volkswagen", linea: "Tiguan Allspace", modelo: 2022,
-    precio: 134900000, precioAnterior: null,
-    km: 33800, transmision: "Automática", combustible: "Gasolina",
-    carroceria: "Camioneta", puertas: 5, capacidad: 7,
-    color: "Gris grafito", cilindraje: "1400 cc", ciudad: "Cali",
-    placa: "VWT222", soatVence: "2026-10-11", tecnoVence: "N/A",
-    version: "Allspace Comfortline", traccion: "4x2", propietarios: 1,
-    accesorios: ["Tercera fila","Techo panorámico","Sillas eléctricas","Pantalla multimedia","Apple CarPlay / Android Auto","Sensores de parqueo"],
-    destacado: true, oportunidad: false,
-    fechaIngreso: "2026-09-01"
+    id: "kia-sportage-2021-jsy666",
+    marca: "Kia", linea: "Sportage", modelo: 2021,
+    precio: 97800000, precioAnterior: null,
+    km: 42291, combustible: "Híbrido", color: "Plata", cilindraje: "1.598 cc",
+    placa: "JSY666", soatVence: "2026-11-10", tecnoVence: "2026-10-27",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "kia-stylus-2012-klt840",
+    marca: "Kia", linea: "Stylus", modelo: 2012,
+    precio: 24800000, precioAnterior: null,
+    km: 131433, combustible: "Gasolina", color: "Plata", cilindraje: "1.493 cc",
+    placa: "KLT840", soatVence: "VENCIDO", tecnoVence: "2027-04-06",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "mazda-cx50-2024-lyr797",
+    marca: "Mazda", linea: "CX-50", modelo: 2024,
+    precio: 149800000, precioAnterior: 151800000,
+    km: 52569, combustible: "Gasolina", color: "Zircon Arena", cilindraje: "2.488 cc",
+    placa: "LYR797", soatVence: "2027-06-24", tecnoVence: "N/A",
+    destacado: true, oportunidad: true, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "mercedes-benz-gla200-2018-ehy120",
+    marca: "Mercedes-Benz", linea: "GLA 200", modelo: 2018,
+    precio: 79800000, precioAnterior: null,
+    km: 48096, combustible: "Gasolina", color: "Blanco Cirrio", cilindraje: "1.595 cc",
+    placa: "EHY120", soatVence: "2027-07-26", tecnoVence: "2027-08-22",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "mercedes-benz-gla200-2023-lyu805",
+    marca: "Mercedes-Benz", linea: "GLA 200", modelo: 2023,
+    precio: 132800000, precioAnterior: null,
+    km: 23943, combustible: "Gasolina", color: "Blanco Polar", cilindraje: "1.332 cc",
+    placa: "LYU805", soatVence: "VENCIDO", tecnoVence: "N/A",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "nissan-xtrail-2025-nsk083",
+    marca: "Nissan", linea: "X-Trail", modelo: 2025,
+    precio: 148800000, precioAnterior: 150800000,
+    km: 36487, combustible: "Híbrido", color: "Plata", cilindraje: "1.497 cc",
+    placa: "NSK083", soatVence: "2027-04-24", tecnoVence: "N/A",
+    destacado: true, oportunidad: true, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "nissan-qashqai-2023-ley892",
+    marca: "Nissan", linea: "Qashqai", modelo: 2023,
+    precio: 89800000, precioAnterior: null,
+    km: 99850, combustible: "Gasolina", color: "Gris", cilindraje: "1.332 cc",
+    placa: "LEY892", soatVence: "2027-06-30", tecnoVence: "N/A",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "porsche-macan-2023-lpr714",
+    marca: "Porsche", linea: "Macan", modelo: 2023,
+    precio: 239800000, precioAnterior: null,
+    km: 26229, combustible: "Gasolina", color: "Blanco Metálico", cilindraje: "1.984 cc",
+    placa: "LPR714", soatVence: "2026-11-18", tecnoVence: "N/A",
+    destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "renault-duster-2019-gls172",
+    marca: "Renault", linea: "Duster", modelo: 2019,
+    precio: 51800000, precioAnterior: null,
+    km: 89234, combustible: "Gasolina", color: "Blanco Glacial", cilindraje: "1.998 cc",
+    placa: "GLS172", soatVence: "2026-12-12", tecnoVence: "2027-01-06",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "renault-clio-2017-izu355",
+    marca: "Renault", linea: "Clio", modelo: 2017,
+    precio: 32800000, precioAnterior: null,
+    km: 88525, combustible: "Gasolina", color: "Blanco Ártica", cilindraje: "1.149 cc",
+    placa: "IZU355", soatVence: "2027-07-27", tecnoVence: "2027-06-30",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "suzuki-baleno-2024-lvx369",
+    marca: "Suzuki", linea: "Baleno", modelo: 2024,
+    precio: 62800000, precioAnterior: null,
+    km: 40584, combustible: "Gasolina", color: "Plata", cilindraje: "1.462 cc",
+    placa: "LVX369", soatVence: "VENCIDO", tecnoVence: "N/A",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "toyota-fortuner-2019-gjq529",
+    marca: "Toyota", linea: "Fortuner", modelo: 2019,
+    precio: 149800000, precioAnterior: null,
+    km: 136618, combustible: "Gasolina", color: "Gris Metálico", cilindraje: "2.694 cc",
+    placa: "GJQ529", soatVence: "2026-09-17", tecnoVence: "2027-06-10",
+    destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "toyota-fortuner-2017-ims188",
+    marca: "Toyota", linea: "Fortuner", modelo: 2017,
+    precio: 129800000, precioAnterior: null,
+    km: 103200, combustible: "Gasolina", color: "Plata Metálico", cilindraje: "2.694 cc",
+    placa: "IMS188", soatVence: "2027-05-17", tecnoVence: "2027-05-15",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "volvo-xc60-2021-jrk473",
+    marca: "Volvo", linea: "XC60", modelo: 2021,
+    precio: 114800000, precioAnterior: null,
+    km: 59163, combustible: "Gasolina", color: "Gris", cilindraje: "1.969 cc",
+    placa: "JRK473", soatVence: "2026-11-26", tecnoVence: "N/A",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "volvo-xc90-2018-ehv690",
+    marca: "Volvo", linea: "XC90", modelo: 2018,
+    precio: 149800000, precioAnterior: null,
+    km: 73000, combustible: "Diésel", color: "Negro Onyx", cilindraje: "1.969 cc",
+    placa: "EHV690", soatVence: "2026-12-12", tecnoVence: "2026-10-09",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "volvo-xc60-2018-ehw851",
+    marca: "Volvo", linea: "XC60", version: "Blindaje", modelo: 2018,
+    precio: 99800000, precioAnterior: null,
+    km: 75441, combustible: "Gasolina", color: "Gris Osmio", cilindraje: "1.969 cc",
+    placa: "EHW851", soatVence: "2027-01-31", tecnoVence: "2026-12-06",
+    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
+  },
+  {
+    id: "volvo-xc90-t6-awd-2021-kon905",
+    marca: "Volvo", linea: "XC90 T6 AWD", modelo: 2021,
+    precio: 149800000, precioAnterior: null,
+    km: 60706, combustible: "Gasolina", color: "Plata Brillante", cilindraje: "1.969 cc",
+    placa: "KON905", soatVence: "2027-07-31", tecnoVence: "N/A",
+    destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
   }
 ];
 

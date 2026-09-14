@@ -26,8 +26,8 @@ function renderVehicleCard(v){
         '<div class="vehicle-specs">' +
           '<span>' + v.modelo + '</span>' +
           '<span>' + formatKm(v.km) + '</span>' +
-          '<span>' + v.transmision + '</span>' +
-          '<span>' + v.ciudad + '</span>' +
+          '<span>' + v.combustible + '</span>' +
+          '<span>' + v.color + '</span>' +
         '</div>' +
         '<div class="vehicle-actions">' +
           '<span class="btn btn-primary btn-sm" style="pointer-events:none;">Ver vehículo</span>' +
@@ -70,10 +70,7 @@ function initInventoryPage(){
     precioMin: document.getElementById("f-precio-min"),
     precioMax: document.getElementById("f-precio-max"),
     km: document.getElementById("f-km"),
-    carroceria: document.getElementById("f-carroceria"),
     combustible: document.getElementById("f-combustible"),
-    transmision: document.getElementById("f-transmision"),
-    ciudad: document.getElementById("f-ciudad"),
     color: document.getElementById("f-color"),
     sort: document.getElementById("f-sort"),
     reset: document.getElementById("f-reset"),
@@ -81,10 +78,7 @@ function initInventoryPage(){
   };
 
   fillSelect(els.marca, uniqueSorted(disponibles.map(function(v){ return v.marca; })), "Todas las marcas");
-  fillSelect(els.carroceria, uniqueSorted(disponibles.map(function(v){ return v.carroceria; })), "Todos los tipos");
   fillSelect(els.combustible, uniqueSorted(disponibles.map(function(v){ return v.combustible; })), "Todos");
-  fillSelect(els.transmision, uniqueSorted(disponibles.map(function(v){ return v.transmision; })), "Todas");
-  fillSelect(els.ciudad, uniqueSorted(disponibles.map(function(v){ return v.ciudad; })), "Todas las ciudades");
   fillSelect(els.color, uniqueSorted(disponibles.map(function(v){ return v.color; })), "Todos los colores");
 
   function currentFilters(){
@@ -95,10 +89,7 @@ function initInventoryPage(){
       precioMin: parseFloat(els.precioMin.value) || null,
       precioMax: parseFloat(els.precioMax.value) || null,
       km: parseFloat(els.km.value) || null,
-      carroceria: els.carroceria.value,
       combustible: els.combustible.value,
-      transmision: els.transmision.value,
-      ciudad: els.ciudad.value,
       color: els.color.value
     };
   }
@@ -112,10 +103,7 @@ function initInventoryPage(){
       if(f.precioMin && v.precio < f.precioMin) return false;
       if(f.precioMax && v.precio > f.precioMax) return false;
       if(f.km && v.km > f.km) return false;
-      if(f.carroceria && v.carroceria !== f.carroceria) return false;
       if(f.combustible && v.combustible !== f.combustible) return false;
-      if(f.transmision && v.transmision !== f.transmision) return false;
-      if(f.ciudad && v.ciudad !== f.ciudad) return false;
       if(f.color && v.color !== f.color) return false;
       return true;
     });
@@ -161,8 +149,6 @@ function initInventoryPage(){
     return;
   }
   if(params.get("marca")) els.marca.value = params.get("marca");
-  if(params.get("carroceria")) els.carroceria.value = params.get("carroceria");
-  if(params.get("ciudad")) els.ciudad.value = params.get("ciudad");
   if(params.get("precioMax")) els.precioMax.value = params.get("precioMax");
   applyFilters();
 }
@@ -171,9 +157,7 @@ function initInventoryPage(){
 function initHomeWidgets(){
   const recientes = document.getElementById("recientes-grid");
   if(recientes){
-    const list = VEHICLES.slice()
-      .sort(function(a,b){ return new Date(b.fechaIngreso) - new Date(a.fechaIngreso); })
-      .slice(0,8);
+    const list = VEHICLES.filter(function(v){ return v.destacado; }).slice(0,8);
     renderGrid(recientes, list);
   }
   const oportunidades = document.getElementById("oportunidades-grid");

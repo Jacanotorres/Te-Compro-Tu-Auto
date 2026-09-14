@@ -7,6 +7,12 @@ function specRow(label, value){
   return "<tr><td>" + label + "</td><td>" + value + "</td></tr>";
 }
 
+function vigenciaLabel(value){
+  if(value === "N/A") return "N/A";
+  if(value === "VENCIDO") return '<span style="color:var(--red);font-weight:800;">Vencido</span>';
+  return "Vence " + value;
+}
+
 function renderVehicleDetail(){
   const root = document.getElementById("vehicle-detail");
   if(!root) return;
@@ -28,8 +34,6 @@ function renderVehicleDetail(){
   document.title = v.marca + " " + v.linea + " — Te Compro Tu Auto";
 
   const thumbs = Array.from({length:6}).map(function(){ return "<div>" + carIconSVG() + "</div>"; }).join("");
-
-  const extra = (v.accesorios || []).map(function(a){ return "<li>" + a + "</li>"; }).join("");
 
   const priceBlock = v.oportunidad && v.precioAnterior
     ? '<span class="old" style="display:block;font-size:16px;color:var(--warmgray);text-decoration:line-through;font-weight:700;">' + formatPrice(v.precioAnterior) + '</span>' + formatPrice(v.precio)
@@ -56,28 +60,14 @@ function renderVehicleDetail(){
             specRow("Versión", v.version) +
             specRow("Modelo", v.modelo) +
             specRow("Kilometraje", formatKm(v.km)) +
-            specRow("Transmisión", v.transmision) +
             specRow("Combustible", v.combustible) +
-            specRow("Carrocería", v.carroceria) +
-            specRow("Puertas", v.puertas) +
-            specRow("Capacidad", v.capacidad + " pasajeros") +
             specRow("Color", v.color) +
             specRow("Cilindraje", v.cilindraje) +
-            specRow("Tracción", v.traccion) +
-            specRow("Número de propietarios", v.propietarios) +
-            specRow("Ciudad / Tránsito", v.ciudad) +
             specRow("Placa", v.placa) +
-            specRow("SOAT", v.soatVence === "N/A" ? "N/A" : "Vence " + v.soatVence) +
-            specRow("Revisión técnico-mecánica", v.tecnoVence === "N/A" ? "N/A" : "Vence " + v.tecnoVence) +
+            specRow("SOAT", vigenciaLabel(v.soatVence)) +
+            specRow("Revisión técnico-mecánica", vigenciaLabel(v.tecnoVence)) +
           '</table>' +
         '</div>' +
-
-        (extra ? (
-          '<div style="margin-top:36px;">' +
-            '<h2 style="font-size:22px;margin-bottom:6px;">Equipamiento y accesorios</h2>' +
-            '<ul class="veh-extra-list">' + extra + '</ul>' +
-          '</div>'
-        ) : "") +
       '</div>' +
 
       '<aside class="veh-sidebar">' +
