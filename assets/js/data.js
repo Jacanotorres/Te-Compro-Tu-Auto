@@ -148,17 +148,21 @@ const VEHICLES = [
 ];
 
 /* Fotos de clientes felices — coloca la ruta de cada imagen real en "foto"
-   (por ejemplo "assets/img/clientes/cliente-1.jpg"). Mientras "foto" esté
+   (por ejemplo "assets/img/Clientes/cliente-1.jpeg"). Mientras "foto" esté
    vacío se muestra un ícono de marcador de posición. */
 const HAPPY_CLIENTS = [
-  { foto: "" },
-  { foto: "" },
-  { foto: "" },
-  { foto: "" },
-  { foto: "" },
-  { foto: "" },
-  { foto: "" },
-  { foto: "" }
+  { foto: "assets/img/Clientes/cliente-1.jpeg" },
+  { foto: "assets/img/Clientes/cliente-2.jpeg" },
+  { foto: "assets/img/Clientes/cliente-3.jpeg" },
+  { foto: "assets/img/Clientes/cliente-4.jpeg" },
+  { foto: "assets/img/Clientes/cliente-5.jpeg" },
+  { foto: "assets/img/Clientes/cliente-6.jpeg" },
+  { foto: "assets/img/Clientes/cliente-7.jpeg" },
+  { foto: "assets/img/Clientes/cliente-8.jpeg" },
+  { foto: "assets/img/Clientes/cliente-9.jpeg" },
+  { foto: "assets/img/Clientes/cliente-10.jpeg" },
+  { foto: "assets/img/Clientes/cliente-11.jpeg" },
+  { foto: "assets/img/Clientes/cliente-12.jpeg" }
 ];
 
 /* Equipo de ejemplo — reemplazar por fotos y datos reales de los asesores. */
