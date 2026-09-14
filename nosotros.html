@@ -23,7 +23,6 @@
       <a href="inventario.html">Inventario</a>
       <a href="vende-tu-carro.html">Vender mi carro</a>
       <a href="nosotros.html" class="active">Nosotros</a>
-      <a href="vendidos.html">Vendidos</a>
       <a href="contacto.html">Contacto</a>
     </nav>
     <div class="header-actions">
@@ -98,14 +97,14 @@
   </div>
 </section>
 
-<section id="testimonios">
+<section id="clientes-felices">
   <div class="wrap">
     <div class="section-head center">
       <p class="kicker">Clientes felices</p>
       <h2>Historias que nos motivan a seguir creciendo</h2>
       <p>Cada vehículo entregado representa una nueva historia: familias que encuentran el carro que necesitaban, personas que cumplen el sueño de tener su primer vehículo y clientes que simplemente necesitaban vender su vehículo de manera rápida.</p>
     </div>
-    <div class="testimonial-grid" id="testimonial-grid-all"></div>
+    <div class="team-grid" id="clientes-grid-all"></div>
   </div>
 </section>
 
@@ -139,12 +138,11 @@
         <li><a href="inventario.html">Inventario</a></li>
         <li><a href="index.html#recien-llegados">Recién llegados</a></li>
         <li><a href="index.html#oportunidades">Oportunidades</a></li>
-        <li><a href="vendidos.html">Vehículos vendidos</a></li>
       </ul></div>
       <div class="footer-col"><h4>Empresa</h4><ul>
         <li><a href="nosotros.html">Nosotros</a></li>
         <li><a href="nosotros.html#historia">Nuestra historia</a></li>
-        <li><a href="nosotros.html#testimonios">Clientes felices</a></li>
+        <li><a href="nosotros.html#clientes-felices">Clientes felices</a></li>
         <li><a href="nosotros.html#equipo">Nuestro equipo</a></li>
       </ul></div>
       <div class="footer-col"><h4>Contacto</h4><ul>
@@ -177,17 +175,9 @@
 <script src="assets/js/main.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function(){
-    var tGrid = document.getElementById("testimonial-grid-all");
-    if(tGrid){
-      tGrid.innerHTML = TESTIMONIALS.map(function(t){
-        return '<div class="testimonial-card">' +
-          '<p class="testimonial-quote">“' + t.texto + '”</p>' +
-          '<div class="testimonial-person">' +
-            '<div class="testimonial-avatar">' + t.nombre.charAt(0) + '</div>' +
-            '<div><strong>' + t.nombre + '</strong><span>' + t.ciudad + '</span></div>' +
-          '</div>' +
-        '</div>';
-      }).join("");
+    var clientGrid = document.getElementById("clientes-grid-all");
+    if(clientGrid){
+      clientGrid.innerHTML = renderClientPhotos(HAPPY_CLIENTS);
     }
     var teamGrid = document.getElementById("team-grid-full");
     if(teamGrid){

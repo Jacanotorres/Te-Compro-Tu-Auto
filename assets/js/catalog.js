@@ -4,7 +4,6 @@
 
 function vehicleBadges(v){
   let out = "";
-  if(v.vendido) return "";
   if(v.oportunidad) out += '<span class="tag tag-oportunidad">Oportunidad</span>';
   if(v.destacado) out += '<span class="tag tag-nuevo">Recién llegado</span>';
   return out;
@@ -15,15 +14,11 @@ function renderVehicleCard(v){
   const priceBlock = v.oportunidad && v.precioAnterior
     ? '<span class="old">' + formatPrice(v.precioAnterior) + '</span>' + formatPrice(v.precio)
     : formatPrice(v.precio);
-  const overlay = v.vendido
-    ? '<div class="vendido-overlay"><span>Vendido</span></div>'
-    : "";
   return (
     '<a class="vehicle-card" href="vehiculo.html?id=' + v.id + '">' +
       '<div class="vehicle-photo">' +
         '<div class="vehicle-badges">' + badges + '</div>' +
         carIconSVG() +
-        overlay +
       '</div>' +
       '<div class="vehicle-body">' +
         '<h3>' + v.marca + ' ' + v.linea + '</h3>' +
@@ -66,7 +61,7 @@ function initInventoryPage(){
   const grid = document.getElementById("vehicle-grid");
   if(!grid) return;
 
-  const disponibles = VEHICLES.filter(function(v){ return !v.vendido; });
+  const disponibles = VEHICLES;
 
   const els = {
     marca: document.getElementById("f-marca"),
@@ -158,7 +153,7 @@ function initInventoryPage(){
     });
   }
 
-  /* Prefiltros vía URL, por ejemplo desde el buscador rápido del inicio */
+  /* Prefiltros vía URL */
   const params = new URLSearchParams(window.location.search);
   if(params.get("tipo") === "oportunidad"){
     renderGrid(grid, disponibles.filter(function(v){ return v.oportunidad; }));
@@ -176,32 +171,19 @@ function initInventoryPage(){
 function initHomeWidgets(){
   const recientes = document.getElementById("recientes-grid");
   if(recientes){
-    const list = VEHICLES.filter(function(v){ return !v.vendido; })
+    const list = VEHICLES.slice()
       .sort(function(a,b){ return new Date(b.fechaIngreso) - new Date(a.fechaIngreso); })
       .slice(0,8);
     renderGrid(recientes, list);
   }
   const oportunidades = document.getElementById("oportunidades-grid");
   if(oportunidades){
-    const list = VEHICLES.filter(function(v){ return v.oportunidad && !v.vendido; }).slice(0,6);
+    const list = VEHICLES.filter(function(v){ return v.oportunidad; }).slice(0,6);
     renderGrid(oportunidades, list);
   }
-}
-
-/* ---------- Página de vendidos ---------- */
-function initSoldPage(){
-  const grid = document.getElementById("vendidos-grid");
-  if(!grid) return;
-  const list = VEHICLES.filter(function(v){ return v.vendido; });
-  if(list.length === 0){
-    grid.innerHTML = '<div class="empty-state">Aún no hay vehículos marcados como vendidos.</div>';
-    return;
-  }
-  grid.innerHTML = list.map(renderVehicleCard).join("");
 }
 
 document.addEventListener("DOMContentLoaded", function(){
   initInventoryPage();
   initHomeWidgets();
-  initSoldPage();
 });

@@ -36,16 +36,15 @@ function renderVehicleDetail(){
     : formatPrice(v.precio);
 
   let badges = "";
-  if(v.vendido) badges += '<span class="tag tag-vendido">Vendido</span>';
-  if(v.oportunidad && !v.vendido) badges += '<span class="tag tag-oportunidad">Oportunidad</span>';
-  if(v.destacado && !v.vendido) badges += '<span class="tag tag-nuevo">Recién llegado</span>';
+  if(v.oportunidad) badges += '<span class="tag tag-oportunidad">Oportunidad</span>';
+  if(v.destacado) badges += '<span class="tag tag-nuevo">Recién llegado</span>';
 
   const waText = "Hola, quiero más información del " + v.marca + " " + v.linea + " " + v.modelo + " (placa " + v.placa + ")";
 
   root.innerHTML =
     '<div class="veh-detail">' +
       '<div>' +
-        '<div class="veh-gallery-main">' + carIconSVG() + (v.vendido ? '<div class="vendido-overlay"><span>Vendido</span></div>' : '') + '</div>' +
+        '<div class="veh-gallery-main">' + carIconSVG() + '</div>' +
         '<div class="veh-gallery-thumbs">' + thumbs + '</div>' +
         '<p class="placeholder-note" style="margin-top:14px;">Fotografías de ejemplo. Aquí irán las fotos reales del vehículo.</p>' +
 
@@ -85,14 +84,10 @@ function renderVehicleDetail(){
         '<div class="veh-badges">' + badges + '</div>' +
         '<h1 style="font-size:26px;margin-bottom:4px;">' + v.marca + ' ' + v.linea + '</h1>' +
         '<p class="veh-price">' + priceBlock + '</p>' +
-        (v.vendido
-          ? '<p style="margin-top:18px;color:var(--warmgray);">Este vehículo ya fue vendido, pero tenemos otras opciones que pueden interesarte.</p>' +
-            '<a class="btn btn-primary" href="inventario.html">Ver vehículos similares</a>'
-          : '<h3 style="margin-top:22px;">¿Te interesa este vehículo?</h3>' +
-            '<p>Uno de nuestros asesores puede darte más información, enviarte fotos adicionales o ayudarte a programar una visita.</p>' +
-            '<a class="btn btn-green" href="' + waLink(waText) + '" target="_blank" rel="noopener">Hablar por WhatsApp</a>' +
-            '<a class="btn btn-ghost" href="' + waLink("Hola, quiero programar una visita para ver el " + v.marca + " " + v.linea) + '" target="_blank" rel="noopener">Programar visita</a>'
-        ) +
+        '<h3 style="margin-top:22px;">¿Te interesa este vehículo?</h3>' +
+        '<p>Uno de nuestros asesores puede darte más información, enviarte fotos adicionales o ayudarte a programar una visita.</p>' +
+        '<a class="btn btn-green" href="' + waLink(waText) + '" target="_blank" rel="noopener">Hablar por WhatsApp</a>' +
+        '<a class="btn btn-ghost" href="' + waLink("Hola, quiero programar una visita para ver el " + v.marca + " " + v.linea) + '" target="_blank" rel="noopener">Programar visita</a>' +
       '</aside>' +
     '</div>';
 }

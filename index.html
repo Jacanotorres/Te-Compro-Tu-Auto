@@ -23,7 +23,6 @@
       <a href="inventario.html">Inventario</a>
       <a href="vende-tu-carro.html">Vender mi carro</a>
       <a href="nosotros.html">Nosotros</a>
-      <a href="vendidos.html">Vendidos</a>
       <a href="contacto.html">Contacto</a>
     </nav>
     <div class="header-actions">
@@ -68,29 +67,6 @@
   </div>
 </div>
 
-<!-- 2. Buscador de vehículos -->
-<section id="buscador">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="kicker">Nuestro inventario</p>
-      <h2>Encuentra tu próximo carro</h2>
-      <p>Conoce los vehículos disponibles actualmente en Te Compro Tu Auto. Filtra por marca, precio, kilometraje y mucho más.</p>
-    </div>
-    <div class="search-panel">
-      <div class="search-row">
-        <div class="field"><label for="home-marca">Marca</label><select id="home-marca"><option value="">Todas las marcas</option></select></div>
-        <div class="field"><label for="home-tipo">Tipo de vehículo</label><select id="home-tipo"><option value="">Todos los tipos</option></select></div>
-        <div class="field"><label for="home-precio">Precio máximo</label><input id="home-precio" type="number" placeholder="Ej: 90.000.000"></div>
-        <div class="field"><label for="home-ciudad">Ciudad</label><select id="home-ciudad"><option value="">Todas las ciudades</option></select></div>
-      </div>
-      <div class="search-actions">
-        <p style="color:var(--warmgray);font-size:14px;">También puedes filtrar por línea, año, kilometraje, combustible, transmisión y color en el inventario completo.</p>
-        <a class="btn btn-primary" href="inventario.html" id="home-search-btn">Ver inventario completo</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- 3. Recién llegados -->
 <section class="bg-card" id="recien-llegados">
   <div class="wrap">
@@ -123,16 +99,17 @@
     <div class="section-head center">
       <p class="kicker">¿Quieres vender tu carro?</p>
       <h2>Nosotros te lo compramos</h2>
-      <p>Vender tu vehículo no debería convertirse en un proceso complicado. Recibe una valoración y conoce una oferta de compra de manera rápida.</p>
+      <p>Vender tu vehículo no debería convertirse en un proceso complicado. Todo el proceso puede hacerse en un solo día y te pagamos tu carro de manera inmediata.</p>
     </div>
     <div class="steps steps-5">
       <div class="step"><div class="num">1</div><h3>Cuéntanos sobre tu carro</h3><p>Envíanos la información básica de tu vehículo.</p></div>
-      <div class="step"><div class="num">2</div><h3>Realizamos la valoración</h3><p>Analizamos las características y condiciones del vehículo.</p></div>
-      <div class="step"><div class="num">3</div><h3>Revisamos el vehículo</h3><p>Programamos una inspección para verificar su estado.</p></div>
-      <div class="step"><div class="num">4</div><h3>Recibe nuestra oferta</h3><p>Te presentamos una propuesta de compra.</p></div>
-      <div class="step"><div class="num">5</div><h3>Cerramos el negocio</h3><p>Si aceptas, realizamos el proceso para cerrar la negociación.</p></div>
+      <div class="step"><div class="num">2</div><h3>Te damos una oferta previa</h3><p>Hacemos una valoración inicial y te damos una oferta preliminar, antes del peritaje.</p></div>
+      <div class="step"><div class="num">3</div><h3>Hacemos el peritaje</h3><p>Revisamos el vehículo a fondo para confirmar su estado real.</p></div>
+      <div class="step"><div class="num">4</div><h3>Recibe la oferta final</h3><p>Según el resultado del peritaje, ajustamos y confirmamos la oferta final.</p></div>
+      <div class="step"><div class="num">5</div><h3>Te pagamos tu carro</h3><p>Si todo sale bien, cerramos el negocio y te pagamos de inmediato.</p></div>
     </div>
     <div class="section-foot">
+      <p style="font-weight:700;color:var(--ink);margin-bottom:18px;">Todo el proceso puede hacerse en un solo día. Te pagamos tu carro de manera inmediata.</p>
       <a class="btn btn-primary" href="vende-tu-carro.html">Quiero vender mi carro</a>
     </div>
   </div>
@@ -163,8 +140,8 @@
       <h2>Historias que nos motivan a seguir creciendo</h2>
       <p>Cumpliendo sueños, un carro a la vez.</p>
     </div>
-    <div class="testimonial-grid" id="testimonial-grid"></div>
-    <div class="section-foot"><a class="btn btn-ghost" href="nosotros.html#testimonios">Ver más clientes felices</a></div>
+    <div class="team-grid" id="clientes-grid"></div>
+    <div class="section-foot"><a class="btn btn-ghost" href="nosotros.html#clientes-felices">Ver más clientes felices</a></div>
   </div>
 </section>
 
@@ -244,7 +221,6 @@
           <li><a href="inventario.html">Inventario</a></li>
           <li><a href="index.html#recien-llegados">Recién llegados</a></li>
           <li><a href="index.html#oportunidades">Oportunidades</a></li>
-          <li><a href="vendidos.html">Vehículos vendidos</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -252,7 +228,7 @@
         <ul>
           <li><a href="nosotros.html">Nosotros</a></li>
           <li><a href="nosotros.html#historia">Nuestra historia</a></li>
-          <li><a href="nosotros.html#testimonios">Clientes felices</a></li>
+          <li><a href="nosotros.html#clientes-felices">Clientes felices</a></li>
           <li><a href="nosotros.html#equipo">Nuestro equipo</a></li>
         </ul>
       </div>
@@ -293,42 +269,10 @@
 <script src="assets/js/catalog.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function(){
-    /* Buscador rápido del home: enlaza al inventario con filtros en la URL */
-    var marcaSel = document.getElementById("home-marca");
-    var tipoSel = document.getElementById("home-tipo");
-    var ciudadSel = document.getElementById("home-ciudad");
-    fillSelect(marcaSel, uniqueSorted(VEHICLES.filter(function(v){return !v.vendido;}).map(function(v){return v.marca;})), "Todas las marcas");
-    fillSelect(tipoSel, uniqueSorted(VEHICLES.filter(function(v){return !v.vendido;}).map(function(v){return v.carroceria;})), "Todos los tipos");
-    fillSelect(ciudadSel, uniqueSorted(VEHICLES.filter(function(v){return !v.vendido;}).map(function(v){return v.ciudad;})), "Todas las ciudades");
-
-    var btn = document.getElementById("home-search-btn");
-    var precioInput = document.getElementById("home-precio");
-    function updateSearchLink(){
-      var params = new URLSearchParams();
-      if(marcaSel.value) params.set("marca", marcaSel.value);
-      if(tipoSel.value) params.set("carroceria", tipoSel.value);
-      if(ciudadSel.value) params.set("ciudad", ciudadSel.value);
-      if(precioInput.value) params.set("precioMax", precioInput.value);
-      var qs = params.toString();
-      btn.setAttribute("href", "inventario.html" + (qs ? "?" + qs : ""));
-    }
-    [marcaSel, tipoSel, ciudadSel, precioInput].forEach(function(el){
-      el.addEventListener("change", updateSearchLink);
-      el.addEventListener("input", updateSearchLink);
-    });
-
-    /* Testimonios (muestra 3 en home) */
-    var tGrid = document.getElementById("testimonial-grid");
-    if(tGrid){
-      tGrid.innerHTML = TESTIMONIALS.slice(0,3).map(function(t){
-        return '<div class="testimonial-card">' +
-          '<p class="testimonial-quote">“' + t.texto + '”</p>' +
-          '<div class="testimonial-person">' +
-            '<div class="testimonial-avatar">' + t.nombre.charAt(0) + '</div>' +
-            '<div><strong>' + t.nombre + '</strong><span>' + t.ciudad + '</span></div>' +
-          '</div>' +
-        '</div>';
-      }).join("");
+    /* Fotos de clientes felices (muestra 4 en home) */
+    var clientGrid = document.getElementById("clientes-grid");
+    if(clientGrid){
+      clientGrid.innerHTML = renderClientPhotos(HAPPY_CLIENTS.slice(0,4));
     }
 
     /* Equipo (home) */

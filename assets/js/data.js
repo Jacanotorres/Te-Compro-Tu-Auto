@@ -1,6 +1,6 @@
 /* =========================================================
    Te Compro Tu Auto — datos de ejemplo (placeholder)
-   Reemplaza este archivo con el inventario, testimonios y
+   Reemplaza este archivo con el inventario, fotos de clientes y
    equipo reales cuando estén disponibles.
    ========================================================= */
 
@@ -25,7 +25,7 @@ const VEHICLES = [
     placa: "JRK473", soatVence: "2026-04-12", tecnoVence: "2026-01-30",
     version: "T5 Inscription", traccion: "AWD", propietarios: 1,
     accesorios: ["Cámara de reversa","Sensores de parqueo","Techo panorámico","Pantalla multimedia","Apple CarPlay / Android Auto","Sillas eléctricas","Aire acondicionado","Rines de lujo"],
-    destacado: true, oportunidad: true, vendido: false,
+    destacado: true, oportunidad: true,
     fechaIngreso: "2026-08-20"
   },
   {
@@ -38,7 +38,7 @@ const VEHICLES = [
     placa: "FRD024", soatVence: "2026-07-02", tecnoVence: "N/A",
     version: "Outer Banks", traccion: "4x4", propietarios: 1,
     accesorios: ["Cámara 360°","Techo removible","Luces LED","Asistencias de conducción","Pantalla multimedia","Apple CarPlay / Android Auto"],
-    destacado: true, oportunidad: false, vendido: false,
+    destacado: true, oportunidad: false,
     fechaIngreso: "2026-09-05"
   },
   {
@@ -51,7 +51,7 @@ const VEHICLES = [
     placa: "MZD322", soatVence: "2026-03-18", tecnoVence: "2026-03-18",
     version: "Grand Touring", traccion: "4x2", propietarios: 2,
     accesorios: ["Sillas eléctricas","Aire acondicionado","Sensores de parqueo","Cámara de reversa","Rines de lujo"],
-    destacado: true, oportunidad: false, vendido: false,
+    destacado: true, oportunidad: false,
     fechaIngreso: "2026-08-28"
   },
   {
@@ -64,7 +64,7 @@ const VEHICLES = [
     placa: "DUS220", soatVence: "2026-02-10", tecnoVence: "2026-02-10",
     version: "Intens 4x2", traccion: "4x2", propietarios: 1,
     accesorios: ["Aire acondicionado","Rines de lujo","Sensores de parqueo"],
-    destacado: false, oportunidad: true, vendido: false,
+    destacado: false, oportunidad: true,
     fechaIngreso: "2026-07-14"
   },
   {
@@ -77,7 +77,7 @@ const VEHICLES = [
     placa: "SPK219", soatVence: "2026-05-22", tecnoVence: "2026-05-22",
     version: "1.2 LT", traccion: "4x2", propietarios: 2,
     accesorios: ["Aire acondicionado","Vidrios eléctricos"],
-    destacado: false, oportunidad: false, vendido: false,
+    destacado: false, oportunidad: false,
     fechaIngreso: "2026-06-30"
   },
   {
@@ -90,7 +90,7 @@ const VEHICLES = [
     placa: "TCR323", soatVence: "2026-09-01", tecnoVence: "N/A",
     version: "XEI Hybrid", traccion: "4x2", propietarios: 1,
     accesorios: ["Cámara de reversa","Sensores de parqueo","Pantalla multimedia","Apple CarPlay / Android Auto","Asistencias de conducción"],
-    destacado: false, oportunidad: false, vendido: false,
+    destacado: false, oportunidad: false,
     fechaIngreso: "2026-08-02"
   },
   {
@@ -103,7 +103,7 @@ const VEHICLES = [
     placa: "KSP121", soatVence: "2026-01-15", tecnoVence: "2026-01-15",
     version: "EX Premium", traccion: "4x2", propietarios: 1,
     accesorios: ["Techo panorámico","Sillas eléctricas","Cámara de reversa","Rines de lujo","Luces LED"],
-    destacado: false, oportunidad: true, vendido: false,
+    destacado: false, oportunidad: true,
     fechaIngreso: "2026-05-18"
   },
   {
@@ -116,7 +116,7 @@ const VEHICLES = [
     placa: "NVA220", soatVence: "2026-04-28", tecnoVence: "2026-04-28",
     version: "Advance CVT", traccion: "4x2", propietarios: 1,
     accesorios: ["Aire acondicionado","Vidrios eléctricos","Sensores de parqueo"],
-    destacado: false, oportunidad: false, vendido: true,
+    destacado: false, oportunidad: false,
     fechaIngreso: "2026-03-10"
   },
   {
@@ -129,7 +129,7 @@ const VEHICLES = [
     placa: "MSP118", soatVence: "2026-06-09", tecnoVence: "2026-06-09",
     version: "GLS 4x4", traccion: "4x4", propietarios: 2,
     accesorios: ["Tercera fila","Cámara de reversa","Rines de lujo","Aire acondicionado"],
-    destacado: false, oportunidad: false, vendido: true,
+    destacado: false, oportunidad: false,
     fechaIngreso: "2026-02-22"
   },
   {
@@ -142,37 +142,23 @@ const VEHICLES = [
     placa: "VWT222", soatVence: "2026-10-11", tecnoVence: "N/A",
     version: "Allspace Comfortline", traccion: "4x2", propietarios: 1,
     accesorios: ["Tercera fila","Techo panorámico","Sillas eléctricas","Pantalla multimedia","Apple CarPlay / Android Auto","Sensores de parqueo"],
-    destacado: true, oportunidad: false, vendido: false,
+    destacado: true, oportunidad: false,
     fechaIngreso: "2026-09-01"
   }
 ];
 
-/* Testimonios de ejemplo — reemplazar por reseñas reales de clientes. */
-const TESTIMONIALS = [
-  {
-    nombre: "Andrés M.", ciudad: "Cali",
-    texto: "Excelente atención durante todo el proceso. Encontramos el vehículo que estábamos buscando y nos acompañaron hasta finalizar la compra."
-  },
-  {
-    nombre: "Valentina R.", ciudad: "Cali",
-    texto: "Vendí mi vehículo con Te Compro Tu Auto y el proceso fue mucho más sencillo de lo que esperaba."
-  },
-  {
-    nombre: "Carlos G.", ciudad: "Palmira",
-    texto: "Muy buena atención y variedad de vehículos. Gracias a todo el equipo por ayudarnos a encontrar nuestro nuevo carro."
-  },
-  {
-    nombre: "Diana P.", ciudad: "Yumbo",
-    texto: "Me hicieron una oferta justa por mi carro y el pago fue inmediato. Todo muy transparente de principio a fin."
-  },
-  {
-    nombre: "Felipe A.", ciudad: "Cali",
-    texto: "Buscaba una camioneta hace meses y aquí encontré varias opciones reales, con fotos que sí correspondían al vehículo."
-  },
-  {
-    nombre: "Marcela T.", ciudad: "Jamundí",
-    texto: "El equipo fue muy paciente explicando cada paso. Recomiendo Te Compro Tu Auto para vender sin complicaciones."
-  }
+/* Fotos de clientes felices — coloca la ruta de cada imagen real en "foto"
+   (por ejemplo "assets/img/clientes/cliente-1.jpg"). Mientras "foto" esté
+   vacío se muestra un ícono de marcador de posición. */
+const HAPPY_CLIENTS = [
+  { foto: "" },
+  { foto: "" },
+  { foto: "" },
+  { foto: "" },
+  { foto: "" },
+  { foto: "" },
+  { foto: "" },
+  { foto: "" }
 ];
 
 /* Equipo de ejemplo — reemplazar por fotos y datos reales de los asesores. */

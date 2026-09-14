@@ -264,14 +264,6 @@ section{padding:76px 0;}
 .tag-nuevo{background:var(--green);color:#fff;}
 .tag-oportunidad{background:var(--yellow);color:var(--ink);}
 .tag-especial{background:var(--yellow-deep);color:var(--ink);}
-.tag-vendido{background:var(--ink);color:var(--yellow);}
-.vendido-overlay{
-  position:absolute;inset:0;background:rgba(28,23,16,0.55);display:flex;align-items:center;justify-content:center;
-}
-.vendido-overlay span{
-  border:2.5px solid #fff;color:#fff;padding:8px 22px;font-family:'Barlow Condensed';font-weight:800;
-  font-size:20px;letter-spacing:2px;transform:rotate(-8deg);
-}
 .vehicle-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1;}
 .vehicle-body h3{font-size:21px;line-height:1.1;}
 .vehicle-body .price{font-family:'Barlow Condensed';font-weight:800;font-size:24px;color:var(--ink);}
@@ -361,22 +353,6 @@ section{padding:76px 0;}
 .contact-grid a, .contact-grid p{color:var(--cream);font-size:16px;margin:0;text-decoration:none;}
 @media (max-width:700px){.contact-grid{grid-template-columns:1fr;text-align:center;}}
 
-/* ---------- Testimonials ---------- */
-.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.testimonial-card{
-  background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;
-}
-.testimonial-quote{font-size:16px;color:var(--charcoal);line-height:1.6;}
-.testimonial-person{display:flex;align-items:center;gap:12px;}
-.testimonial-avatar{
-  width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--yellow);
-  display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed';font-weight:800;font-size:17px;flex-shrink:0;
-}
-.testimonial-person strong{display:block;font-size:15px;color:var(--ink);}
-.testimonial-person span{font-size:13px;color:var(--warmgray);}
-@media (max-width:900px){ .testimonial-grid{grid-template-columns:1fr 1fr;} }
-@media (max-width:620px){ .testimonial-grid{grid-template-columns:1fr;} }
-
 /* ---------- Social cards ---------- */
 .social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 .social-card{
@@ -397,6 +373,7 @@ section{padding:76px 0;}
 .team-photo{
   aspect-ratio:1;background:linear-gradient(135deg,var(--card),var(--line));
   display:flex;align-items:center;justify-content:center;
+  border-radius:16px;overflow:hidden;border:1px solid var(--line);
 }
 .team-photo svg{width:38%;opacity:0.5;}
 .team-body{padding:18px 16px 22px;}

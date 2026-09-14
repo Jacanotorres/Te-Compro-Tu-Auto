@@ -59,6 +59,26 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
+/* Genera el grid de fotos de "clientes felices" a partir de HAPPY_CLIENTS.
+   Si un cliente no tiene "foto" todavía, se muestra un ícono de marcador. */
+function renderClientPhotos(list){
+  return list.map(function(c){
+    const inner = c.foto
+      ? '<img src="' + c.foto + '" alt="Cliente feliz con su vehículo" style="width:100%;height:100%;object-fit:cover;display:block;">'
+      : photoIconSVG();
+    return '<div class="team-photo">' + inner + '</div>';
+  }).join("");
+}
+
+/* Icono de cámara reutilizable para fotos de clientes sin imagen aún */
+function photoIconSVG(){
+  return '<svg viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+    '<rect x="4" y="10" width="40" height="26" rx="4" stroke="#1C1710" stroke-width="2.2"/>' +
+    '<path d="M16 10L19 5H29L32 10" stroke="#1C1710" stroke-width="2.2" stroke-linejoin="round"/>' +
+    '<circle cx="24" cy="23" r="7" stroke="#1C1710" stroke-width="2.2"/>' +
+    '</svg>';
+}
+
 /* Icono de auto reutilizable para fotos placeholder */
 function carIconSVG(){
   return '<svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">' +
