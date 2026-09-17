@@ -77,12 +77,8 @@ header.site .wrap{
   padding-top:14px;padding-bottom:14px;gap:20px;
 }
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
-.brand .mark{
-  width:42px;height:42px;border-radius:50%;background:var(--ink);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.brand .word{font-family:'Barlow Condensed';font-weight:800;font-size:16.5px;line-height:1.05;color:var(--ink);text-transform:uppercase;letter-spacing:0.3px;}
-.brand .word em{display:block;font-style:normal;color:var(--green);font-size:12px;font-weight:700;letter-spacing:1px;}
+.brand-logo{height:44px;width:auto;display:block;}
+footer.site .brand-logo{height:38px;}
 
 nav.main-nav{display:flex;align-items:center;gap:26px;}
 nav.main-nav a{
