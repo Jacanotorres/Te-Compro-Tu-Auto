@@ -55,7 +55,7 @@ const VEHICLES = [
     marca: "Audi", linea: "Q3", modelo: 2022,
     precio: 108800000, precioAnterior: null,
     km: 27427, combustible: "Gasolina", color: "Blanco Glaciar", cilindraje: "1.395 cc",
-    fotos: [],
+    fotos: ["assets/img/Carros/LLV449/IMG_5191.JPG", "assets/img/Carros/LLV449/IMG_5192.JPG", "assets/img/Carros/LLV449/IMG_5193.JPG", "assets/img/Carros/LLV449/IMG_5194.JPG", "assets/img/Carros/LLV449/IMG_5195.JPG", "assets/img/Carros/LLV449/IMG_5196.JPG", "assets/img/Carros/LLV449/IMG_5197.JPG", "assets/img/Carros/LLV449/IMG_5200.JPG", "assets/img/Carros/LLV449/IMG_5201.JPG", "assets/img/Carros/LLV449/IMG_5202.jpeg"],
     placa: "LLV449", soatVence: "VENCIDO", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -100,7 +100,7 @@ const VEHICLES = [
     marca: "Fiat", linea: "500", modelo: 2012,
     precio: 31800000, precioAnterior: null,
     km: 66295, combustible: "Gasolina", color: "Rojo Sfrontado", cilindraje: "1.368 cc",
-    fotos: [],
+    fotos: ["assets/img/Carros/MCY705/24c470c4-5b5e-4b28-b079-fcf494a612fa.JPG", "assets/img/Carros/MCY705/2b25e03f-68c3-4afb-bd98-9e23821d3a85.JPG", "assets/img/Carros/MCY705/3bedd428-4ad3-4b8d-9834-3d2dc5bc4af5.JPG", "assets/img/Carros/MCY705/42301942-d6a3-4a70-823f-ccfc73dac90a.JPG", "assets/img/Carros/MCY705/4bd7cd2b-b542-4116-94f8-86f2413fbf06.JPG", "assets/img/Carros/MCY705/913f536d-5164-47be-ad18-b3f6146bd5bb.JPG", "assets/img/Carros/MCY705/96655801-4e1a-4aa1-8096-c6fe4a97854c.JPG", "assets/img/Carros/MCY705/c734bf22-7958-4c03-9a1f-3904f042e8f3.JPG", "assets/img/Carros/MCY705/f2d57c95-9753-4e0c-828f-e3272abdb5fa.JPG", "assets/img/Carros/MCY705/f636c32b-f4d4-46c6-8201-187ea41bede2.JPG"],
     placa: "MCY705", soatVence: "2027-06-19", tecnoVence: "2027-06-23",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -118,7 +118,7 @@ const VEHICLES = [
     marca: "Kia", linea: "Sportage", modelo: 2021,
     precio: 97800000, precioAnterior: null,
     km: 42291, combustible: "Híbrido", color: "Plata", cilindraje: "1.598 cc",
-    fotos: [],
+    fotos: ["assets/img/Carros/JSY666/0933f923-72ab-40d0-a3bb-f1164fc0b7c6.JPG", "assets/img/Carros/JSY666/198ce118-8b3c-46b2-9758-652820fe6be1.JPG", "assets/img/Carros/JSY666/5c25b779-6ac7-4775-b83a-70e5a12f7516.JPG", "assets/img/Carros/JSY666/677d2cb3-f5b1-41e8-b666-18eea51b95df.JPG", "assets/img/Carros/JSY666/68f91f4f-a65d-442a-8271-a8f1fbb86909.JPG", "assets/img/Carros/JSY666/78fdd3ec-b41c-4df5-a34c-e7172e33716f.JPG", "assets/img/Carros/JSY666/aac42da4-ffed-49ec-aeee-4e87850db442.JPG", "assets/img/Carros/JSY666/bb6a1f24-6218-4f2a-b265-fa570117a221.JPG", "assets/img/Carros/JSY666/c70e2d52-7662-45f5-803b-6563ed141d54.JPG", "assets/img/Carros/JSY666/e621ff34-cdc4-4703-ade2-9490a4ae4451.JPG", "assets/img/Carros/JSY666/f5b7d7be-816c-4357-8f1f-129178d77896.JPG", "assets/img/Carros/JSY666/f95238a1-3310-49b4-b05b-98ea5471e341.JPG"],
     placa: "JSY666", soatVence: "2026-11-10", tecnoVence: "2026-10-27",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -136,7 +136,7 @@ const VEHICLES = [
     marca: "Mazda", linea: "CX-50", modelo: 2024,
     precio: 149800000, precioAnterior: 151800000,
     km: 52569, combustible: "Gasolina", color: "Zircon Arena", cilindraje: "2.488 cc",
-    fotos: [],
+    fotos: ["assets/img/Carros/LYR797/IMG_5255.jpeg", "assets/img/Carros/LYR797/IMG_5256.jpeg", "assets/img/Carros/LYR797/IMG_5257.jpeg", "assets/img/Carros/LYR797/IMG_5258.jpeg", "assets/img/Carros/LYR797/IMG_5259.jpeg", "assets/img/Carros/LYR797/IMG_5261.jpeg", "assets/img/Carros/LYR797/IMG_5262.jpeg", "assets/img/Carros/LYR797/IMG_5264.jpeg", "assets/img/Carros/LYR797/IMG_5266.jpeg", "assets/img/Carros/LYR797/IMG_5267.jpeg", "assets/img/Carros/LYR797/IMG_5268.jpeg"],
     placa: "LYR797", soatVence: "2027-06-24", tecnoVence: "N/A",
     destacado: true, oportunidad: true, fechaIngreso: "2026-09-14"
   },
@@ -181,7 +181,7 @@ const VEHICLES = [
     marca: "Porsche", linea: "Macan", modelo: 2023,
     precio: 239800000, precioAnterior: null,
     km: 26229, combustible: "Gasolina", color: "Blanco Metálico", cilindraje: "1.984 cc",
-    fotos: [],
+    fotos: ["assets/img/Carros/LPR714/IMG_5472.jpeg", "assets/img/Carros/LPR714/IMG_5473.jpeg", "assets/img/Carros/LPR714/IMG_5475.jpeg", "assets/img/Carros/LPR714/IMG_5476.jpeg", "assets/img/Carros/LPR714/IMG_5477.jpeg", "assets/img/Carros/LPR714/IMG_5478.jpeg", "assets/img/Carros/LPR714/IMG_5481.jpeg", "assets/img/Carros/LPR714/IMG_5483.jpeg", "assets/img/Carros/LPR714/IMG_5484.jpeg", "assets/img/Carros/LPR714/IMG_5485.jpeg"],
     placa: "LPR714", soatVence: "2026-11-18", tecnoVence: "N/A",
     destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -208,7 +208,7 @@ const VEHICLES = [
     marca: "Suzuki", linea: "Baleno", modelo: 2024,
     precio: 62800000, precioAnterior: null,
     km: 40584, combustible: "Gasolina", color: "Plata", cilindraje: "1.462 cc",
-    fotos: [],
+    fotos: ["assets/img/Carros/LVX369/IMG_5207.jpeg", "assets/img/Carros/LVX369/IMG_5208.jpeg", "assets/img/Carros/LVX369/IMG_5209.jpeg", "assets/img/Carros/LVX369/IMG_5210.jpeg", "assets/img/Carros/LVX369/IMG_5211.jpeg", "assets/img/Carros/LVX369/IMG_5212.jpeg", "assets/img/Carros/LVX369/IMG_5213.jpeg", "assets/img/Carros/LVX369/IMG_5214.jpeg", "assets/img/Carros/LVX369/IMG_5215.jpeg", "assets/img/Carros/LVX369/IMG_5216.jpeg", "assets/img/Carros/LVX369/IMG_5217.jpeg", "assets/img/Carros/LVX369/IMG_5218.jpeg", "assets/img/Carros/LVX369/IMG_5219.jpeg", "assets/img/Carros/LVX369/IMG_5220.jpeg"],
     placa: "LVX369", soatVence: "VENCIDO", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },

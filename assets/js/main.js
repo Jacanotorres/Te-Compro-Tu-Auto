@@ -78,22 +78,22 @@ function renderClientPhotos(list){
 /* Icono de cámara reutilizable para fotos de clientes sin imagen aún */
 function photoIconSVG(){
   return '<svg viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-    '<rect x="4" y="10" width="40" height="26" rx="4" stroke="#0A0A0A" stroke-width="2.2"/>' +
-    '<path d="M16 10L19 5H29L32 10" stroke="#0A0A0A" stroke-width="2.2" stroke-linejoin="round"/>' +
-    '<circle cx="24" cy="23" r="7" stroke="#0A0A0A" stroke-width="2.2"/>' +
+    '<rect x="4" y="10" width="40" height="26" rx="4" stroke="#6B6B6B" stroke-width="2.2"/>' +
+    '<path d="M16 10L19 5H29L32 10" stroke="#6B6B6B" stroke-width="2.2" stroke-linejoin="round"/>' +
+    '<circle cx="24" cy="23" r="7" stroke="#6B6B6B" stroke-width="2.2"/>' +
     '</svg>';
 }
 
 /* Icono de auto reutilizable para fotos placeholder */
 function carIconSVG(){
   return '<svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-    '<path d="M6 26L10 14C11 11 13 9 16 9H42C45 9 47.5 11 48.5 14L52 26" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-    '<path d="M3 26H55C56.5 26 57.5 27.2 57.5 28.5V32C57.5 33.5 56.3 34.5 55 34.5H49" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-    '<path d="M3 26V32C3 33.5 4.2 34.5 5.5 34.5H9" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-    '<line x1="9" y1="34.5" x2="49" y2="34.5" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round"/>' +
-    '<circle cx="16" cy="34.5" r="5" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="2.5"/>' +
-    '<circle cx="44" cy="34.5" r="5" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="2.5"/>' +
-    '<line x1="18" y1="18" x2="18" y2="26" stroke="#0A0A0A" stroke-width="2"/>' +
-    '<line x1="34" y1="18" x2="34" y2="26" stroke="#0A0A0A" stroke-width="2"/>' +
+    '<path d="M6 26L10 14C11 11 13 9 16 9H42C45 9 47.5 11 48.5 14L52 26" stroke="#6B6B6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '<path d="M3 26H55C56.5 26 57.5 27.2 57.5 28.5V32C57.5 33.5 56.3 34.5 55 34.5H49" stroke="#6B6B6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '<path d="M3 26V32C3 33.5 4.2 34.5 5.5 34.5H9" stroke="#6B6B6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '<line x1="9" y1="34.5" x2="49" y2="34.5" stroke="#6B6B6B" stroke-width="2.5" stroke-linecap="round"/>' +
+    '<circle cx="16" cy="34.5" r="5" fill="#FAFAF8" stroke="#6B6B6B" stroke-width="2.5"/>' +
+    '<circle cx="44" cy="34.5" r="5" fill="#FAFAF8" stroke="#6B6B6B" stroke-width="2.5"/>' +
+    '<line x1="18" y1="18" x2="18" y2="26" stroke="#6B6B6B" stroke-width="2"/>' +
+    '<line x1="34" y1="18" x2="34" y2="26" stroke="#6B6B6B" stroke-width="2"/>' +
     '</svg>';
 }
