@@ -16,13 +16,21 @@ function waLink(message){
 /* Inventario real de Te Compro Tu Auto (cargado desde el PDF del
    12 de septiembre de 2026). "destacado" marca los vehículos que
    se muestran en "Recién llegados" y "oportunidad" los que tienen
-   precio especial (con precioAnterior). Todos ingresaron hoy. */
+   precio especial (con precioAnterior). Todos ingresaron hoy.
+
+   "fotos" es un arreglo de rutas de imagen, en el orden en que se
+   deben mostrar (la primera es la foto de portada en las tarjetas
+   y la ficha). Ejemplo, guardando las fotos en
+   assets/img/Carros/<PLACA>/1.jpg, 2.jpg, 3.jpg...:
+     fotos: ["assets/img/Carros/NMN913/1.jpg", "assets/img/Carros/NMN913/2.jpg"]
+   Mientras "fotos" esté vacío se muestra el ícono de auto genérico. */
 const VEHICLES = [
   {
     id: "audi-q2-2023-nmn913",
     marca: "Audi", linea: "Q2", version: "TFSI Ambition", modelo: 2023,
     precio: 89800000, precioAnterior: null,
     km: 35513, combustible: "Gasolina", color: "Plata Florete", cilindraje: "1.395 cc",
+    fotos: [],
     placa: "NMN913", soatVence: "2027-01-07", tecnoVence: "N/A",
     destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -31,6 +39,7 @@ const VEHICLES = [
     marca: "Audi", linea: "Q3", modelo: 2022,
     precio: 106800000, precioAnterior: null,
     km: 32000, combustible: "Gasolina", color: "Blanco Glaciar", cilindraje: "1.395 cc",
+    fotos: [],
     placa: "KZQ927", soatVence: "2027-07-03", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -39,6 +48,7 @@ const VEHICLES = [
     marca: "Audi", linea: "Q3", modelo: 2022,
     precio: 108800000, precioAnterior: null,
     km: 27427, combustible: "Gasolina", color: "Blanco Glaciar", cilindraje: "1.395 cc",
+    fotos: [],
     placa: "LLV449", soatVence: "VENCIDO", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -47,6 +57,7 @@ const VEHICLES = [
     marca: "BMW", linea: "X3", version: "xDrive30i", modelo: 2021,
     precio: 116800000, precioAnterior: null,
     km: 55720, combustible: "Gasolina", color: "Blanco Mineral", cilindraje: "1.998 cc",
+    fotos: [],
     placa: "KQQ050", soatVence: "2026-11-24", tecnoVence: "2026-11-26",
     destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -55,6 +66,7 @@ const VEHICLES = [
     marca: "BYD", linea: "Dolphin", modelo: 2024,
     precio: 69800000, precioAnterior: null,
     km: 17803, combustible: "Eléctrico", color: "Amarillo", cilindraje: "N/A",
+    fotos: [],
     placa: "NMN318", soatVence: "2026-11-26", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -63,6 +75,7 @@ const VEHICLES = [
     marca: "Chevrolet", linea: "Equinox", modelo: 2018,
     precio: 56800000, precioAnterior: null,
     km: 60980, combustible: "Gasolina", color: "Ultra Azul", cilindraje: "1.490 cc",
+    fotos: ["assets/img/Carros/FRM990/1.JPG","assets/img/Carros/FRM990/2.JPG","assets/img/Carros/FRM990/3.JPG","assets/img/Carros/FRM990/4.JPG","assets/img/Carros/FRM990/5.JPG","assets/img/Carros/FRM990/6.JPG","assets/img/Carros/FRM990/7.JPG","assets/img/Carros/FRM990/8.JPG","assets/img/Carros/FRM990/9.JPG","assets/img/Carros/FRM990/10.JPG","assets/img/Carros/FRM990/11.JPG"],
     placa: "FRM990", soatVence: "2026-10-22", tecnoVence: "2026-12-20",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -71,6 +84,7 @@ const VEHICLES = [
     marca: "Chevrolet", linea: "Cruze", version: "Platinum", modelo: 2011,
     precio: 27800000, precioAnterior: null,
     km: 118697, combustible: "Gasolina", color: "Blanco Olímpico", cilindraje: "1.796 cc",
+    fotos: [],
     placa: "KHC235", soatVence: "2027-02-07", tecnoVence: "2027-01-16",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -79,6 +93,7 @@ const VEHICLES = [
     marca: "Fiat", linea: "500", modelo: 2012,
     precio: 31800000, precioAnterior: null,
     km: 66295, combustible: "Gasolina", color: "Rojo Sfrontado", cilindraje: "1.368 cc",
+    fotos: [],
     placa: "MCY705", soatVence: "2027-06-19", tecnoVence: "2027-06-23",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -87,6 +102,7 @@ const VEHICLES = [
     marca: "Ford", linea: "Escape", modelo: 2024,
     precio: 107800000, precioAnterior: 109800000,
     km: 19314, combustible: "Gasolina", color: "Gris Carbón", cilindraje: "2.500 cc",
+    fotos: ["assets/img/Carros/NSO125/1.jpeg","assets/img/Carros/NSO125/2.jpeg","assets/img/Carros/NSO125/3.jpeg","assets/img/Carros/NSO125/4.jpeg","assets/img/Carros/NSO125/5.jpeg","assets/img/Carros/NSO125/6.jpeg","assets/img/Carros/NSO125/7.jpeg","assets/img/Carros/NSO125/8.jpeg","assets/img/Carros/NSO125/9.jpeg","assets/img/Carros/NSO125/10.jpeg","assets/img/Carros/NSO125/11.jpeg"],
     placa: "NSO125", soatVence: "2027-08-27", tecnoVence: "N/A",
     destacado: true, oportunidad: true, fechaIngreso: "2026-09-14"
   },
@@ -95,6 +111,7 @@ const VEHICLES = [
     marca: "Kia", linea: "Sportage", modelo: 2021,
     precio: 97800000, precioAnterior: null,
     km: 42291, combustible: "Híbrido", color: "Plata", cilindraje: "1.598 cc",
+    fotos: [],
     placa: "JSY666", soatVence: "2026-11-10", tecnoVence: "2026-10-27",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -103,6 +120,7 @@ const VEHICLES = [
     marca: "Kia", linea: "Stylus", modelo: 2012,
     precio: 24800000, precioAnterior: null,
     km: 131433, combustible: "Gasolina", color: "Plata", cilindraje: "1.493 cc",
+    fotos: [],
     placa: "KLT840", soatVence: "VENCIDO", tecnoVence: "2027-04-06",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -111,6 +129,7 @@ const VEHICLES = [
     marca: "Mazda", linea: "CX-50", modelo: 2024,
     precio: 149800000, precioAnterior: 151800000,
     km: 52569, combustible: "Gasolina", color: "Zircon Arena", cilindraje: "2.488 cc",
+    fotos: [],
     placa: "LYR797", soatVence: "2027-06-24", tecnoVence: "N/A",
     destacado: true, oportunidad: true, fechaIngreso: "2026-09-14"
   },
@@ -119,6 +138,7 @@ const VEHICLES = [
     marca: "Mercedes-Benz", linea: "GLA 200", modelo: 2018,
     precio: 79800000, precioAnterior: null,
     km: 48096, combustible: "Gasolina", color: "Blanco Cirrio", cilindraje: "1.595 cc",
+    fotos: [],
     placa: "EHY120", soatVence: "2027-07-26", tecnoVence: "2027-08-22",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -127,6 +147,7 @@ const VEHICLES = [
     marca: "Mercedes-Benz", linea: "GLA 200", modelo: 2023,
     precio: 132800000, precioAnterior: null,
     km: 23943, combustible: "Gasolina", color: "Blanco Polar", cilindraje: "1.332 cc",
+    fotos: [],
     placa: "LYU805", soatVence: "VENCIDO", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -135,6 +156,7 @@ const VEHICLES = [
     marca: "Nissan", linea: "X-Trail", modelo: 2025,
     precio: 148800000, precioAnterior: 150800000,
     km: 36487, combustible: "Híbrido", color: "Plata", cilindraje: "1.497 cc",
+    fotos: [],
     placa: "NSK083", soatVence: "2027-04-24", tecnoVence: "N/A",
     destacado: true, oportunidad: true, fechaIngreso: "2026-09-14"
   },
@@ -143,6 +165,7 @@ const VEHICLES = [
     marca: "Nissan", linea: "Qashqai", modelo: 2023,
     precio: 89800000, precioAnterior: null,
     km: 99850, combustible: "Gasolina", color: "Gris", cilindraje: "1.332 cc",
+    fotos: [],
     placa: "LEY892", soatVence: "2027-06-30", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -151,6 +174,7 @@ const VEHICLES = [
     marca: "Porsche", linea: "Macan", modelo: 2023,
     precio: 239800000, precioAnterior: null,
     km: 26229, combustible: "Gasolina", color: "Blanco Metálico", cilindraje: "1.984 cc",
+    fotos: [],
     placa: "LPR714", soatVence: "2026-11-18", tecnoVence: "N/A",
     destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -159,6 +183,7 @@ const VEHICLES = [
     marca: "Renault", linea: "Duster", modelo: 2019,
     precio: 51800000, precioAnterior: null,
     km: 89234, combustible: "Gasolina", color: "Blanco Glacial", cilindraje: "1.998 cc",
+    fotos: [],
     placa: "GLS172", soatVence: "2026-12-12", tecnoVence: "2027-01-06",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -167,6 +192,7 @@ const VEHICLES = [
     marca: "Renault", linea: "Clio", modelo: 2017,
     precio: 32800000, precioAnterior: null,
     km: 88525, combustible: "Gasolina", color: "Blanco Ártica", cilindraje: "1.149 cc",
+    fotos: [],
     placa: "IZU355", soatVence: "2027-07-27", tecnoVence: "2027-06-30",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -175,6 +201,7 @@ const VEHICLES = [
     marca: "Suzuki", linea: "Baleno", modelo: 2024,
     precio: 62800000, precioAnterior: null,
     km: 40584, combustible: "Gasolina", color: "Plata", cilindraje: "1.462 cc",
+    fotos: [],
     placa: "LVX369", soatVence: "VENCIDO", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -183,6 +210,7 @@ const VEHICLES = [
     marca: "Toyota", linea: "Fortuner", modelo: 2019,
     precio: 149800000, precioAnterior: null,
     km: 136618, combustible: "Gasolina", color: "Gris Metálico", cilindraje: "2.694 cc",
+    fotos: [],
     placa: "GJQ529", soatVence: "2026-09-17", tecnoVence: "2027-06-10",
     destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -191,6 +219,7 @@ const VEHICLES = [
     marca: "Toyota", linea: "Fortuner", modelo: 2017,
     precio: 129800000, precioAnterior: null,
     km: 103200, combustible: "Gasolina", color: "Plata Metálico", cilindraje: "2.694 cc",
+    fotos: [],
     placa: "IMS188", soatVence: "2027-05-17", tecnoVence: "2027-05-15",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -199,6 +228,7 @@ const VEHICLES = [
     marca: "Volvo", linea: "XC60", modelo: 2021,
     precio: 114800000, precioAnterior: null,
     km: 59163, combustible: "Gasolina", color: "Gris", cilindraje: "1.969 cc",
+    fotos: [],
     placa: "JRK473", soatVence: "2026-11-26", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -207,6 +237,7 @@ const VEHICLES = [
     marca: "Volvo", linea: "XC90", modelo: 2018,
     precio: 149800000, precioAnterior: null,
     km: 73000, combustible: "Diésel", color: "Negro Onyx", cilindraje: "1.969 cc",
+    fotos: [],
     placa: "EHV690", soatVence: "2026-12-12", tecnoVence: "2026-10-09",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -215,6 +246,7 @@ const VEHICLES = [
     marca: "Volvo", linea: "XC60", version: "Blindaje", modelo: 2018,
     precio: 99800000, precioAnterior: null,
     km: 75441, combustible: "Gasolina", color: "Gris Osmio", cilindraje: "1.969 cc",
+    fotos: [],
     placa: "EHW851", soatVence: "2027-01-31", tecnoVence: "2026-12-06",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -223,6 +255,7 @@ const VEHICLES = [
     marca: "Volvo", linea: "XC90 T6 AWD", modelo: 2021,
     precio: 149800000, precioAnterior: null,
     km: 60706, combustible: "Gasolina", color: "Plata Brillante", cilindraje: "1.969 cc",
+    fotos: [],
     placa: "KON905", soatVence: "2027-07-31", tecnoVence: "N/A",
     destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
   }

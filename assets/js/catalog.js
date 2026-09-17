@@ -14,11 +14,14 @@ function renderVehicleCard(v){
   const priceBlock = v.oportunidad && v.precioAnterior
     ? '<span class="old">' + formatPrice(v.precioAnterior) + '</span>' + formatPrice(v.precio)
     : formatPrice(v.precio);
+  const photo = (v.fotos && v.fotos[0])
+    ? '<img src="' + v.fotos[0] + '" alt="' + v.marca + ' ' + v.linea + '" loading="lazy">'
+    : carIconSVG();
   return (
     '<a class="vehicle-card" href="vehiculo.html?id=' + v.id + '">' +
       '<div class="vehicle-photo">' +
         '<div class="vehicle-badges">' + badges + '</div>' +
-        carIconSVG() +
+        photo +
       '</div>' +
       '<div class="vehicle-body">' +
         '<h3>' + v.marca + ' ' + v.linea + '</h3>' +

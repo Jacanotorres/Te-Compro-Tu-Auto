@@ -33,7 +33,17 @@ function renderVehicleDetail(){
 
   document.title = v.marca + " " + v.linea + " — Te Compro Tu Auto";
 
-  const thumbs = Array.from({length:6}).map(function(){ return "<div>" + carIconSVG() + "</div>"; }).join("");
+  const fotos = v.fotos || [];
+  const galleryHTML = fotos.length > 0
+    ? '<div class="veh-gallery-main"><img id="veh-main-photo" src="' + fotos[0] + '" alt="' + v.marca + ' ' + v.linea + '"></div>' +
+      (fotos.length > 1
+        ? '<div class="veh-gallery-thumbs">' + fotos.map(function(src, i){
+            return '<div class="' + (i === 0 ? "active" : "") + '" data-src="' + src + '"><img src="' + src + '" alt="' + v.marca + ' ' + v.linea + ' foto ' + (i + 1) + '" loading="lazy"></div>';
+          }).join("") + '</div>'
+        : "")
+    : '<div class="veh-gallery-main">' + carIconSVG() + '</div>' +
+      '<div class="veh-gallery-thumbs">' + Array.from({length:6}).map(function(){ return "<div>" + carIconSVG() + "</div>"; }).join("") + '</div>' +
+      '<p class="placeholder-note" style="margin-top:14px;">Fotografías de ejemplo. Aquí irán las fotos reales del vehículo.</p>';
 
   const priceBlock = v.oportunidad && v.precioAnterior
     ? '<span class="old" style="display:block;font-size:16px;color:var(--warmgray);text-decoration:line-through;font-weight:700;">' + formatPrice(v.precioAnterior) + '</span>' + formatPrice(v.precio)
@@ -48,9 +58,7 @@ function renderVehicleDetail(){
   root.innerHTML =
     '<div class="veh-detail">' +
       '<div>' +
-        '<div class="veh-gallery-main">' + carIconSVG() + '</div>' +
-        '<div class="veh-gallery-thumbs">' + thumbs + '</div>' +
-        '<p class="placeholder-note" style="margin-top:14px;">Fotografías de ejemplo. Aquí irán las fotos reales del vehículo.</p>' +
+        galleryHTML +
 
         '<div style="margin-top:44px;">' +
           '<h2 style="font-size:26px;margin-bottom:16px;">Información del vehículo</h2>' +
@@ -80,6 +88,17 @@ function renderVehicleDetail(){
         '<a class="btn btn-ghost" href="' + waLink("Hola, quiero programar una visita para ver el " + v.marca + " " + v.linea) + '" target="_blank" rel="noopener">Programar visita</a>' +
       '</aside>' +
     '</div>';
+
+  if(fotos.length > 1){
+    const mainPhoto = document.getElementById("veh-main-photo");
+    root.querySelectorAll(".veh-gallery-thumbs div").forEach(function(thumb){
+      thumb.addEventListener("click", function(){
+        mainPhoto.src = thumb.getAttribute("data-src");
+        root.querySelectorAll(".veh-gallery-thumbs div").forEach(function(t){ t.classList.remove("active"); });
+        thumb.classList.add("active");
+      });
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", renderVehicleDetail);
