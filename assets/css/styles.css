@@ -293,11 +293,11 @@ section{padding:76px 0;}
 /* ---------- Vehicle detail page ---------- */
 .veh-detail{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start;}
 .veh-gallery-main{
-  aspect-ratio:4/3;border-radius:20px;background:linear-gradient(135deg,var(--card),var(--line));
+  aspect-ratio:16/9;border-radius:20px;background:linear-gradient(135deg,var(--card),var(--line));
   display:flex;align-items:center;justify-content:center;border:1px solid var(--line);overflow:hidden;
 }
 .veh-gallery-main svg{width:38%;opacity:0.5;}
-.veh-gallery-main img{width:100%;height:100%;object-fit:cover;}
+.veh-gallery-main img{width:100%;height:100%;object-fit:contain;}
 .veh-gallery-thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:12px;}
 .veh-gallery-thumbs div{
   aspect-ratio:1;border-radius:10px;background:var(--card);border:1px solid var(--line);
@@ -307,8 +307,23 @@ section{padding:76px 0;}
 .veh-gallery-thumbs img{width:100%;height:100%;object-fit:cover;}
 .veh-gallery-thumbs div.active{border-color:var(--yellow-deep);border-width:2px;}
 .veh-title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
-.veh-price{font-family:'Barlow Condensed';font-weight:800;font-size:clamp(28px,4vw,38px);color:var(--ink);}
 .veh-badges{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.veh-quick-specs{
+  display:flex;flex-wrap:wrap;gap:8px;font-size:15px;color:var(--charcoal);font-weight:600;
+  margin:10px 0 18px;
+}
+.veh-quick-specs span{white-space:nowrap;}
+.veh-quick-specs span:not(:last-child)::after{content:"•";margin-left:8px;color:var(--warmgray);font-weight:400;}
+.veh-price-wrap{margin-bottom:22px;}
+.veh-price-wrap .old{
+  display:block;font-size:15px;color:var(--warmgray);text-decoration:line-through;font-weight:700;margin-bottom:6px;
+}
+.veh-price{
+  display:inline-block;background:var(--yellow);color:var(--ink);border:2.5px solid var(--ink);
+  font-family:'Barlow Condensed';font-weight:800;font-size:clamp(28px,4vw,36px);
+  padding:6px 20px;border-radius:14px;line-height:1.2;
+}
+.veh-cta-line{font-weight:800;color:var(--ink);font-size:17px;margin-bottom:16px !important;}
 .spec-table{width:100%;border-collapse:collapse;margin-top:18px;}
 .spec-table tr{border-bottom:1px solid var(--line);}
 .spec-table td{padding:11px 0;font-size:15px;}

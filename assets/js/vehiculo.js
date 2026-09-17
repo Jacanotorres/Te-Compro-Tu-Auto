@@ -45,9 +45,9 @@ function renderVehicleDetail(){
       '<div class="veh-gallery-thumbs">' + Array.from({length:6}).map(function(){ return "<div>" + carIconSVG() + "</div>"; }).join("") + '</div>' +
       '<p class="placeholder-note" style="margin-top:14px;">Fotografías de ejemplo. Aquí irán las fotos reales del vehículo.</p>';
 
-  const priceBlock = v.oportunidad && v.precioAnterior
-    ? '<span class="old" style="display:block;font-size:16px;color:var(--warmgray);text-decoration:line-through;font-weight:700;">' + formatPrice(v.precioAnterior) + '</span>' + formatPrice(v.precio)
-    : formatPrice(v.precio);
+  const oldPriceHTML = (v.oportunidad && v.precioAnterior)
+    ? '<span class="old">' + formatPrice(v.precioAnterior) + '</span>'
+    : "";
 
   let badges = "";
   if(v.oportunidad) badges += '<span class="tag tag-oportunidad">Oportunidad</span>';
@@ -81,11 +81,17 @@ function renderVehicleDetail(){
       '<aside class="veh-sidebar">' +
         '<div class="veh-badges">' + badges + '</div>' +
         '<h1 style="font-size:26px;margin-bottom:4px;">' + v.marca + ' ' + v.linea + '</h1>' +
-        '<p class="veh-price">' + priceBlock + '</p>' +
-        '<h3 style="margin-top:22px;">¿Te interesa este vehículo?</h3>' +
-        '<p>Uno de nuestros asesores puede darte más información, enviarte fotos adicionales o ayudarte a programar una visita.</p>' +
+        '<div class="veh-quick-specs">' +
+          '<span>' + v.modelo + '</span>' +
+          '<span>' + formatKm(v.km) + '</span>' +
+          '<span>' + v.combustible + '</span>' +
+          '<span>' + v.color + '</span>' +
+        '</div>' +
+        '<div class="veh-price-wrap">' + oldPriceHTML + '<span class="veh-price">' + formatPrice(v.precio) + '</span></div>' +
+        '<p class="veh-cta-line">¿Te interesa este vehículo? Escríbenos ahora.</p>' +
         '<a class="btn btn-green" href="' + waLink(waText) + '" target="_blank" rel="noopener">Hablar por WhatsApp</a>' +
         '<a class="btn btn-ghost" href="' + waLink("Hola, quiero programar una visita para ver el " + v.marca + " " + v.linea) + '" target="_blank" rel="noopener">Programar visita</a>' +
+        '<p style="margin-top:16px;margin-bottom:0;font-size:13.5px;">Uno de nuestros asesores puede darte más información, enviarte fotos adicionales o ayudarte a programar una visita.</p>' +
       '</aside>' +
     '</div>';
 
