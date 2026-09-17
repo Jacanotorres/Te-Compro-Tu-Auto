@@ -5,8 +5,8 @@
    TEAM: todavía de ejemplo — reemplazar por asesores reales.
    ========================================================= */
 
-const WHATSAPP_NUMBER = "573053299873";
-const CONTACT_PHONE_DISPLAY = "+57 305 329 9873";
+const WHATSAPP_NUMBER = "573054411478";
+const CONTACT_PHONE_DISPLAY = "+57 305 441 1478";
 const CONTACT_EMAIL = "administracion@tecomprotuauto.com.co";
 
 const SOCIAL_LINKS = {
