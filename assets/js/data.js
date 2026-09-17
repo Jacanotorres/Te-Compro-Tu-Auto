@@ -20,6 +20,12 @@ function waLink(message){
   return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
 }
 
+/* Igual que waLink(), pero a un número específico (por ejemplo, el
+   WhatsApp directo de un asesor en particular). */
+function waLinkTo(number, message){
+  return "https://wa.me/" + number + "?text=" + encodeURIComponent(message);
+}
+
 /* Inventario real de Te Compro Tu Auto (cargado desde el PDF del
    12 de septiembre de 2026). "destacado" marca los vehículos que
    se muestran en "Recién llegados" y "oportunidad" los que tienen
@@ -226,7 +232,7 @@ const VEHICLES = [
     marca: "Toyota", linea: "Fortuner", modelo: 2017,
     precio: 129800000, precioAnterior: null,
     km: 103200, combustible: "Gasolina", color: "Plata Metálico", cilindraje: "2.694 cc",
-    fotos: [],
+    fotos: ["assets/img/Carros/IMS188/IMG_5141.JPG", "assets/img/Carros/IMS188/IMG_5142.JPG", "assets/img/Carros/IMS188/IMG_5143.JPG", "assets/img/Carros/IMS188/IMG_5144.JPG", "assets/img/Carros/IMS188/IMG_5145.JPG", "assets/img/Carros/IMS188/IMG_5146.JPG", "assets/img/Carros/IMS188/IMG_5147.JPG", "assets/img/Carros/IMS188/IMG_5148.JPG", "assets/img/Carros/IMS188/IMG_5149.JPG", "assets/img/Carros/IMS188/IMG_5150.JPG", "assets/img/Carros/IMS188/IMG_5151.JPG", "assets/img/Carros/IMS188/IMG_5152.JPG"],
     placa: "IMS188", soatVence: "2027-05-17", tecnoVence: "2027-05-15",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -286,11 +292,12 @@ const HAPPY_CLIENTS = [
   { foto: "assets/img/Clientes/cliente-12.jpeg" }
 ];
 
-/* Equipo de ejemplo — reemplazar por fotos y datos reales de los asesores. */
+/* Equipo real. "whatsapp" usa el número general mientras no tengamos
+   el número directo de cada asesor — cámbialo cuando lo tengas. */
 const TEAM = [
-  { nombre: "Asesor comercial", cargo: "Ventas de inventario", whatsapp: WHATSAPP_NUMBER },
-  { nombre: "Asesor comercial", cargo: "Compra de vehículos", whatsapp: WHATSAPP_NUMBER },
-  { nombre: "Asesor comercial", cargo: "Atención al cliente", whatsapp: WHATSAPP_NUMBER }
+  { nombre: "Juan Manuel", cargo: "Asesor comercial", whatsapp: WHATSAPP_NUMBER, foto: "assets/img/Asesores/juan-manuel.jpeg" },
+  { nombre: "Pilar Soto M.", cargo: "Asesor comercial", whatsapp: WHATSAPP_NUMBER, foto: "assets/img/Asesores/pilar-soto.png" },
+  { nombre: "Stiven Sierra M.", cargo: "Asesor comercial", whatsapp: WHATSAPP_NUMBER, foto: "assets/img/Asesores/stiven-sierra.png" }
 ];
 
 function formatPrice(n){
