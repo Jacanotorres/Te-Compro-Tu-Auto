@@ -197,10 +197,10 @@
     if(teamGrid){
       teamGrid.innerHTML = TEAM.map(function(m){
         const photo = m.foto
-          ? '<img src="' + m.foto + '" alt="' + m.nombre + '" style="width:100%;height:100%;object-fit:contain;display:block;">'
+          ? '<img src="' + m.foto + '" alt="' + m.nombre + '">'
           : carIconSVG();
         return '<div class="team-card">' +
-          '<div class="team-photo">' + photo + '</div>' +
+          '<div class="team-photo' + (m.foto ? ' has-photo' : '') + '">' + photo + '</div>' +
           '<div class="team-body">' +
             '<h3>' + m.nombre + '</h3>' +
             '<p class="role">' + m.cargo + '</p>' +
