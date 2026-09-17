@@ -141,6 +141,12 @@ nav.main-nav a:hover, nav.main-nav a.active{border-color:var(--yellow-deep);colo
 .hero h1{font-size:clamp(38px,5.4vw,60px);}
 .hero h1 span{color:var(--yellow-deep);-webkit-text-stroke:1px var(--ink);}
 .hero p.lede{font-size:19px;color:var(--charcoal);max-width:48ch;margin-top:20px;}
+.hero-claim{
+  display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--yellow);
+  font-family:'Barlow Condensed';font-weight:700;font-size:clamp(17px,2.2vw,21px);
+  padding:10px 20px;border-radius:12px;margin-top:20px;text-transform:uppercase;letter-spacing:0.2px;
+}
+.hero-claim strong{color:var(--yellow);}
 .hero-cta{display:flex;align-items:center;gap:20px;margin-top:32px;flex-wrap:wrap;}
 .hero-phone{font-size:15px;color:var(--warmgray);}
 .hero-phone strong{display:block;color:var(--ink);font-size:18px;font-family:'Barlow Condensed';}
@@ -392,6 +398,7 @@ section{padding:76px 0;}
 
 /* ---------- Team ---------- */
 .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.team-grid-3{grid-template-columns:repeat(3,1fr) !important;max-width:760px;margin:0 auto;}
 .team-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;text-align:center;}
 .team-photo{
   aspect-ratio:1;background:linear-gradient(135deg,var(--card),var(--line));
@@ -403,6 +410,7 @@ section{padding:76px 0;}
 .team-body h3{font-size:19px;}
 .team-body .role{color:var(--warmgray);font-size:13.5px;font-weight:700;margin:4px 0 12px;}
 @media (max-width:900px){ .team-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:640px){ .team-grid-3{grid-template-columns:1fr !important;} }
 
 /* ---------- Pricing badges section ---------- */
 .badge-legend{display:flex;flex-wrap:wrap;gap:12px;}
@@ -453,6 +461,31 @@ footer.site{background:var(--ink);border-top:1px solid var(--line-on-dark);paddi
 }
 @media (prefers-reduced-motion:no-preference){ .float-wa{animation:pulse 2.6s ease-in-out infinite;} }
 @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+
+/* ---------- Botones flotantes laterales (redes y ubicación) ---------- */
+.float-stack{
+  position:fixed;bottom:22px;z-index:59;display:flex;flex-direction:column;gap:12px;
+}
+.float-stack-left{left:20px;}
+.float-btn{
+  width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--yellow);
+  display:flex;align-items:center;justify-content:center;border:2.5px solid var(--ink);
+  box-shadow:0 4px 14px rgba(0,0,0,0.2);transition:transform .15s ease;
+}
+.float-btn:hover{transform:translateY(-2px) scale(1.05);}
+.float-maps{
+  position:fixed;right:22px;bottom:92px;z-index:59;
+  width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--yellow);
+  display:flex;align-items:center;justify-content:center;border:3px solid var(--ink);
+  box-shadow:0 4px 14px rgba(0,0,0,0.2);transition:transform .15s ease;
+}
+.float-maps:hover{transform:translateY(-2px) scale(1.05);}
+@media (max-width:640px){
+  .float-stack{left:12px;gap:9px;}
+  .float-btn{width:40px;height:40px;}
+  .float-maps{right:14px;width:44px;height:44px;}
+  .float-wa{width:52px;height:52px;right:14px;}
+}
 
 /* ---------- Utility ---------- */
 .text-center{text-align:center;}

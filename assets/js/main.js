@@ -28,6 +28,11 @@ document.addEventListener("DOMContentLoaded", function(){
     a.href = waLink(a.getAttribute("data-wa-text"));
   });
 
+  /* Enlaces a redes sociales / mapa (data-social="instagram|tiktok|facebook|maps") */
+  document.querySelectorAll("[data-social]").forEach(function(a){
+    a.href = SOCIAL_LINKS[a.getAttribute("data-social")];
+  });
+
   /* Teléfono / correo de contacto inyectados donde se pidan */
   document.querySelectorAll("[data-contact-phone]").forEach(function(el){
     el.textContent = CONTACT_PHONE_DISPLAY;
