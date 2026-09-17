@@ -295,9 +295,9 @@ const HAPPY_CLIENTS = [
 /* Equipo real. "whatsapp" usa el número general mientras no tengamos
    el número directo de cada asesor — cámbialo cuando lo tengas. */
 const TEAM = [
-  { nombre: "Juan Manuel", cargo: "Asesor comercial", whatsapp: WHATSAPP_NUMBER, foto: "assets/img/Asesores/juan-manuel.jpeg" },
-  { nombre: "Pilar Soto M.", cargo: "Asesor comercial", whatsapp: WHATSAPP_NUMBER, foto: "assets/img/Asesores/pilar-soto.png" },
-  { nombre: "Stiven Sierra M.", cargo: "Asesor comercial", whatsapp: WHATSAPP_NUMBER, foto: "assets/img/Asesores/stiven-sierra.png" }
+  { nombre: "Juan Manuel", cargo: "Asesor comercial", whatsapp: "573244443242", foto: "assets/img/Asesores/juan-manuel.jpeg" },
+  { nombre: "Pilar Soto M.", cargo: "Asesor comercial", whatsapp: "573104243125", foto: "assets/img/Asesores/pilar-soto.png" },
+  { nombre: "Stiven Sierra M.", cargo: "Asesor comercial", whatsapp: "573148618095", foto: "assets/img/Asesores/stiven-sierra.png" }
 ];
 
 function formatPrice(n){
