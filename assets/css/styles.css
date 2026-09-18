@@ -138,6 +138,18 @@ nav.main-nav a:hover, nav.main-nav a.active{border-color:var(--yellow-deep);colo
 .page-hero h1{font-size:clamp(32px,4.6vw,50px);}
 .page-hero p{color:var(--muted-on-dark);margin-top:14px;max-width:56ch;font-size:17.5px;}
 
+/* Variante con foto de fondo: agregar clase "has-photo" y la variable
+   --hero-photo (ej. style="--hero-photo:url('assets/img/hero-x.jpg')") */
+.page-hero.has-photo{
+  padding:130px 0 90px;border-bottom:none;
+  background:
+    linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.75) 60%, var(--ink) 100%),
+    var(--hero-photo) center/cover no-repeat;
+  background-color:var(--ink);
+}
+.page-hero.has-photo h1{text-shadow:0 2px 18px rgba(0,0,0,0.5);}
+.page-hero.has-photo p{color:var(--charcoal);}
+
 /* ---------- Home hero ---------- */
 .hero{
   position:relative;
