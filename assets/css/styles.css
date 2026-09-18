@@ -149,6 +149,7 @@ nav.main-nav a:hover, nav.main-nav a.active{border-color:var(--yellow-deep);colo
 }
 .page-hero.has-photo h1{text-shadow:0 2px 18px rgba(0,0,0,0.5);}
 .page-hero.has-photo p{color:var(--charcoal);}
+.page-hero.has-photo .kicker{color:var(--ink);}
 
 /* ---------- Home hero ---------- */
 .hero{
