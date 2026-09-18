@@ -174,6 +174,15 @@ const VEHICLES = [
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
   {
+    id: "nissan-sentra-1-8-2015-hzv613",
+    marca: "Nissan", linea: "Sentra 1.8", modelo: 2015,
+    precio: 40800000, precioAnterior: null,
+    km: 80874, combustible: "Gasolina", color: "Azul Oscuro", cilindraje: "1.798 cc",
+    fotos: ["assets/img/Carros/HZV613/1.jpeg", "assets/img/Carros/HZV613/2.jpeg", "assets/img/Carros/HZV613/3.jpeg", "assets/img/Carros/HZV613/4.jpeg", "assets/img/Carros/HZV613/5.jpeg", "assets/img/Carros/HZV613/6.jpeg", "assets/img/Carros/HZV613/7.jpeg", "assets/img/Carros/HZV613/8.jpeg", "assets/img/Carros/HZV613/9.jpeg", "assets/img/Carros/HZV613/10.jpeg", "assets/img/Carros/HZV613/11.jpeg"],
+    placa: "HZV613", soatVence: "2027-08-15", tecnoVence: "2026-10-05",
+    destacado: true, oportunidad: false, fechaIngreso: "2026-09-18"
+  },
+  {
     id: "porsche-macan-2023-lpr714",
     marca: "Porsche", linea: "Macan", modelo: 2023,
     precio: 239800000, precioAnterior: null,
