@@ -142,7 +142,7 @@ const VEHICLES = [
     marca: "Mercedes-Benz", linea: "GLA 200", modelo: 2023,
     precio: 132800000, precioAnterior: null,
     km: 23943, combustible: "Gasolina", color: "Blanco Polar", cilindraje: "1.332 cc",
-    fotos: ["assets/img/Carros/LYU805/IMG_4164.JPG", "assets/img/Carros/LYU805/IMG_4165.JPG", "assets/img/Carros/LYU805/IMG_4166.JPG", "assets/img/Carros/LYU805/IMG_4167.JPG", "assets/img/Carros/LYU805/IMG_4168.JPG", "assets/img/Carros/LYU805/IMG_4169.JPG", "assets/img/Carros/LYU805/IMG_4170.JPG", "assets/img/Carros/LYU805/IMG_4171.JPG", "assets/img/Carros/LYU805/IMG_4172.JPG", "assets/img/Carros/LYU805/IMG_4173.JPG", "assets/img/Carros/LYU805/IMG_4174.JPG"],
+    fotos: ["assets/img/Carros/LYU805/1.JPG", "assets/img/Carros/LYU805/IMG_4164.JPG", "assets/img/Carros/LYU805/IMG_4165.JPG", "assets/img/Carros/LYU805/IMG_4166.JPG", "assets/img/Carros/LYU805/IMG_4167.JPG", "assets/img/Carros/LYU805/IMG_4168.JPG", "assets/img/Carros/LYU805/IMG_4169.JPG", "assets/img/Carros/LYU805/IMG_4170.JPG", "assets/img/Carros/LYU805/IMG_4172.JPG", "assets/img/Carros/LYU805/IMG_4173.JPG", "assets/img/Carros/LYU805/IMG_4174.JPG"],
     placa: "LYU805", soatVence: "VENCIDO", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
