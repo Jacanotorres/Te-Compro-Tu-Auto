@@ -147,6 +147,15 @@ const VEHICLES = [
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
   {
+    id: "mini-cooper-2011-deo025",
+    marca: "MINI", linea: "Cooper", modelo: 2011,
+    precio: 39800000, precioAnterior: null,
+    km: 134561, combustible: "Gasolina", color: "Blanco Pepper / Negro", cilindraje: "1.598 cc",
+    fotos: ["assets/img/Carros/DEO025/1.jpeg", "assets/img/Carros/DEO025/2.jpeg", "assets/img/Carros/DEO025/3.jpeg", "assets/img/Carros/DEO025/4.jpeg", "assets/img/Carros/DEO025/5.jpeg", "assets/img/Carros/DEO025/6.jpeg", "assets/img/Carros/DEO025/7.jpeg", "assets/img/Carros/DEO025/8.jpeg", "assets/img/Carros/DEO025/9.jpeg", "assets/img/Carros/DEO025/10.jpeg"],
+    placa: "DEO025", soatVence: "2026-10-22", tecnoVence: "2027-08-31",
+    destacado: true, oportunidad: false, fechaIngreso: "2026-09-18"
+  },
+  {
     id: "nissan-xtrail-2025-nsk083",
     marca: "Nissan", linea: "X-Trail", modelo: 2025,
     precio: 148800000, precioAnterior: 150800000,
