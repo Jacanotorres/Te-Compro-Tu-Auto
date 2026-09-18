@@ -43,18 +43,9 @@ const VEHICLES = [
     marca: "Audi", linea: "Q2", version: "TFSI Ambition", modelo: 2023,
     precio: 89800000, precioAnterior: null,
     km: 35513, combustible: "Gasolina", color: "Plata Florete", cilindraje: "1.395 cc",
-    fotos: ["assets/img/Carros/NMN913/03ce3802-2c5b-48bf-a9ce-93b62692b979.JPG", "assets/img/Carros/NMN913/51d25a31-4893-44b1-9208-2d6b3becb362.JPG", "assets/img/Carros/NMN913/5408a8f0-fe09-4b94-8cc4-397df615abe1.JPG", "assets/img/Carros/NMN913/55e95585-a427-48ab-8c47-ae9c61e3c767.JPG", "assets/img/Carros/NMN913/5eb416dd-05d4-4721-afaa-085bc74907a1.JPG", "assets/img/Carros/NMN913/79b5ed4b-4960-40ca-8d63-e3946e07dcad.JPG", "assets/img/Carros/NMN913/c0d62e0d-692a-477c-ae00-490ac002be6c.JPG", "assets/img/Carros/NMN913/c18b3c02-ce4a-496b-a399-cdde105b352f.JPG", "assets/img/Carros/NMN913/c728d149-e12c-48cf-b288-44f299274427.JPG", "assets/img/Carros/NMN913/cb179155-5858-42bc-9e7f-7f922f686b17.JPG", "assets/img/Carros/NMN913/f8393ef6-1c47-4103-9594-4ba091d535aa.JPG"],
+    fotos: ["assets/img/Carros/NMN913/1.JPG", "assets/img/Carros/NMN913/03ce3802-2c5b-48bf-a9ce-93b62692b979.JPG", "assets/img/Carros/NMN913/51d25a31-4893-44b1-9208-2d6b3becb362.JPG", "assets/img/Carros/NMN913/5408a8f0-fe09-4b94-8cc4-397df615abe1.JPG", "assets/img/Carros/NMN913/55e95585-a427-48ab-8c47-ae9c61e3c767.JPG", "assets/img/Carros/NMN913/5eb416dd-05d4-4721-afaa-085bc74907a1.JPG", "assets/img/Carros/NMN913/79b5ed4b-4960-40ca-8d63-e3946e07dcad.JPG", "assets/img/Carros/NMN913/c0d62e0d-692a-477c-ae00-490ac002be6c.JPG", "assets/img/Carros/NMN913/c18b3c02-ce4a-496b-a399-cdde105b352f.JPG", "assets/img/Carros/NMN913/c728d149-e12c-48cf-b288-44f299274427.JPG", "assets/img/Carros/NMN913/f8393ef6-1c47-4103-9594-4ba091d535aa.JPG"],
     placa: "NMN913", soatVence: "2027-01-07", tecnoVence: "N/A",
     destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
-  },
-  {
-    id: "audi-q3-2022-kzq927",
-    marca: "Audi", linea: "Q3", modelo: 2022,
-    precio: 106800000, precioAnterior: null,
-    km: 32000, combustible: "Gasolina", color: "Blanco Glaciar", cilindraje: "1.395 cc",
-    fotos: [],
-    placa: "KZQ927", soatVence: "2027-07-03", tecnoVence: "N/A",
-    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
   {
     id: "audi-q3-2022-llv449",
@@ -70,7 +61,7 @@ const VEHICLES = [
     marca: "BMW", linea: "X3", version: "xDrive30i", modelo: 2021,
     precio: 116800000, precioAnterior: null,
     km: 55720, combustible: "Gasolina", color: "Blanco Mineral", cilindraje: "1.998 cc",
-    fotos: ["assets/img/Carros/KQQ050/04c9dde7-1ae0-4ee9-ba1d-aad57426421c.JPG", "assets/img/Carros/KQQ050/2a05bbd4-ab4f-4532-9352-f774c79f11ed.JPG", "assets/img/Carros/KQQ050/3473df7f-8a78-475d-8880-a8bccdfc366c.JPG", "assets/img/Carros/KQQ050/835385b9-57de-4338-9cb1-fcd9e9c572d2.JPG", "assets/img/Carros/KQQ050/9b2497a4-1305-45a8-8cce-7f3361bda469.JPG", "assets/img/Carros/KQQ050/ac562cae-0b98-4ffe-9baf-3bfecc73cea2.JPG", "assets/img/Carros/KQQ050/b4f2c066-4fc9-44e4-b523-491aedf06302.JPG", "assets/img/Carros/KQQ050/d3e8120b-733f-47cc-bc22-65610331503e.JPG", "assets/img/Carros/KQQ050/e02bb296-9402-4fd3-a130-a7b3be646eb6.JPG", "assets/img/Carros/KQQ050/fc7390ef-32ee-496e-bbb4-459b64ee3a95.JPG"],
+    fotos: ["assets/img/Carros/KQQ050/1.JPG", "assets/img/Carros/KQQ050/04c9dde7-1ae0-4ee9-ba1d-aad57426421c.JPG", "assets/img/Carros/KQQ050/3473df7f-8a78-475d-8880-a8bccdfc366c.JPG", "assets/img/Carros/KQQ050/835385b9-57de-4338-9cb1-fcd9e9c572d2.JPG", "assets/img/Carros/KQQ050/9b2497a4-1305-45a8-8cce-7f3361bda469.JPG", "assets/img/Carros/KQQ050/ac562cae-0b98-4ffe-9baf-3bfecc73cea2.JPG", "assets/img/Carros/KQQ050/b4f2c066-4fc9-44e4-b523-491aedf06302.JPG", "assets/img/Carros/KQQ050/d3e8120b-733f-47cc-bc22-65610331503e.JPG", "assets/img/Carros/KQQ050/e02bb296-9402-4fd3-a130-a7b3be646eb6.JPG", "assets/img/Carros/KQQ050/fc7390ef-32ee-496e-bbb4-459b64ee3a95.JPG"],
     placa: "KQQ050", soatVence: "2026-11-24", tecnoVence: "2026-11-26",
     destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -79,7 +70,7 @@ const VEHICLES = [
     marca: "BYD", linea: "Dolphin", modelo: 2024,
     precio: 69800000, precioAnterior: null,
     km: 17803, combustible: "Eléctrico", color: "Amarillo", cilindraje: "N/A",
-    fotos: ["assets/img/Carros/NMN318/IMG_4426.JPG", "assets/img/Carros/NMN318/IMG_4427.JPG", "assets/img/Carros/NMN318/IMG_4428.JPG", "assets/img/Carros/NMN318/IMG_4429.JPG", "assets/img/Carros/NMN318/IMG_4430.JPG", "assets/img/Carros/NMN318/IMG_4431.JPG", "assets/img/Carros/NMN318/IMG_4432.JPG", "assets/img/Carros/NMN318/IMG_4433.JPG", "assets/img/Carros/NMN318/IMG_4434.JPG", "assets/img/Carros/NMN318/IMG_4435.JPG", "assets/img/Carros/NMN318/IMG_4436.JPG"],
+    fotos: ["assets/img/Carros/NMN318/1.JPG", "assets/img/Carros/NMN318/IMG_4426.JPG", "assets/img/Carros/NMN318/IMG_4427.JPG", "assets/img/Carros/NMN318/IMG_4428.JPG", "assets/img/Carros/NMN318/IMG_4430.JPG", "assets/img/Carros/NMN318/IMG_4431.JPG", "assets/img/Carros/NMN318/IMG_4432.JPG", "assets/img/Carros/NMN318/IMG_4433.JPG", "assets/img/Carros/NMN318/IMG_4434.JPG", "assets/img/Carros/NMN318/IMG_4435.JPG", "assets/img/Carros/NMN318/IMG_4436.JPG"],
     placa: "NMN318", soatVence: "2026-11-26", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -90,15 +81,6 @@ const VEHICLES = [
     km: 60980, combustible: "Gasolina", color: "Ultra Azul", cilindraje: "1.490 cc",
     fotos: ["assets/img/Carros/FRM990/1.JPG","assets/img/Carros/FRM990/2.JPG","assets/img/Carros/FRM990/3.JPG","assets/img/Carros/FRM990/4.JPG","assets/img/Carros/FRM990/5.JPG","assets/img/Carros/FRM990/6.JPG","assets/img/Carros/FRM990/7.JPG","assets/img/Carros/FRM990/8.JPG","assets/img/Carros/FRM990/9.JPG","assets/img/Carros/FRM990/10.JPG","assets/img/Carros/FRM990/11.JPG"],
     placa: "FRM990", soatVence: "2026-10-22", tecnoVence: "2026-12-20",
-    destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
-  },
-  {
-    id: "chevrolet-cruze-2011-khc235",
-    marca: "Chevrolet", linea: "Cruze", version: "Platinum", modelo: 2011,
-    precio: 27800000, precioAnterior: null,
-    km: 118697, combustible: "Gasolina", color: "Blanco Olímpico", cilindraje: "1.796 cc",
-    fotos: [],
-    placa: "KHC235", soatVence: "2027-02-07", tecnoVence: "2027-01-16",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
   {
@@ -160,7 +142,7 @@ const VEHICLES = [
     marca: "Mercedes-Benz", linea: "GLA 200", modelo: 2023,
     precio: 132800000, precioAnterior: null,
     km: 23943, combustible: "Gasolina", color: "Blanco Polar", cilindraje: "1.332 cc",
-    fotos: [],
+    fotos: ["assets/img/Carros/LYU805/IMG_4164.JPG", "assets/img/Carros/LYU805/IMG_4165.JPG", "assets/img/Carros/LYU805/IMG_4166.JPG", "assets/img/Carros/LYU805/IMG_4167.JPG", "assets/img/Carros/LYU805/IMG_4168.JPG", "assets/img/Carros/LYU805/IMG_4169.JPG", "assets/img/Carros/LYU805/IMG_4170.JPG", "assets/img/Carros/LYU805/IMG_4171.JPG", "assets/img/Carros/LYU805/IMG_4172.JPG", "assets/img/Carros/LYU805/IMG_4173.JPG", "assets/img/Carros/LYU805/IMG_4174.JPG"],
     placa: "LYU805", soatVence: "VENCIDO", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -169,7 +151,7 @@ const VEHICLES = [
     marca: "Nissan", linea: "X-Trail", modelo: 2025,
     precio: 148800000, precioAnterior: 150800000,
     km: 36487, combustible: "Híbrido", color: "Plata", cilindraje: "1.497 cc",
-    fotos: ["assets/img/Carros/NSK083/2fef91c3-1f7a-4df9-a052-e721eab6873f.JPG", "assets/img/Carros/NSK083/4d815216-c021-4cba-a947-eb214f19872d.JPG", "assets/img/Carros/NSK083/5649a91b-e468-4802-b83a-03941b3a385b.JPG", "assets/img/Carros/NSK083/678d4b93-4adb-4ddb-be0b-fd23bb060b65.JPG", "assets/img/Carros/NSK083/70335beb-28d4-403a-8648-403605f50ff1.JPG", "assets/img/Carros/NSK083/8efd5b9b-021b-49cf-aa8c-5ac10027d766.JPG", "assets/img/Carros/NSK083/c17cbfba-ff4c-4995-8465-485495c62d93.JPG", "assets/img/Carros/NSK083/eae6447b-0e6a-4a23-a5ae-924f582f90e4.JPG", "assets/img/Carros/NSK083/f5d8362a-f2f6-4316-b506-a570f95c0144.JPG", "assets/img/Carros/NSK083/f75d48fb-45ef-476f-b426-d6f6cc11dd44.JPG", "assets/img/Carros/NSK083/fd8bc38c-c4a3-48fa-a25e-d437ec48d95a.JPG"],
+    fotos: ["assets/img/Carros/NSK083/1.JPG", "assets/img/Carros/NSK083/2fef91c3-1f7a-4df9-a052-e721eab6873f.JPG", "assets/img/Carros/NSK083/5649a91b-e468-4802-b83a-03941b3a385b.JPG", "assets/img/Carros/NSK083/678d4b93-4adb-4ddb-be0b-fd23bb060b65.JPG", "assets/img/Carros/NSK083/70335beb-28d4-403a-8648-403605f50ff1.JPG", "assets/img/Carros/NSK083/8efd5b9b-021b-49cf-aa8c-5ac10027d766.JPG", "assets/img/Carros/NSK083/c17cbfba-ff4c-4995-8465-485495c62d93.JPG", "assets/img/Carros/NSK083/eae6447b-0e6a-4a23-a5ae-924f582f90e4.JPG", "assets/img/Carros/NSK083/f5d8362a-f2f6-4316-b506-a570f95c0144.JPG", "assets/img/Carros/NSK083/f75d48fb-45ef-476f-b426-d6f6cc11dd44.JPG", "assets/img/Carros/NSK083/fd8bc38c-c4a3-48fa-a25e-d437ec48d95a.JPG"],
     placa: "NSK083", soatVence: "2027-04-24", tecnoVence: "N/A",
     destacado: true, oportunidad: true, fechaIngreso: "2026-09-14"
   },
@@ -178,7 +160,7 @@ const VEHICLES = [
     marca: "Nissan", linea: "Qashqai", modelo: 2023,
     precio: 89800000, precioAnterior: null,
     km: 99850, combustible: "Gasolina", color: "Gris", cilindraje: "1.332 cc",
-    fotos: ["assets/img/Carros/LEY892/1bd4b0c2-58f2-4e57-962f-fa34effd6083.JPG", "assets/img/Carros/LEY892/1f546c19-290f-4804-818e-e356a615510d.JPG", "assets/img/Carros/LEY892/3b425853-6fb6-495c-b580-04d9269f4ea4.JPG", "assets/img/Carros/LEY892/4239ba8e-af00-4900-b1c3-5e935d0f1153.JPG", "assets/img/Carros/LEY892/4fbc9cdf-74c8-4bab-a769-6fa53b95da5f.JPG", "assets/img/Carros/LEY892/7c42538c-39da-42fb-a6cb-93f545fc5007.JPG", "assets/img/Carros/LEY892/8a05ec8f-955f-4309-8c32-daa4aae53243.JPG", "assets/img/Carros/LEY892/bc686346-a8d4-49b7-97b2-a782a22b5391.JPG", "assets/img/Carros/LEY892/c6b1c4dd-814e-4853-8b2b-f7d0b26ae157.JPG", "assets/img/Carros/LEY892/ebbb08e4-1a58-4a30-b02a-4a22b1852b41.JPG", "assets/img/Carros/LEY892/f9ae8615-be32-417b-b798-6cf8b474141d.JPG"],
+    fotos: ["assets/img/Carros/LEY892/1.JPG", "assets/img/Carros/LEY892/1bd4b0c2-58f2-4e57-962f-fa34effd6083.JPG", "assets/img/Carros/LEY892/1f546c19-290f-4804-818e-e356a615510d.JPG", "assets/img/Carros/LEY892/3b425853-6fb6-495c-b580-04d9269f4ea4.JPG", "assets/img/Carros/LEY892/4239ba8e-af00-4900-b1c3-5e935d0f1153.JPG", "assets/img/Carros/LEY892/4fbc9cdf-74c8-4bab-a769-6fa53b95da5f.JPG", "assets/img/Carros/LEY892/7c42538c-39da-42fb-a6cb-93f545fc5007.JPG", "assets/img/Carros/LEY892/8a05ec8f-955f-4309-8c32-daa4aae53243.JPG", "assets/img/Carros/LEY892/bc686346-a8d4-49b7-97b2-a782a22b5391.JPG", "assets/img/Carros/LEY892/c6b1c4dd-814e-4853-8b2b-f7d0b26ae157.JPG", "assets/img/Carros/LEY892/ebbb08e4-1a58-4a30-b02a-4a22b1852b41.JPG"],
     placa: "LEY892", soatVence: "2027-06-30", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -196,7 +178,7 @@ const VEHICLES = [
     marca: "Renault", linea: "Duster", modelo: 2019,
     precio: 51800000, precioAnterior: null,
     km: 89234, combustible: "Gasolina", color: "Blanco Glacial", cilindraje: "1.998 cc",
-    fotos: ["assets/img/Carros/GLS172/IMG_5037.JPG", "assets/img/Carros/GLS172/IMG_5040.JPG", "assets/img/Carros/GLS172/IMG_5041.JPG", "assets/img/Carros/GLS172/IMG_5044.JPG", "assets/img/Carros/GLS172/IMG_5045.JPG", "assets/img/Carros/GLS172/IMG_5046.JPG", "assets/img/Carros/GLS172/IMG_5047.JPG"],
+    fotos: ["assets/img/Carros/GLS172/1.JPG", "assets/img/Carros/GLS172/IMG_5037.JPG", "assets/img/Carros/GLS172/IMG_5040.JPG", "assets/img/Carros/GLS172/IMG_5041.JPG", "assets/img/Carros/GLS172/IMG_5045.JPG", "assets/img/Carros/GLS172/IMG_5046.JPG", "assets/img/Carros/GLS172/IMG_5047.JPG"],
     placa: "GLS172", soatVence: "2026-12-12", tecnoVence: "2027-01-06",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -205,7 +187,7 @@ const VEHICLES = [
     marca: "Renault", linea: "Clio", modelo: 2017,
     precio: 32800000, precioAnterior: null,
     km: 88525, combustible: "Gasolina", color: "Blanco Ártica", cilindraje: "1.149 cc",
-    fotos: ["assets/img/Carros/IZU355/2730d825-ee06-4897-8b30-a46bfca421e1.JPG", "assets/img/Carros/IZU355/5bf13aa3-f068-4324-8d31-d426a6539bde.JPG", "assets/img/Carros/IZU355/6bea456f-c554-485d-9808-772e67461b30.JPG", "assets/img/Carros/IZU355/7c55bb18-d7c4-4a9d-9d8b-c1b381d44a06.JPG", "assets/img/Carros/IZU355/8c76097e-4f11-4bc6-a22b-ae802b20665b.JPG", "assets/img/Carros/IZU355/91160292-061d-4555-be48-e96b27b63f87.JPG", "assets/img/Carros/IZU355/9a8e9d08-a02c-4f08-ba98-e43675de61a7.JPG", "assets/img/Carros/IZU355/c36d465e-9d1f-4959-84cb-5aaee662f3a8.JPG", "assets/img/Carros/IZU355/dee63a29-4ab8-41fd-952c-34109d2277ce.JPG", "assets/img/Carros/IZU355/f4f44ecd-1040-4217-b424-6bcc594107a6.JPG"],
+    fotos: ["assets/img/Carros/IZU355/1.JPG", "assets/img/Carros/IZU355/2730d825-ee06-4897-8b30-a46bfca421e1.JPG", "assets/img/Carros/IZU355/5bf13aa3-f068-4324-8d31-d426a6539bde.JPG", "assets/img/Carros/IZU355/6bea456f-c554-485d-9808-772e67461b30.JPG", "assets/img/Carros/IZU355/7c55bb18-d7c4-4a9d-9d8b-c1b381d44a06.JPG", "assets/img/Carros/IZU355/8c76097e-4f11-4bc6-a22b-ae802b20665b.JPG", "assets/img/Carros/IZU355/91160292-061d-4555-be48-e96b27b63f87.JPG", "assets/img/Carros/IZU355/9a8e9d08-a02c-4f08-ba98-e43675de61a7.JPG", "assets/img/Carros/IZU355/c36d465e-9d1f-4959-84cb-5aaee662f3a8.JPG", "assets/img/Carros/IZU355/dee63a29-4ab8-41fd-952c-34109d2277ce.JPG"],
     placa: "IZU355", soatVence: "2027-07-27", tecnoVence: "2027-06-30",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -241,7 +223,7 @@ const VEHICLES = [
     marca: "Volvo", linea: "XC60", modelo: 2021,
     precio: 114800000, precioAnterior: null,
     km: 59163, combustible: "Gasolina", color: "Gris", cilindraje: "1.969 cc",
-    fotos: ["assets/img/Carros/JRK473/IMG_4339.JPG", "assets/img/Carros/JRK473/IMG_4340.JPG", "assets/img/Carros/JRK473/IMG_4341.JPG", "assets/img/Carros/JRK473/IMG_4342.JPG", "assets/img/Carros/JRK473/IMG_4343.JPG", "assets/img/Carros/JRK473/IMG_4344.JPG", "assets/img/Carros/JRK473/IMG_4345.JPG", "assets/img/Carros/JRK473/IMG_4346.JPG", "assets/img/Carros/JRK473/IMG_4347.JPG", "assets/img/Carros/JRK473/IMG_4348.JPG", "assets/img/Carros/JRK473/IMG_4349.JPG", "assets/img/Carros/JRK473/IMG_4350.JPG"],
+    fotos: ["assets/img/Carros/JRK473/1.JPG", "assets/img/Carros/JRK473/IMG_4339.JPG", "assets/img/Carros/JRK473/IMG_4340.JPG", "assets/img/Carros/JRK473/IMG_4341.JPG", "assets/img/Carros/JRK473/IMG_4342.JPG", "assets/img/Carros/JRK473/IMG_4343.JPG", "assets/img/Carros/JRK473/IMG_4344.JPG", "assets/img/Carros/JRK473/IMG_4345.JPG", "assets/img/Carros/JRK473/IMG_4346.JPG", "assets/img/Carros/JRK473/IMG_4347.JPG", "assets/img/Carros/JRK473/IMG_4349.JPG", "assets/img/Carros/JRK473/IMG_4350.JPG"],
     placa: "JRK473", soatVence: "2026-11-26", tecnoVence: "N/A",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -250,7 +232,7 @@ const VEHICLES = [
     marca: "Volvo", linea: "XC90", modelo: 2018,
     precio: 149800000, precioAnterior: null,
     km: 73000, combustible: "Diésel", color: "Negro Onyx", cilindraje: "1.969 cc",
-    fotos: ["assets/img/Carros/EHV690/1b8ba2b8-8939-4a2e-be31-9b4a37cb54a0.JPG", "assets/img/Carros/EHV690/2efe55e0-7968-4f57-9c17-1f36c24a1b57.JPG", "assets/img/Carros/EHV690/5e01ee93-8035-4212-83f2-d6e7748cc42a.JPG", "assets/img/Carros/EHV690/65fb5a4b-8eab-431f-b00f-e511cad4fc6e.JPG", "assets/img/Carros/EHV690/731b6eba-b65e-440d-826a-676841fa3115.JPG", "assets/img/Carros/EHV690/a13099f7-78f3-48b9-98e4-da022d9a5c43.JPG", "assets/img/Carros/EHV690/a87a46af-f4b1-45c9-80cb-85563a3466c4.JPG", "assets/img/Carros/EHV690/b7cf65d0-21c5-422a-b0cd-c4ab4199397a.JPG", "assets/img/Carros/EHV690/caba721e-160d-4363-a81a-cc07f9409268.JPG", "assets/img/Carros/EHV690/cfa63e16-396b-4423-bf72-fa246e6101e5.JPG", "assets/img/Carros/EHV690/dd9d1fd2-0df4-4425-9cf9-e210f53a0e34.JPG"],
+    fotos: ["assets/img/Carros/EHV690/1.JPG", "assets/img/Carros/EHV690/1b8ba2b8-8939-4a2e-be31-9b4a37cb54a0.JPG", "assets/img/Carros/EHV690/2efe55e0-7968-4f57-9c17-1f36c24a1b57.JPG", "assets/img/Carros/EHV690/5e01ee93-8035-4212-83f2-d6e7748cc42a.JPG", "assets/img/Carros/EHV690/65fb5a4b-8eab-431f-b00f-e511cad4fc6e.JPG", "assets/img/Carros/EHV690/731b6eba-b65e-440d-826a-676841fa3115.JPG", "assets/img/Carros/EHV690/a13099f7-78f3-48b9-98e4-da022d9a5c43.JPG", "assets/img/Carros/EHV690/a87a46af-f4b1-45c9-80cb-85563a3466c4.JPG", "assets/img/Carros/EHV690/b7cf65d0-21c5-422a-b0cd-c4ab4199397a.JPG", "assets/img/Carros/EHV690/caba721e-160d-4363-a81a-cc07f9409268.JPG", "assets/img/Carros/EHV690/cfa63e16-396b-4423-bf72-fa246e6101e5.JPG"],
     placa: "EHV690", soatVence: "2026-12-12", tecnoVence: "2026-10-09",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -259,7 +241,7 @@ const VEHICLES = [
     marca: "Volvo", linea: "XC60", version: "Blindaje", modelo: 2018,
     precio: 99800000, precioAnterior: null,
     km: 75441, combustible: "Gasolina", color: "Gris Osmio", cilindraje: "1.969 cc",
-    fotos: ["assets/img/Carros/EHW851/1e88118a-72f5-4319-8c8a-b0d746fb3d8f.JPG", "assets/img/Carros/EHW851/21df7d29-664f-416d-a0c6-9381e685b05c.JPG", "assets/img/Carros/EHW851/2d195446-6f1d-4443-b1a4-cfe44e89c9f8.JPG", "assets/img/Carros/EHW851/4e28c664-519b-417c-85a6-653a0de44903.JPG", "assets/img/Carros/EHW851/7b4ea855-4eff-4f7b-a3ac-7a4d6e71a044.JPG", "assets/img/Carros/EHW851/b424bc11-228a-4cfa-b6b5-18b0c0d5287d.JPG", "assets/img/Carros/EHW851/b63a63bc-52ea-4ea5-bf83-4dd29f6aa7f3.JPG", "assets/img/Carros/EHW851/cbdfb840-7690-4d8d-be0a-9b7038bbe160.JPG", "assets/img/Carros/EHW851/cf3bdf25-2fe8-451d-8f4e-5595cd790c3e.JPG", "assets/img/Carros/EHW851/d4048f5f-8fbc-4753-a061-05f2cb0dabce.JPG", "assets/img/Carros/EHW851/d577da35-c4ae-4871-8e79-9fc91180ec11.JPG", "assets/img/Carros/EHW851/dec53ac5-5141-4736-adcc-7893c2d47118.JPG"],
+    fotos: ["assets/img/Carros/EHW851/1.JPG", "assets/img/Carros/EHW851/1e88118a-72f5-4319-8c8a-b0d746fb3d8f.JPG", "assets/img/Carros/EHW851/21df7d29-664f-416d-a0c6-9381e685b05c.JPG", "assets/img/Carros/EHW851/4e28c664-519b-417c-85a6-653a0de44903.JPG", "assets/img/Carros/EHW851/7b4ea855-4eff-4f7b-a3ac-7a4d6e71a044.JPG", "assets/img/Carros/EHW851/b424bc11-228a-4cfa-b6b5-18b0c0d5287d.JPG", "assets/img/Carros/EHW851/b63a63bc-52ea-4ea5-bf83-4dd29f6aa7f3.JPG", "assets/img/Carros/EHW851/cbdfb840-7690-4d8d-be0a-9b7038bbe160.JPG", "assets/img/Carros/EHW851/cf3bdf25-2fe8-451d-8f4e-5595cd790c3e.JPG", "assets/img/Carros/EHW851/d4048f5f-8fbc-4753-a061-05f2cb0dabce.JPG", "assets/img/Carros/EHW851/d577da35-c4ae-4871-8e79-9fc91180ec11.JPG", "assets/img/Carros/EHW851/dec53ac5-5141-4736-adcc-7893c2d47118.JPG"],
     placa: "EHW851", soatVence: "2027-01-31", tecnoVence: "2026-12-06",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
