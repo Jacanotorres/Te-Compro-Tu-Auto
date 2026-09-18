@@ -84,7 +84,7 @@
               <div class="file-drop">Adjunta las fotos directamente en la conversación de WhatsApp que se abrirá al enviar este formulario.</div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary btn-block" style="margin-top:22px;">Quiero vender mi carro</button>
+          <button type="submit" id="sell-form-submit" class="btn btn-primary btn-block" style="margin-top:22px;">Quiero vender mi carro</button>
           <p class="form-note">Al enviar, se abrirá WhatsApp con un mensaje prellenado con los datos de tu vehículo para que puedas confirmarlo y adjuntar tus fotos.</p>
         </form>
       </div>
@@ -178,24 +178,71 @@
 </a>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function(){
     var form = document.getElementById("sell-form");
-    form.addEventListener("submit", function(e){
+    var submitBtn = document.getElementById("sell-form-submit");
+
+    form.addEventListener("submit", async function(e){
       e.preventDefault();
+
+      var nombre = document.getElementById("s-nombre").value;
+      var celular = document.getElementById("s-celular").value;
+      var marca = document.getElementById("s-marca").value;
+      var linea = document.getElementById("s-linea").value;
+      var modelo = document.getElementById("s-modelo").value;
+      var km = document.getElementById("s-km").value;
+      var placa = document.getElementById("s-placa").value;
+      var ciudad = document.getElementById("s-ciudad").value;
+      var precio = document.getElementById("s-precio").value;
+
       var msg = "Hola, quiero vender mi carro:\n" +
-        "Nombre: " + document.getElementById("s-nombre").value + "\n" +
-        "Celular: " + document.getElementById("s-celular").value + "\n" +
-        "Marca: " + document.getElementById("s-marca").value + "\n" +
-        "Línea: " + document.getElementById("s-linea").value + "\n" +
-        "Modelo: " + document.getElementById("s-modelo").value + "\n" +
-        "Kilometraje: " + document.getElementById("s-km").value + "\n" +
-        "Placa: " + document.getElementById("s-placa").value + "\n" +
-        "Ciudad: " + document.getElementById("s-ciudad").value + "\n" +
-        "Precio esperado: " + document.getElementById("s-precio").value;
-      window.open(waLink(msg), "_blank", "noopener");
+        "Nombre: " + nombre + "\n" +
+        "Celular: " + celular + "\n" +
+        "Marca: " + marca + "\n" +
+        "Línea: " + linea + "\n" +
+        "Modelo: " + modelo + "\n" +
+        "Kilometraje: " + km + "\n" +
+        "Placa: " + placa + "\n" +
+        "Ciudad: " + ciudad + "\n" +
+        "Precio esperado: " + precio;
+
+      /* Se abre la pestaña ya mismo (dentro del clic del usuario) para que
+         el navegador no la bloquee como pop-up; se redirige a WhatsApp
+         cuando termine de guardar en Supabase (o si falla, igual se redirige). */
+      var waWindow = window.open("", "_blank");
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando...";
+
+      try {
+        await supabaseClient.from("vende_tu_carro").insert({
+          nombre: nombre,
+          celular: celular,
+          marca: marca,
+          linea: linea,
+          modelo: modelo ? parseInt(modelo, 10) : null,
+          kilometraje: km ? parseInt(km, 10) : null,
+          placa: placa,
+          ciudad: ciudad,
+          precio_esperado: precio
+        });
+      } catch(err){
+        console.error("No se pudo guardar en Supabase:", err);
+      }
+
+      if (waWindow) {
+        waWindow.location.href = waLink(msg);
+      } else {
+        window.open(waLink(msg), "_blank", "noopener");
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Quiero vender mi carro";
     });
   });
 </script>
