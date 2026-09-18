@@ -271,7 +271,15 @@ const HAPPY_CLIENTS = [
   { foto: "assets/img/Clientes/cliente-9.jpeg" },
   { foto: "assets/img/Clientes/cliente-10.jpeg" },
   { foto: "assets/img/Clientes/cliente-11.jpeg" },
-  { foto: "assets/img/Clientes/cliente-12.jpeg" }
+  { foto: "assets/img/Clientes/cliente-12.jpeg" },
+  { foto: "assets/img/Clientes/cliente-13.jpg" },
+  { foto: "assets/img/Clientes/cliente-14.jpg" },
+  { foto: "assets/img/Clientes/cliente-15.jpg" },
+  { foto: "assets/img/Clientes/cliente-16.jpg" },
+  { foto: "assets/img/Clientes/cliente-17.jpg" },
+  { foto: "assets/img/Clientes/cliente-18.jpg" },
+  { foto: "assets/img/Clientes/cliente-19.jpg" },
+  { foto: "assets/img/Clientes/cliente-20.jpg" }
 ];
 
 /* Equipo real. "whatsapp" usa el número general mientras no tengamos
