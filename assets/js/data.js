@@ -115,7 +115,7 @@ const VEHICLES = [
     marca: "Kia", linea: "Stylus", modelo: 2012,
     precio: 24800000, precioAnterior: null,
     km: 131433, combustible: "Gasolina", color: "Plata", cilindraje: "1.493 cc",
-    fotos: [],
+    fotos: ["assets/img/Carros/KLT840/1.jpeg", "assets/img/Carros/KLT840/2.jpeg", "assets/img/Carros/KLT840/3.jpeg", "assets/img/Carros/KLT840/4.jpeg", "assets/img/Carros/KLT840/5.jpeg", "assets/img/Carros/KLT840/6.jpeg", "assets/img/Carros/KLT840/7.jpeg", "assets/img/Carros/KLT840/8.jpeg", "assets/img/Carros/KLT840/9.jpeg", "assets/img/Carros/KLT840/10.jpeg"],
     placa: "KLT840", soatVence: "VENCIDO", tecnoVence: "2027-04-06",
     destacado: false, oportunidad: false, fechaIngreso: "2026-09-14"
   },
@@ -250,7 +250,7 @@ const VEHICLES = [
     marca: "Volvo", linea: "XC90 T6 AWD", modelo: 2021,
     precio: 149800000, precioAnterior: null,
     km: 60706, combustible: "Gasolina", color: "Plata Brillante", cilindraje: "1.969 cc",
-    fotos: [],
+    fotos: ["assets/img/Carros/KON905/1.jpeg", "assets/img/Carros/KON905/2.jpeg", "assets/img/Carros/KON905/3.jpeg", "assets/img/Carros/KON905/4.jpeg", "assets/img/Carros/KON905/5.jpeg", "assets/img/Carros/KON905/6.jpeg", "assets/img/Carros/KON905/7.jpeg", "assets/img/Carros/KON905/8.jpeg", "assets/img/Carros/KON905/9.jpeg", "assets/img/Carros/KON905/10.jpeg"],
     placa: "KON905", soatVence: "2027-07-31", tecnoVence: "N/A",
     destacado: true, oportunidad: false, fechaIngreso: "2026-09-14"
   }
