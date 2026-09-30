@@ -26,6 +26,7 @@
     </nav>
     <div class="header-actions">
       <div class="header-phone"><span>Escríbenos ahora</span><strong data-contact-phone></strong></div>
+      <a id="header-auth-link" class="btn btn-ghost btn-sm" href="login.html" style="margin-right:8px;">Iniciar sesión</a>
       <a class="btn btn-primary" data-wa-text="Hola, quiero más información" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
@@ -185,17 +186,22 @@
 </a>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/data.js"></script>
+<script src="assets/js/db.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", function(){
+  document.addEventListener("DOMContentLoaded", async function(){
     var clientGrid = document.getElementById("clientes-grid-all");
     if(clientGrid){
-      clientGrid.innerHTML = renderClientPhotos(HAPPY_CLIENTS);
+      const happyClients = await fetchHappyClients();
+      clientGrid.innerHTML = renderClientPhotos(happyClients);
     }
     var teamGrid = document.getElementById("team-grid-full");
     if(teamGrid){
-      teamGrid.innerHTML = TEAM.map(function(m){
+      const team = await fetchTeam();
+      teamGrid.innerHTML = team.map(function(m){
         const photo = m.foto
           ? '<img src="' + m.foto + '" alt="' + m.nombre + '">'
           : carIconSVG();

@@ -13,13 +13,15 @@ function vigenciaLabel(value){
   return "Vence " + value;
 }
 
-function renderVehicleDetail(){
+async function renderVehicleDetail(){
   const root = document.getElementById("vehicle-detail");
   if(!root) return;
 
+  root.innerHTML = '<div class="empty-state">Cargando vehículo...</div>';
+
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
-  const v = id ? getVehicleById(id) : null;
+  const v = id ? await fetchVehicleById(id) : null;
 
   if(!v){
     root.innerHTML =

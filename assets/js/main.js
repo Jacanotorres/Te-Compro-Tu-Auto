@@ -52,6 +52,19 @@ document.addEventListener("DOMContentLoaded", function(){
     el.textContent = new Date().getFullYear();
   });
 
+  /* Enlace de "Iniciar sesión" del header: si ya hay sesión, se
+     convierte en "Panel". Se protege con typeof por si la página no
+     cargó el cliente de Supabase. */
+  const authLink = document.getElementById("header-auth-link");
+  if(authLink && typeof supabaseClient !== "undefined"){
+    supabaseClient.auth.getSession().then(function(res){
+      if(res.data.session){
+        authLink.textContent = "Panel";
+        authLink.href = "panel.html";
+      }
+    });
+  }
+
   /* Acordeón de preguntas frecuentes */
   document.querySelectorAll(".faq-item .faq-q").forEach(function(btn){
     btn.addEventListener("click", function(){

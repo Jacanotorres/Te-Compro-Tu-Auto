@@ -60,11 +60,12 @@ function fillSelect(select, values, placeholder){
 }
 
 /* ---------- Página de inventario ---------- */
-function initInventoryPage(){
+async function initInventoryPage(){
   const grid = document.getElementById("vehicle-grid");
   if(!grid) return;
 
-  const disponibles = VEHICLES;
+  grid.innerHTML = '<div class="empty-state">Cargando inventario...</div>';
+  const disponibles = await fetchVehicles();
 
   const els = {
     marca: document.getElementById("f-marca"),
@@ -157,15 +158,19 @@ function initInventoryPage(){
 }
 
 /* ---------- Widgets de inicio ---------- */
-function initHomeWidgets(){
+async function initHomeWidgets(){
   const recientes = document.getElementById("recientes-grid");
+  const oportunidades = document.getElementById("oportunidades-grid");
+  if(!recientes && !oportunidades) return;
+
+  const vehicles = await fetchVehicles();
+
   if(recientes){
-    const list = VEHICLES.filter(function(v){ return v.destacado; }).slice(0,8);
+    const list = vehicles.filter(function(v){ return v.destacado; }).slice(0,8);
     renderGrid(recientes, list);
   }
-  const oportunidades = document.getElementById("oportunidades-grid");
   if(oportunidades){
-    const list = VEHICLES.filter(function(v){ return v.oportunidad; }).slice(0,6);
+    const list = vehicles.filter(function(v){ return v.oportunidad; }).slice(0,6);
     renderGrid(oportunidades, list);
   }
 }

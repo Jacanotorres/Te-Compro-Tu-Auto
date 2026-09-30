@@ -519,3 +519,30 @@ footer.site{background:var(--ink);border-top:1px solid var(--line-on-dark);paddi
   font-size:12.5px;color:var(--muted-on-dark);background:var(--card);border:1px dashed var(--line);
   border-radius:10px;padding:8px 14px;display:inline-block;
 }
+
+/* ---------- Panel de administración ---------- */
+.panel-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:8px;}
+.panel-who{font-size:14px;color:var(--muted-on-dark);}
+.panel-who strong{color:var(--cream);}
+.panel-tabs{display:flex;gap:10px;margin:24px 0 28px;flex-wrap:wrap;}
+.panel-tab{padding:10px 18px;border-radius:999px;border:2px solid var(--line);background:transparent;color:var(--muted-on-dark);font-weight:700;cursor:pointer;font-family:'Karla',sans-serif;font-size:14.5px;}
+.panel-tab.active{background:var(--yellow);color:var(--ink);border-color:var(--yellow);}
+.panel-section{display:none;}
+.panel-section.active{display:block;}
+.panel-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;margin-bottom:28px;}
+.panel-table-wrap{overflow-x:auto;}
+.panel-table{width:100%;border-collapse:collapse;min-width:760px;}
+.panel-table th, .panel-table td{padding:12px 14px;text-align:left;font-size:14px;border-bottom:1px solid var(--line);white-space:nowrap;}
+.panel-table th{color:var(--muted-on-dark);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:0.3px;}
+.panel-table td{color:var(--charcoal);}
+.panel-table tr:last-child td{border-bottom:none;}
+.panel-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.panel-actions .btn{padding:8px 14px;font-size:13px;}
+.panel-photos{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+.panel-photo{position:relative;width:90px;height:90px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--ink);}
+.panel-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.panel-photo .rm{position:absolute;top:2px;right:2px;background:var(--red);color:#fff;border:none;border-radius:50%;width:20px;height:20px;font-size:12px;cursor:pointer;line-height:1;}
+.panel-photo .order-btns{position:absolute;bottom:2px;left:2px;display:flex;gap:2px;}
+.panel-photo .order-btns button{background:rgba(0,0,0,0.65);color:#fff;border:none;border-radius:4px;width:18px;height:18px;font-size:10px;cursor:pointer;}
+.panel-clients-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px;margin-top:14px;}
+.panel-empty{color:var(--muted-on-dark);font-size:14px;padding:20px 0;}
