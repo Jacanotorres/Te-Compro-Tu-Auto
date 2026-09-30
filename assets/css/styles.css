@@ -546,3 +546,24 @@ footer.site{background:var(--ink);border-top:1px solid var(--line-on-dark);paddi
 .panel-photo .order-btns button{background:rgba(0,0,0,0.65);color:#fff;border:none;border-radius:4px;width:18px;height:18px;font-size:10px;cursor:pointer;}
 .panel-clients-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px;margin-top:14px;}
 .panel-empty{color:var(--muted-on-dark);font-size:14px;padding:20px 0;}
+
+.panel-card .form-grid{margin-top:20px;gap:20px 24px;}
+.panel-card label{display:block;font-size:13px;font-weight:700;color:var(--muted-on-dark);text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;}
+.panel-card input[type="text"],
+.panel-card input[type="number"],
+.panel-card input[type="date"],
+.panel-card input[type="email"],
+.panel-card input[type="password"]{
+  width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;
+  font-family:'Karla',sans-serif;font-size:15px;background:var(--ink);color:var(--cream);
+}
+.panel-card input::placeholder{color:var(--dim-on-dark);}
+.panel-card input:focus{border-color:var(--yellow-deep);outline:none;}
+.panel-card input[type="checkbox"]{width:18px;height:18px;accent-color:var(--yellow);}
+.panel-card .form-grid label[style]{margin-bottom:0;text-transform:none;font-size:15px;color:var(--charcoal);}
+.panel-card input[type="file"]{
+  width:100%;padding:10px 12px;border:1.5px dashed var(--line);border-radius:10px;
+  font-family:'Karla',sans-serif;font-size:13.5px;color:var(--muted-on-dark);background:var(--ink);
+}
+.panel-card h3{font-size:22px;}
+.panel-card h4{font-size:16px;color:var(--cream);}
