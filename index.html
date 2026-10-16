@@ -82,8 +82,15 @@
       <p class="kicker">Busca por marca</p>
       <h2>Las marcas que tenemos disponibles</h2>
     </div>
-    <div class="brand-grid" id="brand-grid"></div>
-    <div class="brand-chips" id="brand-chips" aria-label="Todas las marcas disponibles"></div>
+    <div class="brand-carousel" id="brand-carousel" aria-roledescription="carrusel" aria-label="Marcas disponibles">
+      <div class="brand-track" id="brand-grid"></div>
+      <button type="button" class="carousel-btn prev" id="brand-prev" aria-label="Marca anterior">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <button type="button" class="carousel-btn next" id="brand-next" aria-label="Marca siguiente">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -373,8 +380,7 @@
         (byMarca[v.marca] = byMarca[v.marca] || []).push(v);
       });
       const top = Object.keys(byMarca)
-        .sort(function(a, b){ return byMarca[b].length - byMarca[a].length || a.localeCompare(b, "es"); })
-        .slice(0, 4);
+        .sort(function(a, b){ return byMarca[b].length - byMarca[a].length || a.localeCompare(b, "es"); });
       brandGrid.innerHTML = top.map(function(marca){
         const list = byMarca[marca];
         const withPhoto = list.find(function(v){ return v.fotos && v.fotos[0]; });
@@ -390,15 +396,44 @@
         '</a>';
       }).join("");
 
-      /* Fila con todas las marcas del inventario, con su logo */
-      const allMarcas = Object.keys(byMarca)
-        .sort(function(a, b){ return byMarca[b].length - byMarca[a].length || a.localeCompare(b, "es"); });
-      document.getElementById("brand-chips").innerHTML = allMarcas.map(function(marca){
-        const logo = brandLogoUrl(marca);
-        return '<a class="brand-chip" href="inventario.html?marca=' + encodeURIComponent(marca) + '">' +
-          (logo ? '<img src="' + logo + '" alt="" loading="lazy">' : '') +
-          '<span>' + marca + '</span></a>';
-      }).join("");
+      /* Carrusel: avanza solo cada pocos segundos, se pausa al pasar el mouse
+         o tocarlo, y da la vuelta al llegar al final. En pantalla táctil se
+         desliza con el dedo; en escritorio hay flechas. */
+      const track = brandGrid;
+      function stepWidth(){
+        const card = track.querySelector(".brand-card");
+        return card ? card.getBoundingClientRect().width + 22 : 300;
+      }
+      function go(dir){
+        const max = track.scrollWidth - track.clientWidth;
+        if(dir > 0 && track.scrollLeft >= max - 4) track.scrollTo({ left: 0, behavior: "smooth" });
+        else if(dir < 0 && track.scrollLeft <= 4) track.scrollTo({ left: max, behavior: "smooth" });
+        else track.scrollBy({ left: dir * stepWidth(), behavior: "smooth" });
+      }
+      document.getElementById("brand-prev").addEventListener("click", function(){ go(-1); });
+      document.getElementById("brand-next").addEventListener("click", function(){ go(1); });
+
+      const carousel = document.getElementById("brand-carousel");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let paused = false, visible = false, resumeTimer = null;
+      function pauseFor(ms){
+        paused = true;
+        clearTimeout(resumeTimer);
+        if(ms) resumeTimer = setTimeout(function(){ paused = false; }, ms);
+      }
+      carousel.addEventListener("mouseenter", function(){ pauseFor(0); });
+      carousel.addEventListener("mouseleave", function(){ clearTimeout(resumeTimer); paused = false; });
+      carousel.addEventListener("focusin", function(){ pauseFor(0); });
+      carousel.addEventListener("focusout", function(){ paused = false; });
+      carousel.addEventListener("touchstart", function(){ pauseFor(6000); }, { passive: true });
+      if("IntersectionObserver" in window){
+        new IntersectionObserver(function(entries){ visible = entries[0].isIntersecting; }, { threshold: 0.3 }).observe(carousel);
+      } else { visible = true; }
+      if(!reduceMotion){
+        setInterval(function(){
+          if(!paused && visible && document.visibilityState === "visible") go(1);
+        }, 3500);
+      }
     }
 
     /* Fotos de clientes felices (muestra 4 en home) */
