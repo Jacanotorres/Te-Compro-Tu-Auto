@@ -75,7 +75,7 @@ async function renderVehicleDetail(){
         '</div>' +
 
         '<div style="margin-top:44px;">' +
-          '<h2 style="font-size:26px;margin-bottom:16px;">Información del vehículo</h2>' +
+          '<h2 style="font-size:20px;margin-bottom:16px;">Información del vehículo</h2>' +
           '<table class="spec-table">' +
             specRow("Marca", v.marca) +
             specRow("Línea", v.linea) +
@@ -94,7 +94,7 @@ async function renderVehicleDetail(){
 
       '<aside class="veh-sidebar">' +
         '<div class="veh-badges">' + badges + '</div>' +
-        '<h1 style="font-size:26px;margin-bottom:4px;">' + v.marca + ' ' + v.linea + '</h1>' +
+        '<h1 style="font-size:20px;margin-bottom:6px;">' + v.marca + ' ' + v.linea + '</h1>' +
         '<div class="veh-quick-specs">' +
           '<span>' + v.modelo + '</span>' +
           '<span>' + formatKm(v.km) + '</span>' +
