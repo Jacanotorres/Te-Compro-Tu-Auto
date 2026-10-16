@@ -153,6 +153,7 @@ async function initInventoryPage(){
     return;
   }
   if(params.get("marca")) els.marca.value = params.get("marca");
+  if(params.get("linea")) els.linea.value = params.get("linea");
   if(params.get("precioMax")) els.precioMax.value = params.get("precioMax");
   applyFilters();
 }

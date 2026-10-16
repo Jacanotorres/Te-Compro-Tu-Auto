@@ -246,7 +246,7 @@
   }
 
   async function loadVehicles(){
-    vehicles = await fetchVehicles();
+    vehicles = await fetchVehicles(true);
     renderVehiclesTable();
   }
 

@@ -35,16 +35,24 @@ function normalizeVehicle(row){
   };
 }
 
-async function fetchVehicles(){
-  const { data, error } = await supabaseClient
-    .from("vehicles")
-    .select("*, vehicle_photos(url, posicion)")
-    .order("fecha_ingreso", { ascending: false });
-  if(error){
-    console.error("Error cargando el inventario:", error);
-    return [];
+/* El inventario se pide una sola vez por carga de página (el inicio lo
+   usa en varias secciones). El panel pasa force=true para ver cambios. */
+let vehiclesPromise = null;
+function fetchVehicles(force){
+  if(!vehiclesPromise || force){
+    vehiclesPromise = (async function(){
+      const { data, error } = await supabaseClient
+        .from("vehicles")
+        .select("*, vehicle_photos(url, posicion)")
+        .order("fecha_ingreso", { ascending: false });
+      if(error){
+        console.error("Error cargando el inventario:", error);
+        return [];
+      }
+      return data.map(normalizeVehicle);
+    })();
   }
-  return data.map(normalizeVehicle);
+  return vehiclesPromise;
 }
 
 async function fetchVehicleById(id){
