@@ -980,3 +980,203 @@ body{font-family:var(--font-body);}
 }
 .finance-result-amount{font-size:clamp(30px,4.2vw,46px);overflow-wrap:anywhere;}
 @media (max-width:640px){.finance-result-amount{font-size:clamp(26px,9vw,36px);}}
+
+/* =========================================================
+   Acabado premium minimalista
+   Menos color y menos peso visual: fondo casi negro, líneas
+   finas, tarjetas oscuras, botones discretos y el amarillo de
+   marca reducido a pequeños detalles en un tono dorado suave.
+   ========================================================= */
+:root{
+  --ink:#0B0B0C;
+  --yellow:#D9C95A;
+  --yellow-deep:#B5A647;
+  --card:#111112;
+  --line:#232325;
+  --line-on-dark:#232325;
+  --muted-on-dark:#9C9C98;
+  --dim-on-dark:#74746F;
+  --hair:rgba(255,255,255,0.10);
+}
+body{font-size:16px;font-weight:400;}
+section{padding:96px 0;}
+.section-tight{padding:64px 0;}
+.bg-card{background:#0E0E0F;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+
+/* Títulos: más livianos y con aire */
+h1,h2,h3,h4,.display{font-weight:500;letter-spacing:0.6px;}
+.hero h1,.hero h1.display{font-weight:600;text-transform:uppercase;font-size:clamp(26px,4.2vw,50px);line-height:1.12;letter-spacing:1.2px;text-shadow:none;max-width:20ch;}
+.hero h1 span{color:var(--muted-on-dark);}
+.hero p.lede{color:var(--muted-on-dark);}
+.page-hero h1,.page-hero.has-photo h1{font-weight:600;font-size:clamp(24px,3.4vw,42px);letter-spacing:1px;text-shadow:none;}
+.section-head h2{font-weight:500;text-transform:none;font-size:clamp(22px,2.6vw,30px);letter-spacing:0.4px;}
+.cta h2{font-weight:500;text-transform:none;font-size:clamp(22px,3vw,34px);}
+.section-head{margin-bottom:52px;}
+.section-head p{font-size:16px;}
+
+/* Etiquetas (kicker): solo texto, sin píldora amarilla */
+.kicker,.section-head .kicker,.page-hero .kicker,.finance-card .kicker,.page-hero.has-photo .kicker{
+  background:none;border:0;padding:0;border-radius:0;margin-bottom:16px;
+  color:var(--yellow);font-weight:500;font-size:11.5px;letter-spacing:2.4px;text-transform:uppercase;
+}
+.hero-claim{
+  background:none;border:0;padding:0;border-radius:0;margin-top:0;margin-bottom:22px;
+  color:var(--yellow);font-family:var(--font-body);font-weight:500;font-size:11.5px;letter-spacing:2.4px;text-transform:uppercase;
+}
+.hero-claim strong{color:inherit;}
+
+/* Botones: discretos */
+.btn{padding:12px 26px;font-size:14.5px;font-weight:500;letter-spacing:0.2px;border-width:1px;}
+.btn:hover{transform:none;}
+.btn-primary,.btn-on-dark{background:var(--cream);color:var(--ink);border-color:var(--cream);}
+.btn-primary:hover,.btn-on-dark:hover{background:#fff;border-color:#fff;}
+.btn-ghost,.btn-outline-dark{background:transparent;color:var(--cream);border-color:rgba(255,255,255,0.22);}
+.btn-ghost:hover,.btn-outline-dark:hover{border-color:rgba(255,255,255,0.55);}
+.btn-green{background:transparent;color:var(--cream);border-color:rgba(255,255,255,0.22);}
+.btn-green:hover{border-color:rgba(255,255,255,0.55);}
+.btn-sm{padding:9px 18px;font-size:13.5px;}
+.link-arrow{font-weight:500;color:var(--cream);}
+.social-card .btn-ghost,.team-card .btn-ghost{color:var(--cream);border-color:rgba(255,255,255,0.22);}
+
+/* Encabezado y menú */
+header.site .wrap{background:rgba(11,11,12,0.72);border:1px solid var(--hair);box-shadow:none;padding:6px 10px 6px 22px;}
+.brand-logo{height:34px;}
+nav.main-nav a{font-weight:500;font-size:14px;color:var(--muted-on-dark);border-bottom:0;}
+nav.main-nav a:hover,nav.main-nav a.active{color:var(--cream);}
+.header-phone strong{font-size:14px;font-weight:500;}
+.nav-toggle{border:1px solid var(--hair);}
+.nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{height:1.5px;}
+@media (max-width:1100px){ nav.main-nav a{font-size:16px;color:var(--cream);} }
+
+/* Hero: menos luz y un buscador sobrio */
+.hero{background:linear-gradient(180deg,rgba(11,11,12,0.62) 0%,rgba(11,11,12,0.5) 40%,rgba(11,11,12,0.9) 82%,var(--ink) 100%),url("../img/hero-fachada.jpeg") center/cover no-repeat;background-color:var(--ink);}
+.hero-search{background:rgba(17,17,18,0.8);border:1px solid var(--hair);border-radius:20px;box-shadow:none;padding:20px 22px 24px;}
+.hero-tab{border:1px solid transparent;font-weight:500;font-size:12px;letter-spacing:1.4px;padding:8px 16px;}
+.hero-tab.active{background:rgba(255,255,255,0.08);color:var(--cream);border-color:var(--hair);}
+.hero-search-form label,.finance-field label,.finance-label{font-weight:500;font-size:11px;letter-spacing:1.4px;}
+.hero-search-form select,.hero-search-form input{border:1px solid var(--hair);border-radius:12px;background:rgba(255,255,255,0.03);}
+.hero-search-form select:focus,.hero-search-form input:focus{border-color:rgba(255,255,255,0.4);}
+.hero-sell-panel p{font-weight:500;font-size:16px;}
+
+/* Marcas: tarjetas apagadas, logos en un solo tono */
+.brand-grid{gap:18px;}
+.brand-card{border-radius:16px;border:1px solid var(--line);aspect-ratio:4/5;padding:20px;}
+.brand-card{filter:grayscale(0.55) brightness(0.8);transition:filter .3s ease,border-color .3s ease;}
+.brand-card:hover{transform:none;filter:grayscale(0) brightness(0.95);border-color:rgba(255,255,255,0.3);}
+.brand-name,.brand-card.has-logo .brand-name{font-family:var(--font-body);font-weight:500;font-size:15px;letter-spacing:1.6px;opacity:0.95;}
+.brand-count{background:none;border:0;padding:0;margin-top:4px;color:var(--muted-on-dark);font-weight:400;font-size:12.5px;}
+.brand-arrow{width:34px;height:34px;background:transparent;border:1px solid rgba(255,255,255,0.3);}
+.brand-arrow svg path,.brand-arrow svg{stroke:var(--cream);}
+.brand-logo-img{height:34px;opacity:0.9;}
+.brand-chip{background:transparent;border:0;padding:8px 14px;font-weight:400;font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted-on-dark);}
+.brand-chip:hover{border-color:transparent;transform:none;color:var(--cream);}
+.brand-chip img,.brand-chip .brand-chip-logo{height:18px;opacity:0.55;filter:grayscale(1);}
+.brand-chip .brand-chip-logo.brand-mono{opacity:0.55;}
+.brand-mono{font-weight:500;border-width:1px;}
+.brand-marquee{margin-top:36px;}
+
+/* Franja de beneficios y pasos */
+.benefits{background:transparent;padding:56px 0;}
+.benefit-icon{width:44px;height:44px;border-radius:50%;background:transparent;border:1px solid var(--hair);}
+.benefit h3{font-size:14px;font-weight:500;letter-spacing:0.8px;}
+.benefit p{font-size:13.5px;}
+.strip .item{border:1px solid var(--hair);color:var(--muted-on-dark);font-weight:400;}
+.steps::before{top:28px;height:1px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 16px);}
+.step .num{width:56px;height:56px;background:var(--ink);border:1px solid rgba(255,255,255,0.22);color:var(--yellow);font-size:16px;font-weight:500;}
+.step h3{font-weight:500;font-size:15px;letter-spacing:0.8px;}
+.step p{font-size:14.5px;}
+.buy-row .check{background:transparent;border:1px solid rgba(255,255,255,0.25);color:var(--cream);}
+.buy-row h4{font-weight:500;}
+.why{background:transparent;border-radius:16px;}
+.why-stat .num{color:var(--cream);font-weight:500;font-size:clamp(48px,6vw,84px);}
+.why-list .dot{background:var(--yellow-deep);width:6px;height:6px;}
+.why-list strong{font-weight:500;}
+
+/* Tarjetas de vehículo: oscuras, con línea fina */
+.vehicle-grid{gap:22px;}
+.vehicle-card{background:var(--card);border:1px solid var(--line);border-radius:14px;}
+.vehicle-card:hover{transform:none;box-shadow:none;border-color:rgba(255,255,255,0.28);}
+.vehicle-photo{background:#161618;}
+.vehicle-photo img{transition:transform .5s ease;}
+.vehicle-card:hover .vehicle-photo img{transform:scale(1.03);}
+.vehicle-badges{top:12px;left:12px;}
+.tag,.tag-nuevo,.tag-oportunidad,.tag-especial{
+  background:rgba(11,11,12,0.7);backdrop-filter:blur(6px);color:var(--cream);border:1px solid var(--hair);
+  font-weight:500;font-size:10.5px;letter-spacing:1.4px;padding:5px 11px;
+}
+.tag-oportunidad{color:var(--yellow);border-color:rgba(217,201,90,0.45);}
+.vehicle-body{padding:18px 20px 20px;gap:6px;}
+.vehicle-body h3{color:var(--cream);font-size:15px;font-weight:500;letter-spacing:0.6px;text-transform:uppercase;}
+.vehicle-body .price{color:var(--cream);font-weight:500;font-size:17px;letter-spacing:0.4px;}
+.vehicle-body .price .old{font-weight:400;color:var(--dim-on-dark);}
+.vehicle-specs{color:var(--muted-on-dark);}
+.vehicle-specs span:not(:last-child)::after{color:#3a3a3c;}
+.vehicle-actions{margin-top:12px;}
+.vehicle-actions .btn{padding:9px 12px;font-size:13px;}
+
+/* Ficha del vehículo */
+.veh-gallery-main,.veh-gallery-thumbs div,.veh-sidebar,.map-frame{border-radius:14px;}
+.veh-gallery-thumbs div.active{border-color:rgba(255,255,255,0.6);border-width:1px;}
+.veh-price{background:none;border:0;padding:0;color:var(--cream);font-weight:500;font-size:clamp(24px,3vw,32px);}
+.veh-cta-line{font-weight:500;font-size:15px;}
+.spec-table td:last-child{font-weight:500;}
+.veh-sticky-price strong{color:var(--cream);font-weight:500;}
+
+/* Formularios y tarjetas claras → oscuras */
+.form-card,.social-card,.team-card,.faq-item{background:var(--card);border:1px solid var(--line);border-radius:14px;}
+.form-card label{color:var(--muted-on-dark);font-weight:500;}
+.form-card input,.form-card textarea,.form-card select,.field select,.field input{
+  background:rgba(255,255,255,0.03);color:var(--cream);border:1px solid var(--hair);border-radius:10px;
+}
+.field select option,.form-card select option,.hero-search-form select option{background:#111;color:var(--cream);}
+.form-card input:focus,.form-card textarea:focus,.form-card select:focus,.field select:focus,.field input:focus{border-color:rgba(255,255,255,0.45);}
+.file-drop{background:rgba(255,255,255,0.02);border:1px dashed var(--hair);color:var(--muted-on-dark);}
+.form-note{color:var(--dim-on-dark);}
+.search-panel{background:var(--card);border-radius:14px;}
+.social-card h3,.team-body h3{color:var(--cream);font-weight:500;font-size:15px;letter-spacing:0.6px;}
+.social-card p,.team-body .role{color:var(--muted-on-dark);font-weight:400;}
+.social-card .icon{background:transparent;border:1px solid var(--hair);color:var(--cream);border-radius:50%;}
+.team-photo{border-radius:10px;}
+.faq-q{color:var(--cream);font-weight:500;}
+.faq-q .plus{border:1px solid rgba(255,255,255,0.3);}
+.faq-a p{color:var(--muted-on-dark);}
+
+/* Financiación */
+.finance-card,.finance-result{border-radius:16px;}
+.finance-result{border-top:1px solid var(--line);}
+.finance-result-amount{color:var(--cream);font-weight:500;}
+.finance-field select,.money-input input{border:1px solid var(--hair);background:rgba(255,255,255,0.03);border-radius:12px;}
+.term-pill{border:1px solid var(--hair);background:transparent;font-weight:500;}
+.term-pill:hover{border-color:rgba(255,255,255,0.45);}
+.term-pill.active{background:var(--cream);border-color:var(--cream);color:var(--ink);}
+.finance-row strong{font-weight:500;}
+#fin-inicial{accent-color:#EDEDEA;}
+.finance-recap{background:rgba(255,255,255,0.03);border:1px solid var(--hair);color:var(--muted-on-dark);}
+.finance-recap strong,.finance-recap b{color:var(--cream);}
+
+/* Botones flotantes: pequeños y silenciosos */
+.float-wa{background:#161618;border:1px solid var(--hair);box-shadow:none;animation:none !important;width:52px;height:52px;}
+.float-btn,.float-maps{background:rgba(17,17,18,0.85);border:1px solid var(--hair);box-shadow:none;color:var(--cream);width:40px;height:40px;}
+.float-maps{width:44px;height:44px;bottom:84px;}
+.float-btn svg [stroke],.float-maps svg [stroke]{stroke:var(--cream);}
+.float-btn svg [fill]:not([fill="none"]){fill:var(--cream);}
+
+/* Pie y detalles */
+footer.site{padding:72px 0 28px;}
+.footer-col h4{font-weight:500;font-size:11.5px;letter-spacing:2px;color:var(--muted-on-dark);}
+.footer-col a:hover,.footer-legal a:hover{color:var(--cream);}
+.contact-grid a,.contact-grid p{font-size:15px;}
+.contact-grid .label{font-weight:500;letter-spacing:1.4px;text-transform:uppercase;font-size:11px;}
+.page-hero{padding:64px 0 52px;}
+:focus-visible{outline:2px solid rgba(255,255,255,0.6);}
+@media (max-width:640px){
+  section{padding:68px 0;}
+  .btn{padding:12px 20px;font-size:14.5px;}
+  .hero h1,.hero h1.display{font-size:clamp(22px,6.4vw,30px);}
+}
+.vehicle-actions .btn,.vehicle-actions .btn-primary{background:transparent;color:var(--cream);border:1px solid rgba(255,255,255,0.18);}
+.vehicle-card:hover .vehicle-actions .btn{border-color:rgba(255,255,255,0.5);}
+.header-actions .btn-primary{background:transparent;color:var(--cream);border:1px solid rgba(255,255,255,0.22);}
+.header-actions .btn-primary:hover{border-color:rgba(255,255,255,0.55);background:transparent;}
+.header-actions .btn-ghost{border-color:transparent;color:var(--muted-on-dark);}
+.header-actions .btn-ghost:hover{color:var(--cream);}
