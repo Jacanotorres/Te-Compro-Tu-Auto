@@ -1180,3 +1180,13 @@ footer.site{padding:72px 0 28px;}
 .header-actions .btn-primary:hover{border-color:rgba(255,255,255,0.55);background:transparent;}
 .header-actions .btn-ghost{border-color:transparent;color:var(--muted-on-dark);}
 .header-actions .btn-ghost:hover{color:var(--cream);}
+
+/* Logo más grande en el encabezado y título principal del inicio más grande */
+.brand-logo{height:50px;}
+header.site .wrap{padding:6px 10px 6px 18px;}
+.hero h1,.hero h1.display{font-size:clamp(32px,5.6vw,72px);line-height:1.1;max-width:16ch;}
+.hero h1 span{color:var(--cream);}
+@media (max-width:640px){
+  .brand-logo{height:42px;}
+  .hero h1,.hero h1.display{font-size:clamp(28px,8.4vw,38px);}
+}
