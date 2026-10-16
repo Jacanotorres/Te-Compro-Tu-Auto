@@ -42,17 +42,21 @@ function formatKm(n){
   return n.toLocaleString("es-CO") + " km";
 }
 
-/* Logos de marca (assets/img/marcas/*.svg, en blanco). La clave es el nombre
-   de la marca en minúscula; las marcas que no estén aquí se muestran solo
-   con su nombre. Para agregar una: guarda su logo en esa carpeta y súmala. */
-const BRAND_LOGOS = {
-  "audi": "audi", "bmw": "bmw", "byd": "byd.png", "chevrolet": "chevrolet", "fiat": "fiat",
-  "ford": "ford", "kia": "kia", "mazda": "mazda", "mercedes-benz": "mercedes",
-  "mini": "mini", "nissan": "nissan", "porsche": "porsche", "renault": "renault",
-  "suzuki": "suzuki", "toyota": "toyota", "volvo": "volvo"
+/* Logos de marca (assets/img/marcas/, en blanco). Se busca por el nombre de la
+   marca sin tildes, espacios ni guiones ("Mercedes-Benz" -> "mercedesbenz").
+   Para agregar una marca nueva: guarda su logo en esa carpeta y súmalo aquí.
+   Las marcas sin logo se muestran con un emblema de sus iniciales. */
+const BRAND_LOGO_FILES = ["acura.svg", "alfaromeo.svg", "astonmartin.svg", "audi.svg", "bentley.svg", "bmw.svg", "byd.png", "cadillac.svg", "chevrolet.svg", "citroen.svg", "dacia.svg", "ferrari.svg", "fiat.svg", "ford.svg", "honda.svg", "hyundai.svg", "infiniti.svg", "jaguar.svg", "jeep.svg", "kia.svg", "lamborghini.svg", "landrover.svg", "mahindra.svg", "maserati.svg", "mazda.svg", "mclaren.svg", "mercedes.svg", "mg.svg", "mini.svg", "mitsubishi.svg", "nissan.svg", "opel.svg", "peugeot.svg", "polestar.svg", "porsche.svg", "ram.svg", "renault.svg", "rollsroyce.svg", "seat.svg", "skoda.svg", "smart.svg", "subaru.svg", "suzuki.svg", "tata.svg", "tesla.svg", "toyota.svg", "vauxhall.svg", "volkswagen.svg", "volvo.svg"];
+const BRAND_ALIASES = {
+  mercedesbenz: "mercedes", mercedes: "mercedes", vw: "volkswagen", chevy: "chevrolet",
+  rangerover: "landrover", ssangyong: "ssangyong", kiamotors: "kia", alfa: "alfaromeo"
 };
+function brandKey(marca){
+  return String(marca).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+}
 function brandLogoUrl(marca){
-  const file = BRAND_LOGOS[String(marca).trim().toLowerCase()];
-  if(!file) return "";
-  return "assets/img/marcas/" + (file.indexOf(".") === -1 ? file + ".svg" : file);
+  const key = brandKey(marca);
+  const slug = BRAND_ALIASES[key] || key;
+  const file = BRAND_LOGO_FILES.find(function(f){ return f.split(".")[0] === slug; });
+  return file ? "assets/img/marcas/" + file : "";
 }

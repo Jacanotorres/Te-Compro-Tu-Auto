@@ -88,6 +88,16 @@ function renderClientPhotos(list){
   }).join("");
 }
 
+/* Marca visual de un fabricante: su logo si lo tenemos, y si no un emblema
+   redondo con sus iniciales, para que ninguna marca quede sin identificar. */
+function brandMarkHTML(marca, cls){
+  const logo = brandLogoUrl(marca);
+  if(logo) return '<img class="' + cls + '" src="' + logo + '" alt="Logo de ' + marca + '" loading="lazy">';
+  const words = String(marca).trim().split(/[\s\-]+/).filter(Boolean);
+  const initials = (words.length > 1 ? words[0][0] + words[1][0] : String(marca).trim().slice(0, 2)).toUpperCase();
+  return '<span class="brand-mono ' + cls + '" role="img" aria-label="' + marca + '">' + initials + '</span>';
+}
+
 /* Para las secciones que se llenan desde Supabase (clientes, equipo,
    galería...): si no hay nada que mostrar, se oculta la sección completa
    en vez de dejar el título con un espacio vacío. */

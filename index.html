@@ -381,10 +381,9 @@
         const list = byMarca[marca];
         const withPhoto = list.find(function(v){ return v.fotos && v.fotos[0]; });
         const bg = withPhoto ? ' style="background-image:url(\'' + withPhoto.fotos[0] + '\')"' : "";
-        const logo = brandLogoUrl(marca);
-        return '<a class="brand-card' + (logo ? ' has-logo' : '') + '" href="inventario.html?marca=' + encodeURIComponent(marca) + '"' + bg + '>' +
+        return '<a class="brand-card has-logo" href="inventario.html?marca=' + encodeURIComponent(marca) + '"' + bg + '>' +
           '<div>' +
-            (logo ? '<img class="brand-logo-img" src="' + logo + '" alt="Logo de ' + marca + '">' : '') +
+            brandMarkHTML(marca, "brand-logo-img") +
             '<div class="brand-name">' + marca + '</div>' +
             '<span class="brand-count">' + list.length + (list.length === 1 ? ' vehículo' : ' vehículos') + '</span>' +
           '</div>' +
@@ -397,9 +396,8 @@
       const allMarcas = Object.keys(byMarca)
         .sort(function(a, b){ return byMarca[b].length - byMarca[a].length || a.localeCompare(b, "es"); });
       const chipsHtml = allMarcas.map(function(marca){
-        const logo = brandLogoUrl(marca);
         return '<a class="brand-chip" href="inventario.html?marca=' + encodeURIComponent(marca) + '">' +
-          (logo ? '<img src="' + logo + '" alt="" loading="lazy">' : '') +
+          brandMarkHTML(marca, "brand-chip-logo") +
           '<span>' + marca + '</span></a>';
       }).join("");
       const chipsTrack = document.getElementById("brand-chips");

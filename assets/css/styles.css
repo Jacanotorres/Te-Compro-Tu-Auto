@@ -923,3 +923,14 @@ button.gallery-item:hover img{transform:scale(1.04);}
   .brand-marquee-track{animation:none;}
   .brand-marquee-copy{display:none;}
 }
+
+
+/* Emblema con iniciales para marcas sin logo */
+.brand-mono{
+  display:inline-flex;align-items:center;justify-content:center;border-radius:50%;
+  border:2px solid rgba(255,255,255,0.85);color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  letter-spacing:0.5px;line-height:1;text-transform:uppercase;
+}
+.brand-logo-img.brand-mono{width:52px;height:52px;font-size:22px;margin-bottom:12px;}
+.brand-chip .brand-chip-logo{height:22px;width:auto;max-width:56px;object-fit:contain;flex-shrink:0;}
+.brand-chip .brand-chip-logo.brand-mono{width:26px;height:26px;font-size:11px;border-width:1.5px;}
