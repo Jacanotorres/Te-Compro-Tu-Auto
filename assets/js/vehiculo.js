@@ -105,6 +105,7 @@ async function renderVehicleDetail(){
         '<p class="veh-cta-line">¿Te interesa este vehículo? Escríbenos ahora.</p>' +
         '<a class="btn btn-green" href="' + waLink(waText) + '" target="_blank" rel="noopener">Hablar por WhatsApp</a>' +
         '<a class="btn btn-ghost" href="' + waLink("Hola, quiero programar una visita para ver el " + v.marca + " " + v.linea) + '" target="_blank" rel="noopener">Programar visita</a>' +
+        '<a class="btn btn-ghost" href="financiacion.html?vehiculo=' + encodeURIComponent(v.id) + '">Simular financiación</a>' +
         '<p style="margin-top:16px;margin-bottom:0;font-size:13.5px;">Uno de nuestros asesores puede darte más información, enviarte fotos adicionales o ayudarte a programar una visita.</p>' +
       '</aside>' +
     '</div>';

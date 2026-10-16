@@ -13,6 +13,11 @@ const CONTACT_ADDRESS = "Cra. 70 #14 - 02, Comuna 17, Cali, Valle del Cauca — 
 const CONTACT_HOURS = "Lunes a sábado, 8:00 a.m. – 6:00 p.m.";
 const MAP_EMBED_URL = "https://www.google.com/maps?q=Te+Compro+Tu+Auto,Cali&output=embed";
 
+/* Parámetros del simulador de financiación (financiacion.html) */
+const FINANCE_RATE_EA = 0.22;              /* tasa efectiva anual (22 %) */
+const FINANCE_TERMS = [12, 24, 36, 48, 60, 72];   /* plazos en meses */
+const FINANCE_MAX_INITIAL = 70;            /* cuota inicial máxima (% del valor) */
+
 const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/tecomprotuautosas?stkn=ZTJ3OWthcmJ4dnBn&utm_source=qr",
   tiktok: "https://www.tiktok.com/@tecomprotuautosas?_r=1&_t=ZS-99iW32dKwr2",
@@ -35,4 +40,19 @@ function formatPrice(n){
 }
 function formatKm(n){
   return n.toLocaleString("es-CO") + " km";
+}
+
+/* Logos de marca (assets/img/marcas/*.svg, en blanco). La clave es el nombre
+   de la marca en minúscula; las marcas que no estén aquí se muestran solo
+   con su nombre. Para agregar una: guarda su logo en esa carpeta y súmala. */
+const BRAND_LOGOS = {
+  "audi": "audi", "bmw": "bmw", "byd": "byd.png", "chevrolet": "chevrolet", "fiat": "fiat",
+  "ford": "ford", "kia": "kia", "mazda": "mazda", "mercedes-benz": "mercedes",
+  "mini": "mini", "nissan": "nissan", "porsche": "porsche", "renault": "renault",
+  "suzuki": "suzuki", "toyota": "toyota", "volvo": "volvo"
+};
+function brandLogoUrl(marca){
+  const file = BRAND_LOGOS[String(marca).trim().toLowerCase()];
+  if(!file) return "";
+  return "assets/img/marcas/" + (file.indexOf(".") === -1 ? file + ".svg" : file);
 }

@@ -21,6 +21,7 @@
     <nav class="main-nav">
       <a href="inventario.html">Inventario</a>
       <a href="vende-tu-carro.html">Vender mi carro</a>
+      <a href="financiacion.html">Financiación</a>
       <a href="nosotros.html">Nosotros</a>
       <a href="contacto.html">Contacto</a>
       <a href="panel.html" class="nav-panel-link">Panel</a>
@@ -82,6 +83,7 @@
       <h2>Las marcas que tenemos disponibles</h2>
     </div>
     <div class="brand-grid" id="brand-grid"></div>
+    <div class="brand-chips" id="brand-chips" aria-label="Todas las marcas disponibles"></div>
   </div>
 </section>
 
@@ -276,6 +278,7 @@
         <ul>
           <li><a href="vende-tu-carro.html">Vende tu carro</a></li>
           <li><a href="vende-tu-carro.html">Cotiza tu vehículo</a></li>
+        <li><a href="financiacion.html">Financiación</a></li>
           <li><a href="contacto.html">Agenda una valoración</a></li>
         </ul>
       </div>
@@ -376,11 +379,25 @@
         const list = byMarca[marca];
         const withPhoto = list.find(function(v){ return v.fotos && v.fotos[0]; });
         const bg = withPhoto ? ' style="background-image:url(\'' + withPhoto.fotos[0] + '\')"' : "";
-        return '<a class="brand-card" href="inventario.html?marca=' + encodeURIComponent(marca) + '"' + bg + '>' +
-          '<div><div class="brand-name">' + marca + '</div>' +
-          '<span class="brand-count">' + list.length + (list.length === 1 ? ' vehículo' : ' vehículos') + '</span></div>' +
+        const logo = brandLogoUrl(marca);
+        return '<a class="brand-card' + (logo ? ' has-logo' : '') + '" href="inventario.html?marca=' + encodeURIComponent(marca) + '"' + bg + '>' +
+          '<div>' +
+            (logo ? '<img class="brand-logo-img" src="' + logo + '" alt="Logo de ' + marca + '">' : '') +
+            '<div class="brand-name">' + marca + '</div>' +
+            '<span class="brand-count">' + list.length + (list.length === 1 ? ' vehículo' : ' vehículos') + '</span>' +
+          '</div>' +
           '<span class="brand-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>' +
         '</a>';
+      }).join("");
+
+      /* Fila con todas las marcas del inventario, con su logo */
+      const allMarcas = Object.keys(byMarca)
+        .sort(function(a, b){ return byMarca[b].length - byMarca[a].length || a.localeCompare(b, "es"); });
+      document.getElementById("brand-chips").innerHTML = allMarcas.map(function(marca){
+        const logo = brandLogoUrl(marca);
+        return '<a class="brand-chip" href="inventario.html?marca=' + encodeURIComponent(marca) + '">' +
+          (logo ? '<img src="' + logo + '" alt="" loading="lazy">' : '') +
+          '<span>' + marca + '</span></a>';
       }).join("");
     }
 

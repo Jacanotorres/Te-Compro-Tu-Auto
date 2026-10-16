@@ -114,7 +114,7 @@ nav.main-nav a:hover, nav.main-nav a.active{border-color:var(--yellow-deep);colo
 .nav-toggle span::before{position:absolute;top:-7px;}
 .nav-toggle span::after{position:absolute;top:7px;}
 
-@media (max-width:980px){
+@media (max-width:1100px){
   nav.main-nav{
     position:fixed;top:0;right:-100%;height:100vh;width:min(320px,84vw);
     background:var(--ink);flex-direction:column;align-items:flex-start;
@@ -823,4 +823,83 @@ button.gallery-item:hover img{transform:scale(1.04);}
   .veh-mobile-summary{display:block;margin-top:18px;}
   .veh-mobile-title{font-family:'Barlow Condensed';font-weight:800;font-size:32px;color:var(--cream);line-height:1.05;margin:0;}
   .veh-sidebar > .veh-badges, .veh-sidebar > h1, .veh-sidebar > .veh-quick-specs, .veh-sidebar > .veh-price-wrap{display:none;}
+}
+
+
+/* ---------- Financiación: simulador de cuota ---------- */
+.finance-sim{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:start;}
+.finance-card, .finance-result{
+  background:var(--card);border:1px solid var(--line);border-radius:28px;padding:32px;
+}
+.finance-result{border-top:3px solid var(--yellow);position:sticky;top:104px;}
+.finance-card h2{font-size:clamp(26px,3.4vw,36px);margin:6px 0 8px;}
+.finance-intro{color:var(--muted-on-dark);margin-bottom:22px;}
+.finance-field{margin-top:22px;}
+.finance-field label, .finance-label{
+  display:block;font-size:12px;font-weight:800;letter-spacing:0.4px;text-transform:uppercase;
+  color:var(--muted-on-dark);margin-bottom:8px;
+}
+.finance-field select, .money-input input{
+  width:100%;padding:14px 16px;border-radius:14px;border:1.5px solid var(--line);
+  background:var(--ink);color:var(--cream);font-family:'Karla',sans-serif;font-size:16px;
+}
+.finance-field select:focus, .money-input input:focus{border-color:var(--yellow-deep);outline:none;}
+.money-input{position:relative;}
+.money-input span{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted-on-dark);font-weight:700;}
+.money-input input{padding-left:34px;font-size:22px;font-weight:700;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.3px;}
+.term-pills{display:flex;flex-wrap:wrap;gap:10px;}
+.term-pill{
+  min-width:58px;padding:12px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--ink);
+  color:var(--cream);font-family:'Karla',sans-serif;font-weight:800;font-size:15px;cursor:pointer;
+}
+.term-pill:hover{border-color:var(--yellow-deep);}
+.term-pill.active{background:var(--yellow);border-color:var(--yellow);color:var(--ink);}
+.finance-row{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.finance-row strong{font-family:'Barlow Condensed',sans-serif;font-size:26px;color:var(--cream);}
+.finance-row.small{font-size:12.5px;color:var(--muted-on-dark);margin-top:6px;}
+#fin-inicial{width:100%;margin-top:10px;accent-color:var(--yellow);height:34px;cursor:pointer;}
+.finance-result-label{font-weight:800;color:var(--muted-on-dark);text-transform:uppercase;font-size:12.5px;letter-spacing:0.4px;margin:0 0 6px;}
+.finance-result-amount{
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(44px,6vw,68px);
+  color:var(--yellow);line-height:1;margin:0 0 22px;
+}
+.finance-summary{list-style:none;padding:0;margin:0 0 22px;border-top:1px solid var(--line);}
+.finance-summary li{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px;}
+.finance-summary span{color:var(--muted-on-dark);}
+.finance-summary strong{color:var(--cream);text-align:right;}
+.finance-notes{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:6px;}
+.finance-notes li{font-size:12.5px;color:var(--dim-on-dark);line-height:1.45;padding-left:14px;position:relative;}
+.finance-notes li::before{content:"•";position:absolute;left:0;color:var(--yellow-deep);}
+.finance-recap{
+  margin-top:20px;padding:16px 18px;border-radius:14px;background:#f6f6f2;border:1px solid #e4e4de;
+  display:grid;gap:4px;font-size:14px;color:var(--warmgray);
+}
+.finance-recap strong{color:var(--ink);font-size:13px;text-transform:uppercase;letter-spacing:0.4px;}
+.finance-recap b{color:var(--ink);}
+@media (max-width:900px){
+  .finance-sim{grid-template-columns:1fr;}
+  .finance-result{position:static;}
+}
+@media (max-width:560px){
+  .finance-card, .finance-result{padding:22px;border-radius:22px;}
+  .term-pills{gap:8px;}
+  .term-pill{flex:1 1 28%;min-width:0;padding:12px 8px;}
+}
+
+
+/* ---------- Logos de marca ---------- */
+.brand-logo-img{display:block;height:48px;width:auto;max-width:140px;object-fit:contain;margin-bottom:12px;}
+.brand-card.has-logo .brand-name{font-size:22px;opacity:0.95;}
+.brand-chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;}
+.brand-chip{
+  display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;
+  background:var(--card);border:1px solid var(--line);color:var(--cream);text-decoration:none;
+  font-weight:800;font-size:14px;transition:border-color .15s ease, transform .15s ease;
+}
+.brand-chip img{height:22px;width:auto;max-width:56px;object-fit:contain;}
+.brand-chip:hover{border-color:var(--yellow);transform:translateY(-2px);}
+@media (max-width:560px){ .brand-logo-img{height:38px;} .brand-chips{gap:8px;} .brand-chip{padding:9px 14px;} }
+.finance-card .kicker{
+  display:inline-block;background:var(--yellow);color:var(--ink);font-weight:800;font-size:12.5px;
+  letter-spacing:0.4px;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:6px;
 }
