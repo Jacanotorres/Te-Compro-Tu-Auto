@@ -23,10 +23,11 @@
       <a href="vende-tu-carro.html">Vender mi carro</a>
       <a href="nosotros.html">Nosotros</a>
       <a href="contacto.html" class="active">Contacto</a>
+      <a href="panel.html" class="nav-panel-link">Panel</a>
     </nav>
     <div class="header-actions">
       <div class="header-phone"><span>Escríbenos ahora</span><strong data-contact-phone></strong></div>
-      <a id="header-auth-link" class="btn btn-ghost btn-sm" href="login.html" style="margin-right:8px;">Iniciar sesión</a>
+      <a id="header-auth-link" class="btn btn-ghost btn-sm" href="panel.html">Panel</a>
       <a class="btn btn-primary" data-wa-text="Hola, quiero más información" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
@@ -60,11 +61,11 @@
           </div>
           <div class="buy-row">
             <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div><h4>Ubicación</h4><p>Cra. 70 #14 - 02, Comuna 17, Cali, Valle del Cauca — Colombia</p><p><a href="https://maps.app.goo.gl/CbG1gnEozWtFhTAd6" target="_blank" rel="noopener">Ver en Google Maps</a></p></div>
+            <div><h4>Ubicación</h4><p data-contact="address"></p><p><a href="https://maps.app.goo.gl/CbG1gnEozWtFhTAd6" target="_blank" rel="noopener">Ver en Google Maps</a></p></div>
           </div>
           <div class="buy-row">
             <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div><h4>Horario de atención</h4><p>Lunes a sábado, 8:00 a.m. – 6:00 p.m.</p></div>
+            <div><h4>Horario de atención</h4><p data-contact="hours"></p></div>
           </div>
           <div class="buy-row">
             <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -74,7 +75,7 @@
         <a class="btn btn-primary" style="margin-top:28px;" data-wa-text="Hola, quiero más información" target="_blank" rel="noopener">Escribir por WhatsApp</a>
       </div>
       <div class="map-frame">
-        <iframe src="https://www.google.com/maps?q=Te+Compro+Tu+Auto,Cali&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Te Compro Tu Auto en Cali, Colombia"></iframe>
+        <iframe data-map-embed loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Te Compro Tu Auto en Cali, Colombia"></iframe>
       </div>
     </div>
   </div>

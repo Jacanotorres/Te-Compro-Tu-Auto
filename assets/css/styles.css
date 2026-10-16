@@ -648,3 +648,179 @@ footer.site{background:var(--ink);border-top:1px solid var(--line-on-dark);paddi
 }
 .panel-card h3{font-size:22px;}
 .panel-card h4{font-size:16px;color:var(--cream);}
+
+/* =========================================================
+   Mejoras portadas de Dajoautos y adaptadas a Te Compro Tu Auto
+   ========================================================= */
+
+/* ---------- Panel: fotos que se ordenan arrastrando ---------- */
+.photo-drop{
+  display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 16px;text-align:center;
+  border:1.5px dashed rgba(254,241,2,0.45);border-radius:12px;background:var(--ink);cursor:pointer;
+  transition:background .15s ease, border-color .15s ease;
+}
+.photo-drop strong{color:var(--yellow);font-size:15px;letter-spacing:0.4px;}
+.photo-drop span{color:var(--muted-on-dark);font-size:13.5px;}
+.photo-drop:hover, .photo-drop.dragover{background:rgba(254,241,2,0.08);border-color:var(--yellow);}
+.panel-photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:16px;}
+.panel-photos .panel-empty{grid-column:1/-1;}
+.panel-photos .panel-photo{
+  width:auto;height:auto;aspect-ratio:4/3;border-radius:12px;cursor:grab;
+  user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;
+}
+.panel-photos .panel-photo img, .panel-photos .panel-photo video{pointer-events:none;}
+.panel-photos .panel-photo video{width:100%;height:100%;object-fit:cover;display:block;}
+.panel-photo .media-tag{position:absolute;left:6px;bottom:6px;padding:4px 9px;border-radius:6px;background:rgba(0,0,0,0.72);color:var(--yellow);font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;}
+.panel-photos .panel-photo .rm{top:6px;right:6px;width:28px;height:28px;font-size:17px;}
+.panel-photo .cover-badge, .panel-photo .make-cover{
+  position:absolute;left:6px;bottom:6px;padding:4px 9px;border-radius:6px;
+  font-family:'Karla',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;
+}
+.panel-photo .cover-badge{display:none;background:var(--yellow);color:var(--ink);}
+.panel-photo .make-cover{background:rgba(0,0,0,0.72);color:var(--cream);border:1px solid var(--line);cursor:pointer;}
+.panel-photo .make-cover:hover{border-color:var(--yellow);color:var(--yellow);}
+@media (hover:hover){
+  .panel-photos .panel-photo .make-cover{opacity:0;transition:opacity .15s ease;}
+  .panel-photos .panel-photo:hover .make-cover, .panel-photos .panel-photo .make-cover:focus-visible{opacity:1;}
+}
+#vehicle-photos-list .panel-photo:first-child{border-color:var(--yellow);box-shadow:0 0 0 1px var(--yellow);}
+#vehicle-photos-list .panel-photo:first-child .cover-badge{display:block;}
+#vehicle-photos-list .panel-photo:first-child .make-cover{display:none;}
+.panel-photos .sortable-ghost{opacity:0.3;}
+.panel-photos .sortable-chosen{cursor:grabbing;}
+
+/* ---------- Ojito de la contraseña (login) ---------- */
+.password-field{position:relative;}
+.password-field input{padding-right:52px !important;}
+.password-toggle{
+  position:absolute;right:6px;top:50%;transform:translateY(-50%);width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;border:none;border-radius:8px;
+  background:transparent;color:var(--warmgray);cursor:pointer;
+}
+.password-toggle:hover, .password-toggle[aria-pressed="true"]{color:var(--ink);}
+.password-toggle[hidden], .password-toggle svg[hidden]{display:none;}
+
+/* ---------- Galería de instalaciones (Nosotros): collage con lightbox ---------- */
+.gallery-grid{display:flex;gap:16px;align-items:flex-start;}
+.gallery-col{flex:1;min-width:0;display:flex;flex-direction:column;gap:16px;}
+.gallery-item{
+  position:relative;display:block;width:100%;padding:0;overflow:hidden;
+  border:1px solid var(--line);border-radius:18px;background:var(--ink);cursor:zoom-in;
+}
+.gallery-item img{width:100%;height:auto;display:block;transition:transform .35s ease;}
+button.gallery-item:hover img{transform:scale(1.04);}
+.gallery-item:hover{border-color:var(--yellow-deep);}
+.gallery-video{cursor:auto;}
+.gallery-video video{width:100%;height:auto;display:block;background:var(--ink);}
+.lightbox{
+  position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(0,0,0,0.92);cursor:zoom-out;
+}
+.lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;}
+.lightbox-close{
+  position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--yellow);background:var(--ink);color:var(--yellow);font-size:24px;line-height:1;cursor:pointer;
+}
+
+/* ---------- Encabezado: botón Panel siempre visible ---------- */
+.nav-panel-link{display:none;}
+@media (max-width:640px){
+  header.site .nav-toggle ~ .header-actions{display:none;}
+  nav.main-nav a.nav-panel-link{display:block;color:var(--yellow);}
+}
+
+/* ---------- Panel en celular (vertical) ---------- */
+.only-mobile{display:none;}
+@media (max-width:700px){
+  .only-mobile{display:inline;}
+  .only-desktop{display:none;}
+  .panel-page .brand-logo{height:34px;}
+  .panel-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .panel-tab{text-align:center;padding:12px 10px;}
+  .panel-photos{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .panel-card{padding:18px;border-radius:16px;}
+  .panel-card > .panel-header .btn{flex:1 1 100%;justify-content:center;padding:13px;}
+  .panel-table{min-width:0;}
+  .panel-table thead{display:none;}
+  .panel-table, .panel-table tbody, .panel-table tr, .panel-table td{display:block;width:100%;}
+  .panel-table tr{background:var(--ink);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px;}
+  .panel-table tr:last-child td{border-bottom:none;}
+  .panel-table td{border:none;padding:2px 0;white-space:normal;font-size:15px;}
+  .panel-table td.cell-title{font-size:17px;font-weight:700;color:var(--cream);margin-bottom:4px;}
+  .panel-table td[data-label]::before{content:attr(data-label) ": ";color:var(--muted-on-dark);}
+  .panel-table .panel-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;}
+  .panel-table .panel-actions .btn{justify-content:center;padding:12px;}
+  .panel-card form .panel-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .panel-card form .panel-actions .btn{justify-content:center;}
+  .panel-card input[type], .panel-card textarea, .panel-card select,
+  .form-card input[type], .form-card textarea, .form-card select{font-size:16px;}
+  .panel-clients-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));}
+  .panel-clients-grid .panel-photo{width:auto;height:auto;aspect-ratio:1;}
+  .panel-clients-grid .panel-photo .rm{width:28px;height:28px;font-size:16px;}
+}
+
+
+/* ---------- Inventario: filtros con el estilo del buscador del inicio ---------- */
+.search-panel{border-radius:28px;padding:26px;box-shadow:0 18px 44px rgba(0,0,0,0.35);}
+.field label{font-size:12px;font-weight:800;letter-spacing:0.4px;text-transform:uppercase;}
+.field select, .field input{
+  background:var(--ink);color:var(--cream);border-radius:14px;padding:13px 14px;
+}
+.field input::placeholder{color:var(--dim-on-dark);}
+.filters-toggle{display:none;width:100%;justify-content:center;margin-bottom:14px;}
+@media (max-width:700px){
+  .filters-toggle{display:inline-flex;}
+  .search-panel{display:none;padding:18px;border-radius:22px;}
+  .search-panel.open{display:grid;}
+  .field select, .field input{font-size:16px;}
+  .results-bar{margin:22px 0 18px;}
+  .results-bar .sort-field{width:100%;}
+  .results-bar .sort-field select{flex:1;font-size:16px;}
+}
+
+/* ---------- Ficha del vehículo en celular ---------- */
+.veh-sticky-cta{display:none;}
+@media (max-width:900px){
+  .veh-sticky-cta{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    position:fixed;left:0;right:0;bottom:0;z-index:60;padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(16,16,16,0.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);
+  }
+  .veh-sticky-price{display:flex;flex-direction:column;min-width:0;}
+  .veh-sticky-price small{font-size:12px;color:var(--muted-on-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .veh-sticky-price strong{font-family:'Barlow Condensed';font-size:26px;color:var(--yellow);line-height:1.1;}
+  .veh-sticky-cta .btn{padding:13px 22px;flex-shrink:0;}
+  body.has-sticky-cta{padding-bottom:84px;}
+  body.has-sticky-cta .float-wa, body.has-sticky-cta .float-maps, body.has-sticky-cta .float-stack{display:none;}
+}
+@media (max-width:700px){
+  .veh-gallery-main{border-radius:16px;}
+  .veh-gallery-thumbs{display:flex;overflow-x:auto;gap:8px;padding-bottom:6px;scroll-snap-type:x proximity;}
+  .veh-gallery-thumbs div{flex:0 0 76px;scroll-snap-align:start;}
+  .veh-sidebar{padding:22px;}
+  .veh-title-row h1{font-size:26px;}
+}
+
+/* ---------- Titulares de las páginas internas, al estilo del inicio ---------- */
+.page-hero.has-photo h1{font-size:clamp(38px,6vw,72px);line-height:1;max-width:18ch;}
+.page-hero.has-photo p{font-size:clamp(16px,2vw,19px);}
+.panel-table .panel-actions{flex-wrap:nowrap;}
+@media (max-width:700px){ .panel-table .panel-actions{flex-wrap:wrap;} }
+.sort-field select{
+  background:var(--ink);color:var(--cream);border:1.5px solid var(--line);border-radius:12px;
+  padding:10px 14px;font-family:'Karla',sans-serif;font-size:15px;
+}
+@media (max-width:900px){
+  .page-hero.has-photo{padding:150px 0 28px;}
+  .page-hero.has-photo + .section-tight{padding-top:28px;}
+}
+.veh-detail > *{min-width:0;}
+.veh-gallery-main, .veh-gallery-thumbs{max-width:100%;}
+
+/* En celular el título, las etiquetas y el precio van debajo de las fotos */
+.veh-mobile-summary{display:none;}
+@media (max-width:900px){
+  .veh-mobile-summary{display:block;margin-top:18px;}
+  .veh-mobile-title{font-family:'Barlow Condensed';font-weight:800;font-size:32px;color:var(--cream);line-height:1.05;margin:0;}
+  .veh-sidebar > .veh-badges, .veh-sidebar > h1, .veh-sidebar > .veh-quick-specs, .veh-sidebar > .veh-price-wrap{display:none;}
+}

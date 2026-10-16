@@ -23,10 +23,11 @@
       <a href="vende-tu-carro.html">Vender mi carro</a>
       <a href="nosotros.html" class="active">Nosotros</a>
       <a href="contacto.html">Contacto</a>
+      <a href="panel.html" class="nav-panel-link">Panel</a>
     </nav>
     <div class="header-actions">
       <div class="header-phone"><span>Escríbenos ahora</span><strong data-contact-phone></strong></div>
-      <a id="header-auth-link" class="btn btn-ghost btn-sm" href="login.html" style="margin-right:8px;">Iniciar sesión</a>
+      <a id="header-auth-link" class="btn btn-ghost btn-sm" href="panel.html">Panel</a>
       <a class="btn btn-primary" data-wa-text="Hola, quiero más información" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
@@ -57,6 +58,16 @@
     <p style="font-size:18px;margin-bottom:20px;">Con <strong>16 años en el mercado</strong>, nos hemos consolidado como una de las opciones más confiables de Cali y el Valle del Cauca. Nos caracterizamos por tener los precios más bajos del mercado — y ser los más baratos no significa mala calidad: cada vehículo que ofrecemos es bueno, está en excelentes condiciones y pasa por un proceso de revisión antes de llegar a ti.</p>
     <p style="font-size:18px;margin-bottom:20px;">Desde Cali hemos construido una empresa enfocada en conectar personas con vehículos y oportunidades, trabajando constantemente para ofrecer un inventario atractivo, precios competitivos y una atención que acompañe al cliente durante todo el proceso.</p>
     <p style="font-size:18px;font-weight:700;color:var(--cream);">Queremos ser una empresa reconocida no solamente por nuestros vehículos, sino por la confianza que construimos con cada cliente. Porque detrás de cada carro hay una historia. Y queremos hacer parte de la siguiente.</p>
+  </div>
+</section>
+
+<section id="instalaciones" hidden>
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="kicker">Nuestro lote</p>
+      <h2>Conoce nuestras instalaciones</h2>
+    </div>
+    <div class="gallery-grid" id="gallery-grid"></div>
   </div>
 </section>
 
@@ -192,29 +203,94 @@
 <script src="assets/js/db.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
+  /* Proporción alto/ancho de una foto o video de la galería (para armar el
+     collage). Si no carga en 5 segundos se asume 4:3. */
+  function mediaRatio(g){
+    return new Promise(function(resolve){
+      const timer = setTimeout(function(){ resolve(0.75); }, 5000);
+      function done(w, h){ clearTimeout(timer); resolve(w && h ? h / w : 0.75); }
+      if(g.tipo === "video"){
+        const v = document.createElement("video");
+        v.preload = "metadata";
+        v.muted = true;
+        v.onloadedmetadata = function(){ done(v.videoWidth, v.videoHeight); };
+        v.onerror = function(){ done(0, 0); };
+        v.src = g.url;
+      } else {
+        const img = new Image();
+        img.onload = function(){ done(img.naturalWidth, img.naturalHeight); };
+        img.onerror = function(){ done(0, 0); };
+        img.src = g.url;
+      }
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", async function(){
-    var clientGrid = document.getElementById("clientes-grid-all");
-    if(clientGrid){
-      const happyClients = await fetchHappyClients();
-      clientGrid.innerHTML = renderClientPhotos(happyClients);
+    /* Galería tipo collage: cada foto o video conserva su proporción y se
+       reparte en columnas, siempre en la más corta, respetando el orden del
+       panel. Los videos se ven ahí mismo; las fotos se abren en grande. */
+    const galleryGrid = document.getElementById("gallery-grid");
+    const gallery = await fetchGallery();
+    if(gallery.length > 0){
+      document.getElementById("instalaciones").hidden = false;
+      const ratios = await Promise.all(gallery.map(mediaRatio));
+      const items = gallery.map(function(g, i){
+        return {
+          ratio: ratios[i],
+          html: g.tipo === "video"
+            ? '<div class="gallery-item gallery-video"><video src="' + g.url + '#t=0.5" controls playsinline preload="metadata"></video></div>'
+            : '<button type="button" class="gallery-item" data-full="' + g.url + '" aria-label="Ver foto en grande"><img src="' + g.url + '" alt="Instalaciones de Te Compro Tu Auto" loading="lazy"></button>'
+        };
+      });
+
+      let columns = 0;
+      function layoutGallery(){
+        const n = window.innerWidth <= 520 ? 1 : window.innerWidth <= 820 ? 2 : 3;
+        if(n === columns) return;
+        columns = n;
+        const heights = new Array(n).fill(0);
+        const cols = Array.from({ length: n }, function(){ return []; });
+        items.forEach(function(item){
+          const shortest = heights.indexOf(Math.min.apply(null, heights));
+          cols[shortest].push(item.html);
+          heights[shortest] += item.ratio;
+        });
+        galleryGrid.innerHTML = cols.map(function(c){ return '<div class="gallery-col">' + c.join("") + '</div>'; }).join("");
+      }
+      layoutGallery();
+      window.addEventListener("resize", layoutGallery);
     }
-    var teamGrid = document.getElementById("team-grid-full");
-    if(teamGrid){
-      const team = await fetchTeam();
-      teamGrid.innerHTML = team.map(function(m){
-        const photo = m.foto
-          ? '<img src="' + m.foto + '" alt="' + m.nombre + '">'
-          : carIconSVG();
-        return '<div class="team-card">' +
-          '<div class="team-photo' + (m.foto ? ' has-photo' : '') + '">' + photo + '</div>' +
-          '<div class="team-body">' +
-            '<h3>' + m.nombre + '</h3>' +
-            '<p class="role">' + m.cargo + '</p>' +
-            '<a class="btn btn-ghost btn-sm btn-block" href="' + waLinkTo(m.whatsapp, "Hola, quiero hablar con " + m.nombre) + '" target="_blank" rel="noopener">WhatsApp</a>' +
-          '</div>' +
-        '</div>';
-      }).join("");
-    }
+    galleryGrid.addEventListener("click", function(e){
+      const item = e.target.closest("[data-full]");
+      if(!item) return;
+      const box = document.createElement("div");
+      box.className = "lightbox";
+      box.innerHTML = '<img src="' + item.getAttribute("data-full") + '" alt="Instalaciones de Te Compro Tu Auto">' +
+        '<button type="button" class="lightbox-close" aria-label="Cerrar">×</button>';
+      function close(){ box.remove(); document.removeEventListener("keydown", onKey); }
+      function onKey(ev){ if(ev.key === "Escape") close(); }
+      box.addEventListener("click", close);
+      document.addEventListener("keydown", onKey);
+      document.body.appendChild(box);
+    });
+
+    const happyClients = await fetchHappyClients();
+    fillOrHideSection(document.getElementById("clientes-grid-all"), renderClientPhotos(happyClients));
+
+    const team = await fetchTeam();
+    fillOrHideSection(document.getElementById("team-grid-full"), team.map(function(m){
+      const photo = m.foto
+        ? '<img src="' + m.foto + '" alt="' + m.nombre + '">'
+        : carIconSVG();
+      return '<div class="team-card">' +
+        '<div class="team-photo' + (m.foto ? ' has-photo' : '') + '">' + photo + '</div>' +
+        '<div class="team-body">' +
+          '<h3>' + m.nombre + '</h3>' +
+          '<p class="role">' + m.cargo + '</p>' +
+          '<a class="btn btn-ghost btn-sm btn-block" href="' + waLinkTo(m.whatsapp, "Hola, quiero hablar con " + m.nombre) + '" target="_blank" rel="noopener">WhatsApp</a>' +
+        '</div>' +
+      '</div>';
+    }).join(""));
   });
 </script>
 </body>

@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
+<body class="panel-page">
 
 <header class="site">
   <div class="wrap">
@@ -19,7 +19,7 @@
     </a>
     <div class="header-actions">
       <a class="btn btn-ghost btn-sm" href="index.html">Ver sitio</a>
-      <button class="btn btn-primary btn-sm" id="btn-logout">Cerrar sesión</button>
+      <button class="btn btn-primary btn-sm" id="btn-logout"><span class="only-desktop">Cerrar sesión</span><span class="only-mobile">Salir</span></button>
     </div>
   </div>
 </header>
@@ -38,6 +38,7 @@
       <button class="panel-tab active" data-tab="inventario">Inventario</button>
       <button class="panel-tab" data-tab="equipo" id="tab-btn-equipo" hidden>Equipo</button>
       <button class="panel-tab" data-tab="clientes" id="tab-btn-clientes" hidden>Clientes felices</button>
+      <button class="panel-tab" data-tab="galeria" id="tab-btn-galeria" hidden>Galería</button>
     </div>
 
     <!-- ===================== INVENTARIO ===================== -->
@@ -85,12 +86,18 @@
             <button type="submit" class="btn btn-primary">Guardar</button>
             <button type="button" class="btn btn-ghost" id="btn-cancel-vehicle">Cancelar</button>
           </div>
+          <p class="form-note" id="vehicle-photos-hint">Al guardar aparecerá aquí abajo la sección para subir las fotos.</p>
         </form>
 
         <div id="vehicle-photos-wrap" hidden style="margin-top:28px;border-top:1px solid var(--line);padding-top:22px;">
           <h4 style="margin:0 0 8px;">Fotos</h4>
-          <p class="form-note" style="margin-top:0;">La primera foto es la portada. Usa las flechas para cambiar el orden.</p>
-          <input type="file" id="v-photo-input" accept="image/*" multiple>
+          <p class="form-note" style="margin-top:0;">Para ordenarlas, arrastra las fotos (en el celular, mantén presionada una foto y muévela). La primera es la portada.</p>
+          <div class="photo-drop" id="v-photo-drop" role="button" tabindex="0">
+            <strong>Agregar fotos</strong>
+            <span>Toca aquí para elegir las fotos. Puedes elegir varias a la vez.</span>
+          </div>
+          <input type="file" id="v-photo-input" accept="image/*" multiple hidden>
+          <p class="form-note" id="v-photo-status" hidden></p>
           <div class="panel-photos" id="vehicle-photos-list"></div>
         </div>
       </div>
@@ -140,10 +147,28 @@
       </div>
     </div>
 
+    <!-- ===================== GALERÍA ===================== -->
+    <div class="panel-section" id="tab-galeria">
+      <div class="panel-card">
+        <div class="panel-header">
+          <h3 style="margin:0;">Galería de instalaciones</h3>
+        </div>
+        <p class="form-note">Fotos y videos que se muestran en la página "Nosotros". Arrastra para ordenarlos. Videos en MP4 de hasta 50 MB.</p>
+        <div class="photo-drop" id="g-drop" role="button" tabindex="0" style="margin-top:14px;">
+          <strong>Agregar fotos o videos</strong>
+          <span>Toca aquí para elegir fotos o videos. Puedes elegir varios a la vez.</span>
+        </div>
+        <input type="file" id="g-input" accept="image/*,video/*" multiple hidden>
+        <p class="form-note" id="g-status" hidden></p>
+        <div class="panel-photos" id="g-grid"></div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
 <script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/db.js"></script>
@@ -162,6 +187,7 @@
   if(isAdmin){
     document.getElementById("tab-btn-equipo").hidden = false;
     document.getElementById("tab-btn-clientes").hidden = false;
+    document.getElementById("tab-btn-galeria").hidden = false;
   }
 
   /* ---------- Tabs ---------- */
@@ -216,11 +242,11 @@
     }
     tbody.innerHTML = vehicles.map(function(v){
       return '<tr>' +
-        '<td>' + v.marca + ' ' + v.linea + '</td>' +
-        '<td>' + v.modelo + '</td>' +
-        '<td>' + formatPrice(v.precio) + '</td>' +
-        '<td>' + formatKm(v.km) + '</td>' +
-        '<td>' + v.placa + '</td>' +
+        '<td class="cell-title">' + v.marca + ' ' + v.linea + '</td>' +
+        '<td data-label="Modelo">' + v.modelo + '</td>' +
+        '<td data-label="Precio">' + formatPrice(v.precio) + '</td>' +
+        '<td data-label="Km">' + formatKm(v.km) + '</td>' +
+        '<td data-label="Placa">' + v.placa + '</td>' +
         '<td>' + vehicleTags(v) + '</td>' +
         '<td><div class="panel-actions">' +
           '<button class="btn btn-ghost btn-sm" data-edit="' + v.id + '">Editar</button>' +
@@ -274,11 +300,14 @@
     document.getElementById("v-oportunidad").checked = v ? !!v.oportunidad : false;
 
     const photosWrap = document.getElementById("vehicle-photos-wrap");
+    setPhotoStatus("");
     if(v){
       photosWrap.hidden = false;
+      document.getElementById("vehicle-photos-hint").hidden = true;
       renderVehiclePhotos(v.id);
     } else {
       photosWrap.hidden = true;
+      document.getElementById("vehicle-photos-hint").hidden = false;
     }
 
     document.getElementById("vehicle-form-card").hidden = false;
@@ -332,10 +361,28 @@
     if(error){ alert("No se pudo guardar: " + error.message); return; }
 
     await loadVehicles();
+    const wasNew = !document.getElementById("vehicle-photos-hint").hidden;
+    document.getElementById("vehicle-photos-hint").hidden = true;
     document.getElementById("vehicle-photos-wrap").hidden = false;
     renderVehiclePhotos(editingVehicleId);
+    if(wasNew){
+      setPhotoStatus("Vehículo guardado. Ahora agrega las fotos.");
+      document.getElementById("vehicle-photos-wrap").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     document.getElementById("vehicle-form-title").textContent = "Editar vehículo";
   });
+
+  /* ---------- Fotos del vehículo ---------- */
+  const photoList = document.getElementById("vehicle-photos-list");
+  const photoInput = document.getElementById("v-photo-input");
+  const photoDrop = document.getElementById("v-photo-drop");
+  let vehiclePhotos = [];   /* fotos del vehículo abierto, con la posición guardada */
+
+  function setPhotoStatus(text){
+    const status = document.getElementById("v-photo-status");
+    status.textContent = text;
+    status.hidden = !text;
+  }
 
   async function renderVehiclePhotos(vehicleId){
     const { data: photos, error } = await supabaseClient
@@ -345,66 +392,164 @@
       .order("posicion", { ascending: true });
     if(error){ console.error(error); return; }
 
-    const list = document.getElementById("vehicle-photos-list");
-    list.innerHTML = photos.map(function(p, i){
-      return '<div class="panel-photo">' +
-        '<img src="' + p.url + '" alt="">' +
-        '<button type="button" class="rm" data-rm-photo="' + p.id + '" title="Quitar">×</button>' +
-        '<div class="order-btns">' +
-          (i > 0 ? '<button type="button" data-move="' + p.id + '" data-dir="-1">◀</button>' : '') +
-          (i < photos.length - 1 ? '<button type="button" data-move="' + p.id + '" data-dir="1">▶</button>' : '') +
-        '</div>' +
+    vehiclePhotos = photos;
+    photoList.innerHTML = photos.map(function(p){
+      return '<div class="panel-photo" data-photo-id="' + p.id + '">' +
+        '<img src="' + p.url + '" alt="" draggable="false" loading="lazy">' +
+        '<span class="cover-badge">Portada</span>' +
+        '<button type="button" class="make-cover" title="Usar esta foto como portada">Hacer portada</button>' +
+        '<button type="button" class="rm" title="Quitar foto">×</button>' +
       '</div>';
     }).join("") || '<p class="panel-empty">Todavía no hay fotos.</p>';
+  }
 
-    list.querySelectorAll("[data-rm-photo]").forEach(function(btn){
-      btn.addEventListener("click", async function(){
-        const photoId = btn.getAttribute("data-rm-photo");
-        const photo = photos.find(function(p){ return p.id === photoId; });
-        if(!confirm("¿Quitar esta foto?")) return;
-        await supabaseClient.from("vehicle_photos").delete().eq("id", photoId);
-        if(photo) await removeFile("vehiculos", photo.url);
-        renderVehiclePhotos(vehicleId);
-      });
+  /* Guarda el orden que quedó en pantalla: la posición de cada foto es su
+     lugar en la lista. Solo se actualizan las que cambiaron. */
+  async function savePhotoOrder(){
+    const changed = [];
+    photoList.querySelectorAll(".panel-photo").forEach(function(el, index){
+      const photo = vehiclePhotos.find(function(p){ return p.id === el.getAttribute("data-photo-id"); });
+      if(photo && photo.posicion !== index) changed.push({ photo: photo, posicion: index });
     });
-    list.querySelectorAll("[data-move]").forEach(function(btn){
-      btn.addEventListener("click", async function(){
-        const photoId = btn.getAttribute("data-move");
-        const dir = parseInt(btn.getAttribute("data-dir"), 10);
-        const idx = photos.findIndex(function(p){ return p.id === photoId; });
-        const otherIdx = idx + dir;
-        if(otherIdx < 0 || otherIdx >= photos.length) return;
-        const a = photos[idx], b = photos[otherIdx];
-        await supabaseClient.from("vehicle_photos").update({ posicion: b.posicion }).eq("id", a.id);
-        await supabaseClient.from("vehicle_photos").update({ posicion: a.posicion }).eq("id", b.id);
-        renderVehiclePhotos(vehicleId);
-      });
+    if(changed.length === 0) return;
+
+    setPhotoStatus("Guardando el orden…");
+    const results = await Promise.all(changed.map(function(c){
+      return supabaseClient.from("vehicle_photos").update({ posicion: c.posicion }).eq("id", c.photo.id);
+    }));
+    if(results.some(function(r){ return r.error; })){
+      setPhotoStatus("No se pudo guardar el orden. Inténtalo de nuevo.");
+      renderVehiclePhotos(editingVehicleId);
+      return;
+    }
+    changed.forEach(function(c){ c.photo.posicion = c.posicion; });
+    setPhotoStatus("Orden guardado.");
+  }
+
+  /* Ordenar arrastrando. En pantalla táctil hay que mantener presionada la
+     foto un instante, para que deslizar el dedo siga sirviendo para bajar. */
+  if(typeof Sortable !== "undefined"){
+    Sortable.create(photoList, {
+      animation: 150,
+      draggable: ".panel-photo",
+      filter: "button",
+      preventOnFilter: false,
+      delay: 150,
+      delayOnTouchOnly: true,
+      onEnd: savePhotoOrder
     });
   }
 
-  document.getElementById("v-photo-input").addEventListener("change", async function(e){
-    const files = Array.from(e.target.files || []);
+  photoList.addEventListener("click", async function(e){
+    const item = e.target.closest(".panel-photo");
+    if(!item) return;
+    const photoId = item.getAttribute("data-photo-id");
+
+    if(e.target.closest(".make-cover")){
+      photoList.prepend(item);
+      savePhotoOrder();
+      return;
+    }
+
+    if(e.target.closest(".rm")){
+      if(!confirm("¿Quitar esta foto?")) return;
+      const photo = vehiclePhotos.find(function(p){ return p.id === photoId; });
+      const { error } = await supabaseClient.from("vehicle_photos").delete().eq("id", photoId);
+      if(error){ alert("No se pudo quitar la foto: " + error.message); return; }
+      if(photo) await removeFile("vehiculos", photo.url);
+      vehiclePhotos = vehiclePhotos.filter(function(p){ return p.id !== photoId; });
+      item.remove();
+      if(vehiclePhotos.length === 0) photoList.innerHTML = '<p class="panel-empty">Todavía no hay fotos.</p>';
+      setPhotoStatus("");
+    }
+  });
+
+  /* Reduce la foto antes de subirla (lado mayor de 1920 px, en JPEG): las
+     fotos de celular pesan varios MB y así suben y cargan mucho más rápido.
+     Si el navegador no puede leer el formato, se sube el archivo original. */
+  async function compressImage(file){
+    try{
+      const bitmap = await createImageBitmap(file, { imageOrientation: "from-image" });
+      const scale = Math.min(1, 1920 / Math.max(bitmap.width, bitmap.height));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(bitmap.width * scale);
+      canvas.height = Math.round(bitmap.height * scale);
+      canvas.getContext("2d").drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      bitmap.close();
+      const blob = await new Promise(function(resolve){ canvas.toBlob(resolve, "image/jpeg", 0.85); });
+      if(blob && blob.size < file.size) return { blob: blob, ext: "jpg" };
+    } catch(err){ /* formato no soportado: se sube tal cual */ }
+    return { blob: file, ext: file.name.split(".").pop() };
+  }
+
+  /* Sube varias fotos a la vez (de a 3) y las deja al final de la lista,
+     en el mismo orden en que se eligieron. */
+  async function addVehiclePhotos(files){
     if(files.length === 0 || !editingVehicleId) return;
+    const vehicleId = editingVehicleId;
 
     const { data: existing } = await supabaseClient
-      .from("vehicle_photos").select("posicion").eq("vehicle_id", editingVehicleId)
+      .from("vehicle_photos").select("posicion").eq("vehicle_id", vehicleId)
       .order("posicion", { ascending: false }).limit(1);
-    let nextPos = existing && existing.length ? existing[0].posicion + 1 : 0;
+    const firstPos = existing && existing.length ? existing[0].posicion + 1 : 0;
 
-    for(const file of files){
-      const ext = file.name.split(".").pop();
-      const path = editingVehicleId + "/" + Date.now() + "-" + Math.random().toString(36).slice(2,8) + "." + ext;
-      try{
-        const url = await uploadFile("vehiculos", path, file);
-        await supabaseClient.from("vehicle_photos").insert({ vehicle_id: editingVehicleId, url: url, posicion: nextPos });
-        nextPos++;
-      } catch(err){
-        alert("Error subiendo " + file.name + ": " + err.message);
+    const failed = [];
+    let next = 0, done = 0;
+    setPhotoStatus("Subiendo 0 de " + files.length + "…");
+
+    async function worker(){
+      while(next < files.length){
+        const index = next++;
+        const file = files[index];
+        try{
+          const image = await compressImage(file);
+          const path = vehicleId + "/" + Date.now() + "-" + Math.random().toString(36).slice(2,8) + "." + image.ext;
+          const url = await uploadFile("vehiculos", path, image.blob);
+          const { error } = await supabaseClient.from("vehicle_photos").insert({ vehicle_id: vehicleId, url: url, posicion: firstPos + index });
+          if(error) throw error;
+        } catch(err){
+          console.error("Error subiendo " + file.name, err);
+          failed.push(file.name);
+        }
+        done++;
+        setPhotoStatus("Subiendo " + done + " de " + files.length + "…");
       }
     }
+    await Promise.all([worker(), worker(), worker()]);
+
+    if(vehicleId === editingVehicleId) await renderVehiclePhotos(vehicleId);
+    setPhotoStatus(failed.length
+      ? "No se pudieron subir " + failed.length + " de " + files.length + ": " + failed.join(", ")
+      : (files.length === 1 ? "Foto subida." : files.length + " fotos subidas."));
+  }
+
+  photoInput.addEventListener("change", async function(e){
+    await addVehiclePhotos(Array.from(e.target.files || []));
     e.target.value = "";
-    renderVehiclePhotos(editingVehicleId);
   });
+
+  /* Recuadro para elegir o soltar archivos: abre el selector al tocarlo y
+     entrega los archivos soltados encima que pasen el filtro "accept". */
+  function wireDropZone(drop, input, accept, onFiles){
+    drop.addEventListener("click", function(){ input.click(); });
+    drop.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); input.click(); }
+    });
+    ["dragenter","dragover"].forEach(function(type){
+      drop.addEventListener(type, function(e){ e.preventDefault(); drop.classList.add("dragover"); });
+    });
+    ["dragleave","drop"].forEach(function(type){
+      drop.addEventListener(type, function(e){ e.preventDefault(); drop.classList.remove("dragover"); });
+    });
+    drop.addEventListener("drop", function(e){
+      onFiles(Array.from(e.dataTransfer.files || []).filter(accept));
+    });
+  }
+
+  function isImage(f){ return f.type.indexOf("image/") === 0; }
+  function isVideo(f){ return f.type.indexOf("video/") === 0; }
+
+  wireDropZone(photoDrop, photoInput, isImage, addVehiclePhotos);
 
   /* =========================================================
      EQUIPO (solo admin)
@@ -420,9 +565,9 @@
     tbody.innerHTML = team.map(function(m){
       return '<tr>' +
         '<td>' + (m.foto ? '<img src="' + m.foto + '" alt="" style="width:36px;height:36px;border-radius:50%;object-fit:cover;">' : '—') + '</td>' +
-        '<td>' + m.nombre + '</td>' +
-        '<td>' + m.cargo + '</td>' +
-        '<td>' + m.whatsapp + '</td>' +
+        '<td class="cell-title">' + m.nombre + '</td>' +
+        '<td data-label="Cargo">' + m.cargo + '</td>' +
+        '<td data-label="WhatsApp">' + m.whatsapp + '</td>' +
         '<td><div class="panel-actions">' +
           '<button class="btn btn-ghost btn-sm" data-edit-team="' + m.id + '">Editar</button>' +
           '<button class="btn btn-ghost btn-sm" data-delete-team="' + m.id + '">Eliminar</button>' +
@@ -482,10 +627,10 @@
 
       const file = document.getElementById("t-photo-input").files[0];
       if(file){
-        const ext = file.name.split(".").pop();
-        const path = slugify(payload.nombre) + "-" + Date.now() + "." + ext;
+        const image = await compressImage(file);
+        const path = slugify(payload.nombre) + "-" + Date.now() + "." + image.ext;
         try{
-          payload.foto = await uploadFile("equipo", path, file);
+          payload.foto = await uploadFile("equipo", path, image.blob);
         } catch(err){
           alert("Error subiendo la foto: " + err.message);
           return;
@@ -544,10 +689,10 @@
       if(files.length === 0) return;
       let nextOrden = happyClients.length;
       for(const file of files){
-        const ext = file.name.split(".").pop();
-        const path = Date.now() + "-" + Math.random().toString(36).slice(2,8) + "." + ext;
+        const image = await compressImage(file);
+        const path = Date.now() + "-" + Math.random().toString(36).slice(2,8) + "." + image.ext;
         try{
-          const url = await uploadFile("clientes", path, file);
+          const url = await uploadFile("clientes", path, image.blob);
           await supabaseClient.from("happy_clients").insert({ foto: url, orden: nextOrden });
           nextOrden++;
         } catch(err){
@@ -559,11 +704,147 @@
     });
   }
 
+  /* =========================================================
+     GALERÍA DE INSTALACIONES (solo admin): fotos y videos de "Nosotros"
+     ========================================================= */
+  const galleryGrid = document.getElementById("g-grid");
+  const galleryInput = document.getElementById("g-input");
+  const MAX_VIDEO_MB = 50;   /* límite de archivo del plan gratis de Supabase */
+  let galleryItems = [];
+
+  function setGalleryStatus(text){
+    const status = document.getElementById("g-status");
+    status.textContent = text;
+    status.hidden = !text;
+  }
+
+  function renderGallery(){
+    galleryGrid.innerHTML = galleryItems.map(function(g){
+      const media = g.tipo === "video"
+        ? '<video src="' + g.url + '#t=0.5" muted playsinline preload="metadata"></video><span class="media-tag">Video</span>'
+        : '<img src="' + g.url + '" alt="" draggable="false" loading="lazy">';
+      return '<div class="panel-photo" data-id="' + g.id + '">' + media +
+        '<button type="button" class="rm" title="Quitar">×</button>' +
+      '</div>';
+    }).join("") || '<p class="panel-empty">Todavía no hay fotos ni videos.</p>';
+  }
+
+  async function loadGallery(){
+    const { data, error } = await supabaseClient.from("gallery").select("*").order("orden", { ascending: true });
+    if(error){
+      console.error(error);
+      setGalleryStatus("No se pudo cargar la galería. ¿Ya se corrió el SQL de la galería en Supabase (supabase-galeria.sql)?");
+      return;
+    }
+    galleryItems = data;
+    renderGallery();
+  }
+
+  /* Igual que con las fotos de un vehículo: el orden es el de la pantalla */
+  async function saveGalleryOrder(){
+    const changed = [];
+    galleryGrid.querySelectorAll(".panel-photo").forEach(function(el, index){
+      const item = galleryItems.find(function(g){ return g.id === el.getAttribute("data-id"); });
+      if(item && item.orden !== index) changed.push({ item: item, orden: index });
+    });
+    if(changed.length === 0) return;
+
+    setGalleryStatus("Guardando el orden…");
+    const results = await Promise.all(changed.map(function(c){
+      return supabaseClient.from("gallery").update({ orden: c.orden }).eq("id", c.item.id);
+    }));
+    if(results.some(function(r){ return r.error; })){
+      setGalleryStatus("No se pudo guardar el orden. Inténtalo de nuevo.");
+      loadGallery();
+      return;
+    }
+    changed.forEach(function(c){ c.item.orden = c.orden; });
+    setGalleryStatus("Orden guardado.");
+  }
+
+  if(typeof Sortable !== "undefined"){
+    Sortable.create(galleryGrid, {
+      animation: 150,
+      draggable: ".panel-photo",
+      filter: "button",
+      preventOnFilter: false,
+      delay: 150,
+      delayOnTouchOnly: true,
+      onEnd: saveGalleryOrder
+    });
+  }
+
+  galleryGrid.addEventListener("click", async function(e){
+    if(!e.target.closest(".rm")) return;
+    const el = e.target.closest(".panel-photo");
+    const id = el.getAttribute("data-id");
+    const item = galleryItems.find(function(g){ return g.id === id; });
+    if(!confirm(item && item.tipo === "video" ? "¿Quitar este video?" : "¿Quitar esta foto?")) return;
+    const { error } = await supabaseClient.from("gallery").delete().eq("id", id);
+    if(error){ alert("No se pudo quitar: " + error.message); return; }
+    if(item) await removeFile("galeria", item.url);
+    galleryItems = galleryItems.filter(function(g){ return g.id !== id; });
+    el.remove();
+    if(galleryItems.length === 0) renderGallery();
+    setGalleryStatus("");
+  });
+
+  /* Las fotos se reducen como las de los vehículos; los videos se suben tal
+     cual, siempre que no pasen de MAX_VIDEO_MB. Suben de a 2 y quedan al final. */
+  async function addGalleryFiles(files){
+    const tooBig = files.filter(function(f){ return isVideo(f) && f.size > MAX_VIDEO_MB * 1024 * 1024; });
+    files = files.filter(function(f){ return tooBig.indexOf(f) === -1; });
+    if(files.length === 0){
+      if(tooBig.length) setGalleryStatus("Estos videos pasan de " + MAX_VIDEO_MB + " MB y no se subieron: " + tooBig.map(function(f){ return f.name; }).join(", "));
+      return;
+    }
+
+    const firstOrden = galleryItems.reduce(function(max, g){ return Math.max(max, g.orden + 1); }, 0);
+    const failed = [];
+    let next = 0, done = 0;
+    setGalleryStatus("Subiendo 0 de " + files.length + "…");
+
+    async function worker(){
+      while(next < files.length){
+        const index = next++;
+        const file = files[index];
+        try{
+          const video = isVideo(file);
+          const upload = video ? { blob: file, ext: file.name.split(".").pop() } : await compressImage(file);
+          const path = Date.now() + "-" + Math.random().toString(36).slice(2,8) + "." + upload.ext;
+          const url = await uploadFile("galeria", path, upload.blob);
+          const { error } = await supabaseClient.from("gallery").insert({ url: url, tipo: video ? "video" : "foto", orden: firstOrden + index });
+          if(error) throw error;
+        } catch(err){
+          console.error("Error subiendo " + file.name, err);
+          failed.push(file.name);
+        }
+        done++;
+        setGalleryStatus("Subiendo " + done + " de " + files.length + "…");
+      }
+    }
+    await Promise.all([worker(), worker()]);
+    await loadGallery();
+
+    const notes = [];
+    notes.push(files.length - failed.length === 1 ? "1 archivo subido." : (files.length - failed.length) + " archivos subidos.");
+    if(failed.length) notes.push("No se pudieron subir: " + failed.join(", ") + ".");
+    if(tooBig.length) notes.push("Pasan de " + MAX_VIDEO_MB + " MB y no se subieron: " + tooBig.map(function(f){ return f.name; }).join(", ") + ".");
+    setGalleryStatus(notes.join(" "));
+  }
+
+  galleryInput.addEventListener("change", async function(e){
+    await addGalleryFiles(Array.from(e.target.files || []));
+    e.target.value = "";
+  });
+  wireDropZone(document.getElementById("g-drop"), galleryInput, function(f){ return isImage(f) || isVideo(f); }, addGalleryFiles);
+
   /* ---------- Carga inicial ---------- */
   await loadVehicles();
   if(isAdmin){
     await loadTeam();
     await loadHappyClients();
+    await loadGallery();
   }
 })();
 </script>

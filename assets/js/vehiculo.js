@@ -62,6 +62,18 @@ async function renderVehicleDetail(){
       '<div>' +
         galleryHTML +
 
+        '<div class="veh-mobile-summary">' +
+          '<div class="veh-badges">' + badges + '</div>' +
+          '<p class="veh-mobile-title">' + v.marca + ' ' + v.linea + '</p>' +
+          '<div class="veh-quick-specs">' +
+            '<span>' + v.modelo + '</span>' +
+            '<span>' + formatKm(v.km) + '</span>' +
+            '<span>' + v.combustible + '</span>' +
+            '<span>' + v.color + '</span>' +
+          '</div>' +
+          '<div class="veh-price-wrap">' + oldPriceHTML + '<span class="veh-price">' + formatPrice(v.precio) + '</span></div>' +
+        '</div>' +
+
         '<div style="margin-top:44px;">' +
           '<h2 style="font-size:26px;margin-bottom:16px;">Información del vehículo</h2>' +
           '<table class="spec-table">' +
@@ -99,14 +111,40 @@ async function renderVehicleDetail(){
 
   if(fotos.length > 1){
     const mainPhoto = document.getElementById("veh-main-photo");
-    root.querySelectorAll(".veh-gallery-thumbs div").forEach(function(thumb){
-      thumb.addEventListener("click", function(){
-        mainPhoto.src = thumb.getAttribute("data-src");
-        root.querySelectorAll(".veh-gallery-thumbs div").forEach(function(t){ t.classList.remove("active"); });
-        thumb.classList.add("active");
-      });
+    const thumbs = Array.from(root.querySelectorAll(".veh-gallery-thumbs div"));
+    let current = 0;
+
+    function goTo(i){
+      current = (i + fotos.length) % fotos.length;
+      mainPhoto.src = fotos[current];
+      thumbs.forEach(function(t, idx){ t.classList.toggle("active", idx === current); });
+      thumbs[current].scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+    }
+
+    thumbs.forEach(function(thumb, idx){
+      thumb.addEventListener("click", function(){ goTo(idx); });
+    });
+
+    /* En celular: deslizar la foto principal a izquierda o derecha */
+    const stage = root.querySelector(".veh-gallery-main");
+    let startX = null;
+    stage.addEventListener("touchstart", function(e){ startX = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener("touchend", function(e){
+      if(startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      startX = null;
+      if(Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
     });
   }
+
+  /* Barra fija abajo en celular: precio + WhatsApp siempre a la mano */
+  const sticky = document.createElement("div");
+  sticky.className = "veh-sticky-cta";
+  sticky.innerHTML =
+    '<div class="veh-sticky-price"><small>' + v.marca + ' ' + v.linea + '</small><strong>' + formatPrice(v.precio) + '</strong></div>' +
+    '<a class="btn btn-green" href="' + waLink(waText) + '" target="_blank" rel="noopener">WhatsApp</a>';
+  document.body.appendChild(sticky);
+  document.body.classList.add("has-sticky-cta");
 }
 
 document.addEventListener("DOMContentLoaded", renderVehicleDetail);

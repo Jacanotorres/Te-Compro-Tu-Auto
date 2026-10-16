@@ -9,6 +9,9 @@
 const WHATSAPP_NUMBER = "573054411478";
 const CONTACT_PHONE_DISPLAY = "+57 305 441 1478";
 const CONTACT_EMAIL = "administracion@tecomprotuauto.com.co";
+const CONTACT_ADDRESS = "Cra. 70 #14 - 02, Comuna 17, Cali, Valle del Cauca — Colombia";
+const CONTACT_HOURS = "Lunes a sábado, 8:00 a.m. – 6:00 p.m.";
+const MAP_EMBED_URL = "https://www.google.com/maps?q=Te+Compro+Tu+Auto,Cali&output=embed";
 
 const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/tecomprotuautosas?stkn=ZTJ3OWthcmJ4dnBn&utm_source=qr",

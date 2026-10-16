@@ -52,18 +52,18 @@ document.addEventListener("DOMContentLoaded", function(){
     el.textContent = new Date().getFullYear();
   });
 
-  /* Enlace de "Iniciar sesión" del header: si ya hay sesión, se
-     convierte en "Panel". Se protege con typeof por si la página no
-     cargó el cliente de Supabase. */
-  const authLink = document.getElementById("header-auth-link");
-  if(authLink && typeof supabaseClient !== "undefined"){
-    supabaseClient.auth.getSession().then(function(res){
-      if(res.data.session){
-        authLink.textContent = "Panel";
-        authLink.href = "panel.html";
-      }
-    });
-  }
+  /* Dirección y horario (data-contact="address|hours") y mapa incrustado
+     (iframe data-map-embed): se editan en data.js; lo que quede vacío se oculta. */
+  const extraContact = { address: CONTACT_ADDRESS, hours: CONTACT_HOURS };
+  document.querySelectorAll("[data-contact]").forEach(function(el){
+    const text = extraContact[el.getAttribute("data-contact")];
+    if(text) el.textContent = text;
+    else (el.closest(".buy-row") || el).hidden = true;
+  });
+  document.querySelectorAll("[data-map-embed]").forEach(function(frame){
+    if(MAP_EMBED_URL) frame.src = MAP_EMBED_URL;
+    else (frame.closest(".map-frame") || frame).hidden = true;
+  });
 
   /* Acordeón de preguntas frecuentes */
   document.querySelectorAll(".faq-item .faq-q").forEach(function(btn){
@@ -86,6 +86,15 @@ function renderClientPhotos(list){
       : photoIconSVG();
     return '<div class="team-photo">' + inner + '</div>';
   }).join("");
+}
+
+/* Para las secciones que se llenan desde Supabase (clientes, equipo,
+   galería...): si no hay nada que mostrar, se oculta la sección completa
+   en vez de dejar el título con un espacio vacío. */
+function fillOrHideSection(container, html){
+  if(!container) return;
+  if(html) container.innerHTML = html;
+  else container.closest("section").hidden = true;
 }
 
 /* Icono de cámara reutilizable para fotos de clientes sin imagen aún */

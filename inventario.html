@@ -23,10 +23,11 @@
       <a href="vende-tu-carro.html">Vender mi carro</a>
       <a href="nosotros.html">Nosotros</a>
       <a href="contacto.html">Contacto</a>
+      <a href="panel.html" class="nav-panel-link">Panel</a>
     </nav>
     <div class="header-actions">
       <div class="header-phone"><span>Escríbenos ahora</span><strong data-contact-phone></strong></div>
-      <a id="header-auth-link" class="btn btn-ghost btn-sm" href="login.html" style="margin-right:8px;">Iniciar sesión</a>
+      <a id="header-auth-link" class="btn btn-ghost btn-sm" href="panel.html">Panel</a>
       <a class="btn btn-primary" data-wa-text="Hola, quiero más información sobre el inventario" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
@@ -43,7 +44,11 @@
 
 <section class="section-tight">
   <div class="wrap">
-    <div class="search-panel">
+    <button type="button" class="btn btn-ghost filters-toggle" id="filters-toggle" aria-expanded="false" aria-controls="search-panel">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+      <span>Filtrar y buscar</span>
+    </button>
+    <div class="search-panel" id="search-panel">
       <div class="search-row">
         <div class="field"><label for="f-marca">Marca</label><select id="f-marca"></select></div>
         <div class="field"><label for="f-linea">Línea o modelo</label><input id="f-linea" type="text" placeholder="Ej: Fortuner, Q3..."></div>
