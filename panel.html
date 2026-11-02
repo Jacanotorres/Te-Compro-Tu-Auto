@@ -39,6 +39,7 @@
 
     <div class="panel-tabs">
       <button class="panel-tab active" data-tab="inventario">Inventario</button>
+      <button class="panel-tab" data-tab="inmuebles">Inmuebles</button>
       <button class="panel-tab" data-tab="equipo" id="tab-btn-equipo" hidden>Equipo</button>
       <button class="panel-tab" data-tab="clientes" id="tab-btn-clientes" hidden>Clientes felices</button>
       <button class="panel-tab" data-tab="galeria" id="tab-btn-galeria" hidden>Galería</button>
@@ -102,6 +103,75 @@
           <input type="file" id="v-photo-input" accept="image/*" multiple hidden>
           <p class="form-note" id="v-photo-status" hidden></p>
           <div class="panel-photos" id="vehicle-photos-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== INMUEBLES ===================== -->
+    <div class="panel-section" id="tab-inmuebles">
+      <div class="panel-card">
+        <div class="panel-header">
+          <h3 style="margin:0;">Inmuebles</h3>
+          <button class="btn btn-primary btn-sm" id="btn-new-property">+ Agregar inmueble</button>
+        </div>
+        <p class="form-note" id="properties-warning" hidden></p>
+        <div class="panel-table-wrap" style="margin-top:18px;">
+          <table class="panel-table">
+            <thead><tr>
+              <th>Inmueble</th><th>Tipo</th><th>Operación</th><th>Ciudad</th><th>Precio</th><th>Etiquetas</th><th></th>
+            </tr></thead>
+            <tbody id="properties-tbody"><tr><td colspan="7" class="panel-empty">Cargando...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel-card" id="property-form-card" hidden>
+        <h3 id="property-form-title" style="margin-top:0;">Agregar inmueble</h3>
+        <form id="property-form">
+          <div class="form-grid">
+            <div><label for="pr-operacion">Operación</label>
+              <select id="pr-operacion" required><option value="venta">En venta</option><option value="arriendo">En arriendo</option></select></div>
+            <div><label for="pr-tipo">Tipo de inmueble</label>
+              <select id="pr-tipo" required>
+                <option value="casa">Casa</option><option value="apartamento">Apartamento</option><option value="lote">Lote</option>
+                <option value="local">Local</option><option value="finca">Finca</option>
+              </select></div>
+            <div class="full"><label for="pr-titulo">Título del anuncio</label><input id="pr-titulo" type="text" required placeholder="Ej: Casa de 3 habitaciones en Ciudad Jardín"></div>
+            <div><label for="pr-ciudad">Ciudad</label><input id="pr-ciudad" type="text" required placeholder="Ej: Cali"></div>
+            <div><label for="pr-barrio">Barrio, sector o vereda</label><input id="pr-barrio" type="text" placeholder="Ej: Ciudad Jardín"></div>
+            <div class="full"><label for="pr-direccion">Dirección exacta (opcional, no se muestra en el sitio)</label><input id="pr-direccion" type="text"></div>
+            <div><label for="pr-precio">Precio (en arriendo: valor mensual)</label><input id="pr-precio" type="number" min="0" required></div>
+            <div><label for="pr-administracion">Administración mensual (opcional)</label><input id="pr-administracion" type="number" min="0"></div>
+            <div><label for="pr-area">Área total en m² (en lotes, el área del lote)</label><input id="pr-area" type="number" min="0" step="any" required></div>
+            <div class="pr-building"><label for="pr-area-construida">Área construida en m²</label><input id="pr-area-construida" type="number" min="0" step="any"></div>
+            <div class="pr-building"><label for="pr-habitaciones">Habitaciones</label><input id="pr-habitaciones" type="number" min="0"></div>
+            <div class="pr-building"><label for="pr-banos">Baños</label><input id="pr-banos" type="number" min="0"></div>
+            <div class="pr-building"><label for="pr-parqueaderos">Parqueaderos</label><input id="pr-parqueaderos" type="number" min="0"></div>
+            <div><label for="pr-estrato">Estrato (opcional)</label>
+              <select id="pr-estrato"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+            <div><label for="pr-fecha">Fecha de publicación</label><input id="pr-fecha" type="date" required></div>
+            <div class="full"><label for="pr-descripcion">Descripción</label><textarea id="pr-descripcion" rows="5" placeholder="Acabados, zona, cercanías, qué incluye…"></textarea></div>
+            <div class="full" style="display:flex;gap:24px;align-items:center;">
+              <label style="display:flex;align-items:center;gap:8px;margin:0;"><input id="pr-destacado" type="checkbox" style="width:auto;"> Destacado (aparece primero en el inicio)</label>
+            </div>
+          </div>
+          <div class="panel-actions" style="margin-top:22px;">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-ghost" id="btn-cancel-property">Cancelar</button>
+          </div>
+          <p class="form-note" id="property-photos-hint">Al guardar aparecerá aquí abajo la sección para subir las fotos.</p>
+        </form>
+
+        <div id="property-photos-wrap" hidden style="margin-top:28px;border-top:1px solid var(--line);padding-top:22px;">
+          <h4 style="margin:0 0 8px;">Fotos</h4>
+          <p class="form-note" style="margin-top:0;">Para ordenarlas, arrastra las fotos (en el celular, mantén presionada una foto y muévela). La primera es la portada.</p>
+          <div class="photo-drop" id="pr-photo-drop" role="button" tabindex="0">
+            <strong>Agregar fotos</strong>
+            <span>Toca aquí para elegir las fotos. Puedes elegir varias a la vez.</span>
+          </div>
+          <input type="file" id="pr-photo-input" accept="image/*" multiple hidden>
+          <p class="form-note" id="pr-photo-status" hidden></p>
+          <div class="panel-photos" id="property-photos-list"></div>
         </div>
       </div>
     </div>
@@ -177,6 +247,7 @@
 <script src="assets/js/db.js"></script>
 <script src="assets/js/auth.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/inmuebles.js"></script>
 <script>
 (async function(){
   const profile = await requireRole(["admin","asesor"]);
@@ -842,8 +913,319 @@
   });
   wireDropZone(document.getElementById("g-drop"), galleryInput, function(f){ return isImage(f) || isVideo(f); }, addGalleryFiles);
 
+  /* =========================================================
+     INMUEBLES (casas, apartamentos, lotes, locales y fincas)
+     ========================================================= */
+  let properties = [];
+  let editingPropertyId = null;
+  const prEl = function(id){ return document.getElementById("pr-" + id); };
+
+  function propertyTags(p){
+    const op = '<span class="tag ' + (p.operacion === "venta" ? "tag-nuevo" : "tag-oportunidad") + '" style="margin-right:6px;">' + (p.operacion === "venta" ? "En venta" : "En arriendo") + '</span>';
+    return op + (p.destacado ? '<span class="tag tag-nuevo">Destacado</span>' : "");
+  }
+
+  function renderPropertiesTable(){
+    const tbody = document.getElementById("properties-tbody");
+    if(properties.length === 0){
+      tbody.innerHTML = '<tr><td colspan="7" class="panel-empty">Todavía no hay inmuebles.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = properties.map(function(p){
+      return '<tr>' +
+        '<td class="cell-title">' + esc(p.titulo) + '</td>' +
+        '<td data-label="Tipo">' + esc(propertyTypeLabel(p.tipo)) + '</td>' +
+        '<td data-label="Operación">' + (p.operacion === "venta" ? "Venta" : "Arriendo") + '</td>' +
+        '<td data-label="Ciudad">' + esc(p.ciudad) + '</td>' +
+        '<td data-label="Precio">' + formatPrice(p.precio) + (p.operacion === "arriendo" ? " / mes" : "") + '</td>' +
+        '<td>' + propertyTags(p) + '</td>' +
+        '<td><div class="panel-actions">' +
+          '<button class="btn btn-ghost btn-sm" data-edit-property="' + esc(p.id) + '">Editar</button>' +
+          '<button class="btn btn-ghost btn-sm" data-delete-property="' + esc(p.id) + '">Eliminar</button>' +
+        '</div></td>' +
+      '</tr>';
+    }).join("");
+
+    tbody.querySelectorAll("[data-edit-property]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        openPropertyForm(properties.find(function(p){ return p.id === btn.getAttribute("data-edit-property"); }));
+      });
+    });
+    tbody.querySelectorAll("[data-delete-property]").forEach(function(btn){
+      btn.addEventListener("click", async function(){
+        const id = btn.getAttribute("data-delete-property");
+        if(!confirm("¿Eliminar este inmueble y sus fotos? Esta acción no se puede deshacer.")) return;
+        const prop = properties.find(function(p){ return p.id === id; });
+        const { error } = await supabaseClient.from("properties").delete().eq("id", id);
+        if(error){ alert("No se pudo eliminar: " + error.message); return; }
+        if(prop) await Promise.all((prop.fotos || []).map(function(url){ return removeFile("inmuebles", url); }));
+        if(editingPropertyId === id) closePropertyForm();
+        await loadProperties();
+      });
+    });
+  }
+
+  async function loadProperties(){
+    const warning = document.getElementById("properties-warning");
+    const { data, error } = await supabaseClient
+      .from("properties")
+      .select("*, property_photos(url, posicion)")
+      .order("fecha_publicacion", { ascending: false });
+    if(error){
+      console.error(error);
+      warning.textContent = "No se pudieron cargar los inmuebles. ¿Ya se corrió el SQL de inmuebles en Supabase (supabase-inmuebles.sql)?";
+      warning.hidden = false;
+      document.getElementById("properties-tbody").innerHTML = '<tr><td colspan="7" class="panel-empty">—</td></tr>';
+      return;
+    }
+    warning.hidden = true;
+    properties = data.map(normalizeProperty);
+    propertiesPromise = Promise.resolve(properties);
+    renderPropertiesTable();
+  }
+
+  /* En los lotes no aplican habitaciones, baños, parqueaderos ni área construida */
+  function syncPropertyFormFields(){
+    const isLote = prEl("tipo").value === "lote";
+    document.querySelectorAll("#property-form .pr-building").forEach(function(el){ el.hidden = isLote; });
+  }
+  prEl("tipo").addEventListener("change", syncPropertyFormFields);
+
+  function openPropertyForm(p){
+    editingPropertyId = p ? p.id : null;
+    document.getElementById("property-form-title").textContent = p ? "Editar inmueble" : "Agregar inmueble";
+    prEl("operacion").value = p ? p.operacion : "venta";
+    prEl("tipo").value = p ? p.tipo : "casa";
+    prEl("titulo").value = p ? p.titulo : "";
+    prEl("ciudad").value = p ? p.ciudad : "";
+    prEl("barrio").value = (p && p.barrio) || "";
+    prEl("direccion").value = (p && p.direccion) || "";
+    prEl("precio").value = p ? p.precio : "";
+    prEl("administracion").value = (p && p.administracion) || "";
+    prEl("area").value = p && p.area !== null ? p.area : "";
+    prEl("area-construida").value = (p && p.areaConstruida) || "";
+    prEl("habitaciones").value = p && p.habitaciones !== null ? p.habitaciones : "";
+    prEl("banos").value = p && p.banos !== null ? p.banos : "";
+    prEl("parqueaderos").value = p && p.parqueaderos !== null ? p.parqueaderos : "";
+    prEl("estrato").value = (p && p.estrato) ? String(p.estrato) : "";
+    prEl("fecha").value = p ? p.fechaPublicacion : new Date().toISOString().slice(0,10);
+    prEl("descripcion").value = (p && p.descripcion) || "";
+    prEl("destacado").checked = p ? !!p.destacado : false;
+    syncPropertyFormFields();
+
+    propertyPhotos.setStatus("");
+    if(p){
+      document.getElementById("property-photos-wrap").hidden = false;
+      document.getElementById("property-photos-hint").hidden = true;
+      propertyPhotos.render();
+    } else {
+      document.getElementById("property-photos-wrap").hidden = true;
+      document.getElementById("property-photos-hint").hidden = false;
+    }
+    document.getElementById("property-form-card").hidden = false;
+    document.getElementById("property-form-card").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function closePropertyForm(){
+    editingPropertyId = null;
+    document.getElementById("property-form").reset();
+    document.getElementById("property-form-card").hidden = true;
+  }
+
+  document.getElementById("btn-new-property").addEventListener("click", function(){ openPropertyForm(null); });
+  document.getElementById("btn-cancel-property").addEventListener("click", closePropertyForm);
+
+  function intOrNull(value){ return value === "" ? null : parseInt(value, 10); }
+  function numOrNull(value){ return value === "" ? null : parseFloat(value); }
+
+  document.getElementById("property-form").addEventListener("submit", async function(e){
+    e.preventDefault();
+    const tipo = prEl("tipo").value;
+    const isLote = tipo === "lote";
+    const ciudad = prEl("ciudad").value.trim();
+    const barrio = prEl("barrio").value.trim();
+
+    const payload = {
+      tipo: tipo,
+      operacion: prEl("operacion").value,
+      titulo: prEl("titulo").value.trim(),
+      descripcion: prEl("descripcion").value.trim() || null,
+      ciudad: ciudad,
+      barrio: barrio || null,
+      direccion: prEl("direccion").value.trim() || null,
+      precio: parseInt(prEl("precio").value, 10),
+      administracion: intOrNull(prEl("administracion").value),
+      area_m2: parseFloat(prEl("area").value),
+      area_construida_m2: isLote ? null : numOrNull(prEl("area-construida").value),
+      habitaciones: isLote ? null : intOrNull(prEl("habitaciones").value),
+      banos: isLote ? null : intOrNull(prEl("banos").value),
+      parqueaderos: isLote ? null : intOrNull(prEl("parqueaderos").value),
+      estrato: intOrNull(prEl("estrato").value),
+      destacado: prEl("destacado").checked,
+      fecha_publicacion: prEl("fecha").value,
+      updated_at: new Date().toISOString()
+    };
+
+    let error;
+    if(editingPropertyId){
+      ({ error } = await supabaseClient.from("properties").update(payload).eq("id", editingPropertyId));
+    } else {
+      const id = slugify([tipo, payload.operacion, ciudad, barrio].filter(Boolean).join("-")) + "-" + Date.now().toString(36).slice(-5);
+      payload.id = id;
+      ({ error } = await supabaseClient.from("properties").insert(payload));
+      if(!error) editingPropertyId = id;
+    }
+    if(error){ alert("No se pudo guardar: " + error.message); return; }
+
+    await loadProperties();
+    const wasNew = !document.getElementById("property-photos-hint").hidden;
+    document.getElementById("property-photos-hint").hidden = true;
+    document.getElementById("property-photos-wrap").hidden = false;
+    propertyPhotos.render();
+    document.getElementById("property-form-title").textContent = "Editar inmueble";
+    if(wasNew){
+      propertyPhotos.setStatus("Inmueble guardado. Ahora agrega las fotos.");
+      document.getElementById("property-photos-wrap").scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      propertyPhotos.setStatus("Cambios guardados.");
+    }
+  });
+
+  /* ---------- Fotos del inmueble (misma mecánica que las de los vehículos) ---------- */
+  const propertyPhotos = (function(){
+    const list = document.getElementById("property-photos-list");
+    const input = document.getElementById("pr-photo-input");
+    let photos = [];
+
+    function setStatus(text){
+      const status = document.getElementById("pr-photo-status");
+      status.textContent = text;
+      status.hidden = !text;
+    }
+
+    async function render(){
+      const propertyId = editingPropertyId;
+      if(!propertyId) return;
+      const { data, error } = await supabaseClient
+        .from("property_photos").select("*").eq("property_id", propertyId)
+        .order("posicion", { ascending: true });
+      if(error){ console.error(error); return; }
+      if(propertyId !== editingPropertyId) return;
+      photos = data;
+      list.innerHTML = photos.map(function(p){
+        return '<div class="panel-photo" data-photo-id="' + p.id + '">' +
+          '<img src="' + p.url + '" alt="" draggable="false" loading="lazy">' +
+          '<span class="cover-badge">Portada</span>' +
+          '<button type="button" class="make-cover" title="Usar esta foto como portada">Hacer portada</button>' +
+          '<button type="button" class="rm" title="Quitar foto">×</button>' +
+        '</div>';
+      }).join("") || '<p class="panel-empty">Todavía no hay fotos.</p>';
+    }
+
+    async function saveOrder(){
+      const changed = [];
+      list.querySelectorAll(".panel-photo").forEach(function(el, index){
+        const photo = photos.find(function(p){ return p.id === el.getAttribute("data-photo-id"); });
+        if(photo && photo.posicion !== index) changed.push({ photo: photo, posicion: index });
+      });
+      if(changed.length === 0) return;
+      setStatus("Guardando el orden…");
+      const results = await Promise.all(changed.map(function(c){
+        return supabaseClient.from("property_photos").update({ posicion: c.posicion }).eq("id", c.photo.id);
+      }));
+      if(results.some(function(r){ return r.error; })){
+        setStatus("No se pudo guardar el orden. Inténtalo de nuevo.");
+        render();
+        return;
+      }
+      changed.forEach(function(c){ c.photo.posicion = c.posicion; });
+      setStatus("Orden guardado.");
+      loadProperties();
+    }
+
+    if(typeof Sortable !== "undefined"){
+      Sortable.create(list, {
+        animation: 150, draggable: ".panel-photo", filter: "button", preventOnFilter: false,
+        delay: 150, delayOnTouchOnly: true, onEnd: saveOrder
+      });
+    }
+
+    list.addEventListener("click", async function(e){
+      const item = e.target.closest(".panel-photo");
+      if(!item) return;
+      const photoId = item.getAttribute("data-photo-id");
+
+      if(e.target.closest(".make-cover")){
+        list.prepend(item);
+        saveOrder();
+        return;
+      }
+      if(e.target.closest(".rm")){
+        if(!confirm("¿Quitar esta foto?")) return;
+        const photo = photos.find(function(p){ return p.id === photoId; });
+        const { error } = await supabaseClient.from("property_photos").delete().eq("id", photoId);
+        if(error){ alert("No se pudo quitar la foto: " + error.message); return; }
+        if(photo) await removeFile("inmuebles", photo.url);
+        photos = photos.filter(function(p){ return p.id !== photoId; });
+        item.remove();
+        if(photos.length === 0) list.innerHTML = '<p class="panel-empty">Todavía no hay fotos.</p>';
+        setStatus("");
+        loadProperties();
+      }
+    });
+
+    /* Sube varias fotos a la vez (de a 3) y las deja al final, en el orden elegido */
+    async function add(files){
+      if(files.length === 0 || !editingPropertyId) return;
+      const propertyId = editingPropertyId;
+      const { data: existing } = await supabaseClient
+        .from("property_photos").select("posicion").eq("property_id", propertyId)
+        .order("posicion", { ascending: false }).limit(1);
+      const firstPos = existing && existing.length ? existing[0].posicion + 1 : 0;
+
+      const failed = [];
+      let next = 0, done = 0;
+      setStatus("Subiendo 0 de " + files.length + "…");
+
+      async function worker(){
+        while(next < files.length){
+          const index = next++;
+          const file = files[index];
+          try{
+            const image = await compressImage(file);
+            const path = propertyId + "/" + Date.now() + "-" + Math.random().toString(36).slice(2,8) + "." + image.ext;
+            const url = await uploadFile("inmuebles", path, image.blob);
+            const { error } = await supabaseClient.from("property_photos").insert({ property_id: propertyId, url: url, posicion: firstPos + index });
+            if(error) throw error;
+          } catch(err){
+            console.error("Error subiendo " + file.name, err);
+            failed.push(file.name);
+          }
+          done++;
+          setStatus("Subiendo " + done + " de " + files.length + "…");
+        }
+      }
+      await Promise.all([worker(), worker(), worker()]);
+
+      if(propertyId === editingPropertyId) await render();
+      setStatus(failed.length
+        ? "No se pudieron subir " + failed.length + " de " + files.length + ": " + failed.join(", ")
+        : (files.length === 1 ? "Foto subida." : files.length + " fotos subidas."));
+      loadProperties();
+    }
+
+    input.addEventListener("change", async function(e){
+      await add(Array.from(e.target.files || []));
+      e.target.value = "";
+    });
+    wireDropZone(document.getElementById("pr-photo-drop"), input, isImage, add);
+
+    return { render: render, setStatus: setStatus };
+  })();
+
   /* ---------- Carga inicial ---------- */
   await loadVehicles();
+  await loadProperties();
   if(isAdmin){
     await loadTeam();
     await loadHappyClients();

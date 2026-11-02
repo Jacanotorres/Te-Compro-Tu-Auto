@@ -103,3 +103,63 @@ async function fetchGallery(){
   }
   return data;
 }
+
+/* ---------- Inmuebles (casas, apartamentos, lotes, locales, fincas) ---------- */
+function normalizeProperty(row){
+  const fotos = (row.property_photos || [])
+    .slice()
+    .sort(function(a, b){ return a.posicion - b.posicion; })
+    .map(function(p){ return p.url; });
+  return {
+    id: row.id,
+    tipo: row.tipo,
+    operacion: row.operacion,
+    titulo: row.titulo,
+    descripcion: row.descripcion,
+    ciudad: row.ciudad,
+    barrio: row.barrio,
+    direccion: row.direccion,
+    precio: row.precio,
+    administracion: row.administracion,
+    area: row.area_m2 === null ? null : Number(row.area_m2),
+    areaConstruida: row.area_construida_m2 === null ? null : Number(row.area_construida_m2),
+    habitaciones: row.habitaciones,
+    banos: row.banos,
+    parqueaderos: row.parqueaderos,
+    estrato: row.estrato,
+    destacado: row.destacado,
+    fechaPublicacion: row.fecha_publicacion,
+    fotos: fotos
+  };
+}
+
+let propertiesPromise = null;
+function fetchProperties(force){
+  if(!propertiesPromise || force){
+    propertiesPromise = (async function(){
+      const { data, error } = await supabaseClient
+        .from("properties")
+        .select("*, property_photos(url, posicion)")
+        .order("fecha_publicacion", { ascending: false });
+      if(error){
+        console.error("Error cargando los inmuebles:", error);
+        return [];
+      }
+      return data.map(normalizeProperty);
+    })();
+  }
+  return propertiesPromise;
+}
+
+async function fetchPropertyById(id){
+  const { data, error } = await supabaseClient
+    .from("properties")
+    .select("*, property_photos(url, posicion)")
+    .eq("id", id)
+    .maybeSingle();
+  if(error || !data){
+    if(error) console.error("Error cargando el inmueble:", error);
+    return null;
+  }
+  return normalizeProperty(data);
+}

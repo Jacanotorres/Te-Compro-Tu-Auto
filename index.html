@@ -23,6 +23,7 @@
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
     <nav class="main-nav">
       <a href="inventario.html">Inventario</a>
+      <a href="inmuebles.html">Inmuebles</a>
       <a href="vende-tu-carro.html">Vender mi carro</a>
       <a href="financiacion.html">Financiación</a>
       <a href="nosotros.html">Nosotros</a>
@@ -137,6 +138,19 @@
     </div>
     <div class="vehicle-grid" id="oportunidades-grid"></div>
     <div class="section-foot"><a class="link-arrow" href="inventario.html?tipo=oportunidad">Ver todas las oportunidades →</a></div>
+  </div>
+</section>
+
+<!-- 4b. Inmuebles (se muestra solo si hay inmuebles publicados) -->
+<section id="inmuebles" hidden>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Inmuebles</p>
+      <h2>Casas, apartamentos y lotes</h2>
+      <p>Propiedades en venta y arriendo en diferentes ciudades y sectores.</p>
+    </div>
+    <div class="vehicle-grid cols-4" id="inmuebles-grid"></div>
+    <div class="section-foot"><a class="link-arrow" href="inmuebles.html">Ver todos los inmuebles →</a></div>
   </div>
 </section>
 
@@ -262,9 +276,10 @@
         <p>En efectivo y al instante. Compra y venta de vehículos usados en Cali, Colombia.</p>
       </div>
       <div class="footer-col">
-        <h4>Vehículos</h4>
+        <h4>Explora</h4>
         <ul>
           <li><a href="inventario.html">Inventario</a></li>
+        <li><a href="inmuebles.html">Inmuebles</a></li>
           <li><a href="index.html#recien-llegados">Recién llegados</a></li>
           <li><a href="index.html#oportunidades">Oportunidades</a></li>
         </ul>
@@ -334,6 +349,7 @@
 <script src="assets/js/db.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/catalog.js"></script>
+<script src="assets/js/inmuebles.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", async function(){
     /* Pestañas Comprar / Vender del buscador del hero */
