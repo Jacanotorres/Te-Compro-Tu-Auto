@@ -313,8 +313,8 @@ async function renderPropertyDetail(){
         '<p class="property-place" style="margin-bottom:10px;">' + tipo + ' · ' + esc(lugar) + '</p>' +
         quickHTML + priceHTML +
         '<p class="veh-cta-line">¿Te interesa este inmueble? Escríbenos ahora.</p>' +
-        '<a class="btn btn-green" href="' + waLink(waText) + '" target="_blank" rel="noopener">Hablar por WhatsApp</a>' +
-        '<a class="btn btn-ghost" href="' + waLink("Hola, quiero programar una visita al inmueble \"" + p.titulo + "\" en " + lugar) + '" target="_blank" rel="noopener">Programar visita</a>' +
+        '<a class="btn btn-green" href="' + waLinkTo(INMUEBLES_WHATSAPP_NUMBER, waText) + '" target="_blank" rel="noopener">Hablar por WhatsApp</a>' +
+        '<a class="btn btn-ghost" href="' + waLinkTo(INMUEBLES_WHATSAPP_NUMBER, "Hola, quiero programar una visita al inmueble \"" + p.titulo + "\" en " + lugar) + '" target="_blank" rel="noopener">Programar visita</a>' +
         '<p style="margin-top:16px;margin-bottom:0;font-size:13.5px;">Uno de nuestros asesores puede darte más información, enviarte fotos adicionales o coordinar una visita.</p>' +
       '</aside>' +
     '</div>';
@@ -355,7 +355,7 @@ async function renderPropertyDetail(){
   sticky.className = "veh-sticky-cta";
   sticky.innerHTML =
     '<div class="veh-sticky-price"><small>' + tipo + ' · ' + esc(p.ciudad) + '</small><strong>' + propertyPriceHTML(p) + '</strong></div>' +
-    '<a class="btn btn-green" href="' + waLink(waText) + '" target="_blank" rel="noopener">WhatsApp</a>';
+    '<a class="btn btn-green" href="' + waLinkTo(INMUEBLES_WHATSAPP_NUMBER, waText) + '" target="_blank" rel="noopener">WhatsApp</a>';
   document.body.appendChild(sticky);
   document.body.classList.add("has-sticky-cta");
 }

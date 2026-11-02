@@ -8,6 +8,10 @@
 
 const WHATSAPP_NUMBER = "573054411478";
 const CONTACT_PHONE_DISPLAY = "+57 305 441 1478";
+
+/* WhatsApp propio de la sección de inmuebles (inmuebles.html, inmueble.html y sus botones) */
+const INMUEBLES_WHATSAPP_NUMBER = "573113442280";
+const INMUEBLES_PHONE_DISPLAY = "+57 311 344 2280";
 const CONTACT_EMAIL = "administracion@tecomprotuauto.com.co";
 const CONTACT_ADDRESS = "Cra. 70 #14 - 02, Comuna 17, Cali, Valle del Cauca — Colombia";
 const CONTACT_HOURS = "Lunes a sábado, 8:00 a.m. – 6:00 p.m.";

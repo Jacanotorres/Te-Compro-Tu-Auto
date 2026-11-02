@@ -23,9 +23,13 @@ document.addEventListener("DOMContentLoaded", function(){
     nav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", closeNav); });
   }
 
+  /* Las páginas de inmuebles (<body data-wa="inmuebles">) usan su propio número de WhatsApp */
+  const forInmuebles = document.body.getAttribute("data-wa") === "inmuebles";
+
   /* Enlaces de WhatsApp con texto predefinido (data-wa-text) */
   document.querySelectorAll("[data-wa-text]").forEach(function(a){
-    a.href = waLink(a.getAttribute("data-wa-text"));
+    const text = a.getAttribute("data-wa-text");
+    a.href = forInmuebles ? waLinkTo(INMUEBLES_WHATSAPP_NUMBER, text) : waLink(text);
   });
 
   /* Enlaces a redes sociales / mapa (data-social="instagram|tiktok|facebook|maps") */
@@ -35,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   /* Teléfono / correo de contacto inyectados donde se pidan */
   document.querySelectorAll("[data-contact-phone]").forEach(function(el){
-    el.textContent = CONTACT_PHONE_DISPLAY;
+    el.textContent = forInmuebles && el.closest("header") ? INMUEBLES_PHONE_DISPLAY : CONTACT_PHONE_DISPLAY;
   });
   document.querySelectorAll("[data-contact-phone-href]").forEach(function(el){
     el.href = "tel:+" + WHATSAPP_NUMBER;
